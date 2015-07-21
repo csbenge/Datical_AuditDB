@@ -1,67 +1,98 @@
-<div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Html->link(__('Edit Changeset Detail'), ['action' => 'edit', $changesetDetail->ID]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Changeset Detail'), ['action' => 'delete', $changesetDetail->ID], ['confirm' => __('Are you sure you want to delete # {0}?', $changesetDetail->ID)]) ?> </li>
-        <li><?= $this->Html->link(__('List Changeset Details'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Changeset Detail'), ['action' => 'add']) ?> </li>
-    </ul>
-</div>
+
+<h3><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <?= h($changesetDetail->DTYPE) ?>: <?= h($changesetDetail->CHANGEID) ?></h3>
+
 <div class="changesetDetails view large-10 medium-9 columns">
-    <h2><?= h($changesetDetail->ID) ?></h2>
+
     <div class="row">
-        <div class="large-5 columns strings">
-            <h6 class="subheader"><?= __('DTYPE') ?></h6>
-            <p><?= h($changesetDetail->DTYPE) ?></p>
-            <h6 class="subheader"><?= __('CHANGEID') ?></h6>
-            <p><?= h($changesetDetail->CHANGEID) ?></p>
-            <h6 class="subheader"><?= __('AUTHOR') ?></h6>
-            <p><?= h($changesetDetail->AUTHOR) ?></p>
-            <h6 class="subheader"><?= __('FILENAME') ?></h6>
-            <p><?= h($changesetDetail->FILENAME) ?></p>
-            <h6 class="subheader"><?= __('CHECKSUM') ?></h6>
-            <p><?= h($changesetDetail->CHECKSUM) ?></p>
-            <h6 class="subheader"><?= __('DBMS') ?></h6>
-            <p><?= h($changesetDetail->DBMS) ?></p>
-            <h6 class="subheader"><?= __('LABELS') ?></h6>
-            <p><?= h($changesetDetail->LABELS) ?></p>
-            <h6 class="subheader"><?= __('CONTEXTS') ?></h6>
-            <p><?= h($changesetDetail->CONTEXTS) ?></p>
-            <h6 class="subheader"><?= __('ON VALIDATION FAIL') ?></h6>
-            <p><?= h($changesetDetail->ON_VALIDATION_FAIL) ?></p>
-            <h6 class="subheader"><?= __('RESULT') ?></h6>
-            <p><?= h($changesetDetail->RESULT) ?></p>
-        </div>
-        <div class="large-2 columns numbers end">
-            <h6 class="subheader"><?= __('ID') ?></h6>
-            <p><?= $this->Number->format($changesetDetail->ID) ?></p>
-            <h6 class="subheader"><?= __('E VERSION') ?></h6>
-            <p><?= $this->Number->format($changesetDetail->E_VERSION) ?></p>
-            <h6 class="subheader"><?= __('OPERATION CHANGESET ID') ?></h6>
-            <p><?= $this->Number->format($changesetDetail->OPERATION_CHANGESET_ID) ?></p>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+        <div class="panel-heading"><strong>SUMMARY</strong></div>
+        <div class="panel-body">
+            <table class="table table-hover table-condensed">
+            <tr>
+                <td><strong><?= __('ID') ?>:</strong></td>
+                <td><?= h($changesetDetail->CHANGEID) ?></td>
+            </tr>
+            <tr>
+                <td><strong><?= __('AUTHOR') ?>:</strong></td>
+                <td><?= h($changesetDetail->AUTHOR) ?></td>
+            </tr>
+            
+            <tr>
+                <td><strong><?= __('DBMS') ?>:</strong></td>
+                <td><?= h($changesetDetail->DBMS) ?></td>
+            </tr>
+            <tr>
+                <td><strong><?= __('LABELS') ?>:</strong></td>
+                <td><?= h($changesetDetail->LABELS) ?></td>
+            </tr>
+            <tr>
+                <td><strong><?= __('CONTEXTS') ?>:</strong></td>
+                <td><?= h($changesetDetail->CONTEXTS) ?></td>
+            </tr>
+            <tr>
+                <td><strong><?= __('CHECKSUM') ?>:</strong></td>
+                <td><?= h($changesetDetail->CHECKSUM) ?></td>
+            </tr>
+            <tr>
+                <td><strong><?= __('FILENAME') ?>:</strong></td>
+                <td><?= h($changesetDetail->FILENAME) ?></td>
+            </tr>
+            <tr>
+                <td><strong><?= __('RESULT') ?>:</strong></td>
+                <td><?= h($changesetDetail->RESULT) ?></td>
+            </tr>
+            </table>
+        </div> 
         </div>
     </div>
-    <div class="row texts">
-        <div class="columns large-9">
-            <h6 class="subheader"><?= __('FAIL ON ERROR') ?></h6>
-            <?= $this->Text->autoParagraph(h($changesetDetail->FAIL_ON_ERROR)) ?>
-        </div>
-    </div>
-    <div class="row texts">
-        <div class="columns large-9">
-            <h6 class="subheader"><?= __('ON RUN ALWAYS') ?></h6>
-            <?= $this->Text->autoParagraph(h($changesetDetail->ON_RUN_ALWAYS)) ?>
-        </div>
-    </div>
-    <div class="row texts">
-        <div class="columns large-9">
-            <h6 class="subheader"><?= __('RUN ON CHANGE') ?></h6>
-            <?= $this->Text->autoParagraph(h($changesetDetail->RUN_ON_CHANGE)) ?>
+
+    <div class="col-md-3">
+        <div class="panel panel-success">
+        <div class="panel-heading"><strong>SETTINGS</strong></div>
+        <div class="panel-body">
+            <table class="table table-hover table-condensed">
+            <tr>
+                <td><strong><?= __('ID') ?>:</strong></td>
+                <td><?= h($changesetDetail->ID) ?></td>
+            </tr>
+            <tr>
+                <td><strong><?= __('E_VERSION') ?>:</strong></td>
+                <td><?= h($changesetDetail->E_VERSION) ?></td>
+            </tr>
+            <tr>
+                <td><strong><?= __('OPERATION_CHANGESET_ID') ?>:</strong></td>
+                <td><?= h($changesetDetail->OPERATION_CHANGESET_ID) ?></td>
+            </tr>
+            <tr>
+                <td><strong><?= __('ON_VALIDATION_FAIL') ?>:</strong></td>
+                <td><?= h($changesetDetail->ON_VALIDATION_FAIL) ?></td>
+            </tr>
+            <tr>
+                <td><strong><?= __('FAIL_ON_ERROR') ?>:</strong></td>
+                <td><?= h($changesetDetail->FAIL_ON_ERROR) ?></td>
+            </tr>
+            <tr>
+                <td><strong><?= __('ON_RUN_ALWAYS') ?>:</strong></td>
+                <td><?= h($changesetDetail->ON_RUN_ALWAYS) ?></td>
+            </tr>
+            <tr>
+                <td><strong><?= __('RUN_ON_CHANGE') ?>:</strong></td>
+                <td><?= h($changesetDetail->RUN_ON_CHANGE) ?></td>
+            </tr>
+            </table>
+        </div> 
         </div>
     </div>
 </div>
 
-<table>
+<div class="row">
+<div class="col-md-8">
+        <div class="panel panel-info">
+        <div class="panel-heading"><strong>CHANGE IMPACT(s)</strong></div>
+        <div class="panel-body">
+
+<table class="table table-hover table-condensed">
 
         <?php if (!empty($changesetDetail->changeimpacts)): ?>
             <tr>
@@ -79,3 +110,8 @@
         <?php endif; ?>
         
 </table>
+
+</div>
+</div>
+</div>
+</div>

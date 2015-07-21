@@ -29,10 +29,6 @@
                 <td><?= h($operation->CONTEXTS) ?></td>
             </tr>
             <tr>
-                <td><strong><?= __('RESULT') ?>:</strong></td>
-                <td><?= h($operation->DEPLOY_RESULT) ?></td>
-            </tr>
-            <tr>
                 <td><strong><?= __('TYPE') ?>:</strong></td>
                 <td><?= h($operation->DEPLOYMODE) ?></td>
             </tr>
@@ -46,6 +42,10 @@
         <div class="panel-heading"><strong>RESULTS</strong></div>
         <div class="panel-body">
             <table class="table table-hover table-condensed">
+            <tr>
+                <td><strong><?= __('RESULT') ?>:</strong></td>
+                <td><?= h($operation->DEPLOY_RESULT) ?></td>
+            </tr>
             <tr>
                 <td><strong><?= __('CHANGES_MADE') ?>:</strong></td>
                 <td><?= $this->Number->format($operation->TOTALROWSTOUCHED) ?></td>

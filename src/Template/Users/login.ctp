@@ -2,16 +2,19 @@
 
 <br/>
 <div class="row">
-  <div class="large-4 columns large-centered">
-	
+     <div class="col-md-5 col-md-offset-4">
+
+<div class="users form centered well" style="width:500px">
+    <div style="text-align:center;"><h3>Datical AuditDB<br/><?php echo __('Login'); ?></h3></div>
+    <br/>
 	<?= $this->Form->create() ?>
-	    <fieldset>
-	        <legend><?= __('Login') ?></legend>
-	        <?= $this->Form->input('email') ?>
-	        <?= $this->Form->input('password') ?>
-	    </fieldset>
+	<big>
+        <?= $this->Form->input('email') ?>
+        <?= $this->Form->input('password') ?>
 	<br/>
-	<?= $this->Form->button(__('Login'), ['class' => 'button radius small success']); ?>
+	<?= $this->Form->button(__('Login'), ['class' => 'btn btn-small btn-success']); ?>
 	<?= $this->Form->end() ?>
-  </div>
+</div>
+
+</div>
 </div>

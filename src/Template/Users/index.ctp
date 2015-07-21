@@ -1,13 +1,18 @@
 <!-- File: src/Template/Users/index.ctp -->
 
-<br/><div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
-    </ul>
-</div>
-<div class="users index large-10 medium-9 columns">
-    <table cellpadding="0" cellspacing="0" width="100%">
+<div class="container-fluid">
+    <div class="col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+      <br/>
+      <h3><?= __('Actions') ?></h3>
+        <li><?= $this->Html->link(__('Add User'), ['action' => 'add']) ?></li>
+      </ul>
+    </div>
+
+    <div class="col-md-10 main">
+      <h2 class="page-header"><?= __('Users') ?></h2>
+
+    <table class="table table-striped table-bordered table-hover table-condensed">
     <thead>
         <tr>
             <th nowrap><?= $this->Paginator->sort('firstname', 'First Name') ?></th>
@@ -27,7 +32,7 @@
             <td><?= h($user->role) ?></td>
             <td><?= h($user->created) ?></td>
             <td nowrap class="actions">
-                <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
+                <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $user->id]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
                 <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
             </td>
@@ -36,12 +41,17 @@
     <?php endforeach; ?>
     </tbody>
     </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <br/><small><?= $this->Paginator->counter() ?></small>
-        </ul>
-    </div>
+    <div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 text-center">
+    <ul class="pagination">
+        <?= $this->Paginator->prev('< ' . __('previous')) ?>
+        <?= $this->Paginator->numbers() ?>
+        <?= $this->Paginator->next(__('next') . ' >') ?><br/>
+        <small><?= $this->Paginator->counter() ?></small>
+    </ul>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
 </div>

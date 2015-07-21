@@ -26,7 +26,9 @@ $cakeDescription = 'Datical';
     </title>
     <?= $this->Html->meta('icon') ?>
 
+
     <?= $this->Html->css('bootstrap.css') ?>
+    <?= $this->Html->css('foundation-forms.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -83,6 +85,7 @@ $cakeDescription = 'Datical';
 
 
     <div class="container-fluid">
+    
         <div id="content">
           <?= $this->Flash->render() ?>
           <?= $this->Flash->render('auth') ?>

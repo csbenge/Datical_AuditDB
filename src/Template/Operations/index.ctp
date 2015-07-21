@@ -1,6 +1,20 @@
 <!-- File: src/Template/Operations/index.ctp -->
 
-<h3><?= __('Database Change Operations') ?></h3>
+<div class="container-fluid">
+    <div class="col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+      <br/>
+      <h3><?= __('Tables') ?></h3>
+        <li><?= $this->Html->link(__('Operations'), ['controller' => 'operations', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('OpDatabases'), ['controller' => 'opdatabases', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('ChangeSetDetails'), ['controller' => 'ChangesetDetails', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('ChangeImpacts'), ['controller' => 'Changeimpacts', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('ClientDetails'), ['controller' => 'ClientDetails', 'action' => 'index']) ?></li>
+      </ul>
+    </div>
+
+    <div class="col-md-10 main">
+      <h2 class="page-header"><?= __('Database Change Operations') ?></h2>
 
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
@@ -31,7 +45,6 @@
 <?php endforeach; ?>
 </tbody>
 </table>
-
 
 <div class="row">
   <div class="col-md-4"></div>

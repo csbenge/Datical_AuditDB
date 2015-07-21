@@ -10,7 +10,6 @@ use App\Controller\AppController;
  */
 class ChangeimpactsController extends AppController
 {
-
     /**
      * Index method
      *
