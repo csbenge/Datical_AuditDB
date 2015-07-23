@@ -1,7 +1,14 @@
+<!-- File: src/Template/ClientDetails/index.ctp -->
 
-<div class="clientDetails index large-10 medium-9 columns">
-    <h2><?= __('CLIENT DETAILS') ?></h2>
-    <table  class="table table-striped table-bordered table-hover table-condensed">
+<div class="container-fluid">
+    <div class="col-md-2 sidebar">
+    <?php echo $this->element('sidebar-tables'); ?>
+    </div>
+
+    <div class="col-md-10 main">
+      <h2 class="page-header"><?= __('CLIENT_DETAILS') ?></h2>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('ID') ?></th>

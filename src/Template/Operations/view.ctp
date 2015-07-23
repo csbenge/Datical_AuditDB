@@ -1,6 +1,6 @@
 <!-- File: src/Template/Operations/view.ctp -->
 
-<h3><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <?= h($operation->PROJECT_NAME) ?>:<?= h($operation->STEP) ?> - <?= h($operation->OPDATE) ?></h3>
+<h3><i class="fa fa-database fa-green"></i> <?= h($operation->PROJECT_NAME) ?>:<?= h($operation->STEP) ?> - <?= h($operation->OPDATE) ?></h3>
 
 <div class="row">
     <div class="col-md-2">
@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <td><strong><?= __('ACTION') ?>:</strong></td>
-                <td><?= h($operation->ACTION_TYPE) ?></td>
+                <td><?= $this->DeployResults->prettyUpAction(h($operation->ACTION_TYPE)) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('LABELS') ?>:</strong></td>
@@ -30,7 +30,7 @@
             </tr>
             <tr>
                 <td><strong><?= __('TYPE') ?>:</strong></td>
-                <td><?= h($operation->DEPLOYMODE) ?></td>
+                <td><?= $this->DeployResults->prettyUpCase(h($operation->DEPLOYMODE)) ?></td>
             </tr>
             </table>
         </div> 
@@ -44,19 +44,19 @@
             <table class="table table-hover table-condensed">
             <tr>
                 <td><strong><?= __('RESULT') ?>:</strong></td>
-                <td><?= h($operation->DEPLOY_RESULT) ?></td>
+                <td><?= $this->DeployResults->prettyUpResult(h($operation->DEPLOY_RESULT)) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('CHANGES_MADE') ?>:</strong></td>
-                <td><?= $this->Number->format($operation->TOTALROWSTOUCHED) ?></td>
+                <td><?= $this->DeployResults->getRowCount($operation->changeset_details) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('ROWS TOUCHED') ?>:</strong></td>
-                <td><?= $this->Number->format($operation->TOTALROWSTOUCHED) ?></td>
+                <td><?= $this->DeployResults->prettyUpCount($operation->TOTALROWSTOUCHED) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('VALUES DELETED') ?>:</strong></td>
-                <td><?= $this->Number->format($operation->TOTALVALUESDELETED) ?></td>
+                <td><?= $this->DeployResults->prettyUpCount($operation->TOTALVALUESDELETED) ?></td>
             </tr>
             </table>
         </div>
@@ -187,7 +187,7 @@
             <td><?= h($changeset_details->AUTHOR) ?></td>
             <td><?= h($changeset_details->LABELS) ?></td>
             <td><?= h($changeset_details->CONTEXTS) ?></td>
-            <td><?= h($changeset_details->RESULT) ?></td>
+            <td><?= $this->DeployResults->prettyUpResult(h($changeset_details->RESULT)) ?></td>
         </tr>
         <?php endforeach; ?>
     </table>

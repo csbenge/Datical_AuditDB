@@ -29,10 +29,15 @@ $cakeDescription = 'Datical';
 
     <?= $this->Html->css('bootstrap.css') ?>
     <?= $this->Html->css('foundation-forms.css') ?>
+    <?= $this->Html->css('font-awesome.css') ?>
+
+    <?= $this->Html->script('jquery.min.js') ?>
+    <?= $this->Html->script('bootstrap.min.js') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+</style>
 </head>
 <body>
 
@@ -58,7 +63,8 @@ $cakeDescription = 'Datical';
          <?php
               if ($authUser)
               {
-                echo "<li>", $this->Html->link(__('Operations'), ['controller' => 'Operations','action' => 'index']), "</li>";
+                echo "<li>", $this->Html->link(__('Deployments'), ['controller' => 'Operations','action' => 'deployments']), "</li>";
+                echo "<li>", $this->Html->link(__('Tables'), ['controller' => 'Operations','action' => 'tables']), "</li>";
               }
             ?>
             <?php

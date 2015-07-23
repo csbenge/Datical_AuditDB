@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
     <div class="col-md-2 sidebar">
-    <?php echo $this->element('sidebar-tables'); ?>
+      <?php echo $this->element('sidebar-tables'); ?>
     </div>
 
     <div class="col-md-10 main">

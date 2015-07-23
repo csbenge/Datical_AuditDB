@@ -11,12 +11,48 @@ use App\Controller\AppController;
 class OperationsController extends AppController
 {
 
+    public $paginate = [
+        'limit' => 25,
+        'order' => [
+            'Operations.PROJECT_NAME' => 'asc'
+        ]
+    ];
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Paginator');
+    }
+
     /**
      * Index method
      *
      * @return void
      */
     public function index()
+    {
+        $this->set('operations', $this->paginate($this->Operations));
+        $this->set('_serialize', ['operations']);
+
+    }
+
+    /**
+     * Deployments method
+     *
+     * @return void
+     */
+    public function deployments()
+    {
+        $this->set('operations', $this->paginate($this->Operations));
+        $this->set('_serialize', ['operations']);
+    }
+
+    /**
+     * tables method
+     *
+     * @return void
+     */
+    public function tables()
     {
         $this->set('operations', $this->paginate($this->Operations));
         $this->set('_serialize', ['operations']);

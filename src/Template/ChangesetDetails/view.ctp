@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <td><strong><?= __('RESULT') ?>:</strong></td>
-                <td><?= h($changesetDetail->RESULT) ?></td>
+                <td><?= $this->DeployResults->prettyUpResult(h($changesetDetail->RESULT)) ?></td>
             </tr>
             </table>
         </div> 
