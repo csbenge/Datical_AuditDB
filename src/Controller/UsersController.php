@@ -29,8 +29,8 @@ class UsersController extends AppController
               $this->Auth->setUser($user);
               //return $this->redirect($this->Auth->redirectUrl());
               return $this->redirect([
-                'controller' => 'Operations',
-                'action' => 'deployments'
+                'controller' => 'Dashboards',
+                'action' => 'overview'
         ]);
           }
           $this->Flash->error(__('Invalid email or password, try again'));

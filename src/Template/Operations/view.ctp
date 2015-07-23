@@ -21,6 +21,10 @@
                 <td><?= $this->DeployResults->prettyUpAction(h($operation->ACTION_TYPE)) ?></td>
             </tr>
             <tr>
+                <td><strong><?= __('TIME') ?>:</strong></td>
+                <td><?= h($operation->STARTTIME) ?></td>
+            </tr>
+            <tr>
                 <td><strong><?= __('LABELS') ?>:</strong></td>
                 <td><?= h($operation->LABELS) ?></td>
             </tr>
@@ -58,6 +62,18 @@
                 <td><strong><?= __('VALUES DELETED') ?>:</strong></td>
                 <td><?= $this->DeployResults->prettyUpCount($operation->TOTALVALUESDELETED) ?></td>
             </tr>
+            <tr>
+                <td>_  </td>
+                <td>_  </td>
+            </tr>
+            <tr>
+                <td>_</td>
+                <td>_ </td>
+            </tr>
+            <tr>
+                <td>_  </td>
+                <td>_  </td>
+            </tr>
             </table>
         </div>
         </div>
@@ -83,6 +99,18 @@
             <tr>
                 <td><strong><?= __('TOTAL TIME') ?>:</strong></td>
                 <td><?= h($operation->TOTALTIME) ?></td>
+            </tr>
+            <tr>
+                <td>_  </td>
+                <td>_  </td>
+            </tr>
+            <tr>
+                <td>_  </td>
+                <td>_  </td>
+            </tr>
+            <tr>
+                <td>_  </td>
+                <td>_  </td>
             </tr>
             </table>
         </div>
@@ -114,6 +142,14 @@
             <tr>
                 <td><strong><?= __('TYPE') ?>:</strong></td>
                 <td><?= h($client_details->CLIENT_TYPE) ?></td>
+            </tr>
+            <tr>
+                <td>_  </td>
+                <td>_  </td>
+            </tr>
+            <tr>
+                <td>_  </td>
+                <td>_  </td>
             </tr>
             <?php endforeach; ?>
             </table>

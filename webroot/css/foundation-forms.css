@@ -1,6 +1,32 @@
 
+/* Glyphicon Colors */
 .fa-green {
   color: green;
+}
+
+/* Panel Heading for Links */
+.ppanel-heading {
+  color: white;
+}
+.ptext-heading {
+  color: #ffffff;
+  font-weight: bold;
+}
+a.ptext-heading:hover,
+a.ptext-heading:focus {
+  color: #ffffff;
+}
+
+.ppanel-heading-danger {
+  color: black;
+}
+.ptext-heading-danger {
+  color: black;
+  font-weight: bold;
+}
+a.ptext-heading-danger:hover,
+a.ptext-heading-danger:focus {
+  color: black;
 }
 
 

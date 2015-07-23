@@ -26,6 +26,26 @@ class DeployResultsHelper extends Helper
         return '<span class="badge">' . $count . '</span>';
     }
 
+    public function prettyUpCountBig($count)
+    {
+        return '<span class="badge" style="font-size: 24px">' . $count . '</span>';
+    }
+
+    public function prettyUpMessageLevel($result)
+    {
+        $class = '<span class="label label-default">';
+        if ($result == "PASS") {
+            $class = '<span class="label label-success">';
+        } elseif ($result == "FAIL") {
+            $class = '<span class="label label-danger">';
+        } elseif ($result == "WARN") {
+            $class = '<span class="label label-warning">';
+        } elseif ($result == "INFO") {
+            $class = '<span class="label label-info">';
+        }
+        return $class . $result . '</span>';
+    }
+
     public function prettyUpResult($result)
     {
     	$class = '<span class="label label-default">';

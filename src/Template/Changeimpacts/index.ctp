@@ -1,4 +1,4 @@
-<!-- File: src/Template/ChangesetDetails/index.ctp -->
+<!-- File: src/Template/ChangesetImpacts/index.ctp -->
 
 <div class="container-fluid">
     <div class="col-md-2 sidebar">
@@ -36,7 +36,7 @@
     </tbody>
     </table>
     
-    <div class="row">
+<div class="row">
   <div class="col-md-4"></div>
   <div class="col-md-4 text-center">
     <ul class="pagination">

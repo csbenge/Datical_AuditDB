@@ -99,12 +99,17 @@
                 <th><?= __('ID') ?></th>
                 <th><?= __('AUTHOR') ?></th>
                 <th><?= __('CHANGE_DESCRIPTION') ?></th>
+                <th><?= __('SQL') ?></th>
             </tr>
         <?php foreach ($changesetDetail->changeimpacts as $changeimpacts): ?>
             <tr>
                 <td><?= h($changeimpacts->ID) ?></td>
                 <td><?= h($changeimpacts->AUTHOR) ?></td>
                 <td><?= h($changeimpacts->CHANGE_DESCRIPTION) ?></td>
+                <td>
+                    <?= $this->Html->link(__('View SQL'), ['controller' => 'ChangeimpactsSqls', 'action' => 'view', $changeimpacts->ID]) ?>
+                </td>
+            </tr>
             </tr>
         <?php endforeach; ?>
         <?php endif; ?>

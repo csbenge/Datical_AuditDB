@@ -2,11 +2,11 @@
 
 <div class="container-fluid">
     <div class="col-md-2 sidebar">
-        <?php echo $this->element('sidebar-deployments'); ?>
+    <?php echo $this->element('sidebar-deployments'); ?>
     </div>
 
     <div class="col-md-10 main">
-    <br/><h2><i class="fa fa-arrow-circle-right"></i> <?= __('Deployments') ?></h2>
+      <h2 class="page-header"><?= __('Deployments') ?></h2>
 
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
@@ -48,8 +48,8 @@
 </div>
 
 <div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-4 text-center">
+  <div class="col-md-4"></div>
+  <div class="col-md-5 text-center">
     <ul class="pagination">
         <?= $this->Paginator->prev('< ' . __('previous')) ?>
         <?= $this->Paginator->numbers() ?>

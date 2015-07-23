@@ -1,17 +1,17 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Changeimpact;
+use App\Model\Entity\Tablemod;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Changeimpacts Model
+ * Tablemods Model
  *
  */
-class ChangeimpactsTable extends Table
+class TablemodsTable extends Table
 {
 
     /**
@@ -22,16 +22,9 @@ class ChangeimpactsTable extends Table
      */
     public function initialize(array $config)
     {
-        $this->belongsTo('ChangesetDetails');
-        $this->table('changeimpacts');
+        $this->table('tablemods');
         $this->displayField('ID');
         $this->primaryKey('ID');
-
-        $this->hasMany('ChangeimpactsSqls', [
-            'foreignKey' => 'ID',
-            'bindingKey' => 'CHANGEIMPACT_SQL_ID',
-            'dependent' => true
-        ]);
     }
 
     /**
@@ -55,29 +48,31 @@ class ChangeimpactsTable extends Table
             ->notEmpty('E_VERSION');
             
         $validator
-            ->allowEmpty('CHANGE_DESCRIPTION');
+            ->allowEmpty('TABLENAME');
             
         $validator
-            ->allowEmpty('AUTHOR');
+            ->add('ROWSTOUCHED', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('ROWSTOUCHED');
             
         $validator
-            ->allowEmpty('CANROLLBACK');
+            ->add('VALUESDELETED', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('VALUESDELETED');
             
         $validator
-            ->allowEmpty('FAILUREMESSAGE');
+            ->allowEmpty('OPERATION_TABLEMODS_ID');
             
         $validator
-            ->requirePresence('SKIPPED', 'create')
-            ->notEmpty('SKIPPED');
+            ->add('OPERATION_TABLEMODS_IDX', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('OPERATION_TABLEMODS_IDX');
             
         $validator
-            ->allowEmpty('OPERATION_CHANGEIMPACTS_ID');
+            ->allowEmpty('ECONTAINER_CLASS');
             
         $validator
-            ->allowEmpty('CHNGESET_DETAIL_CHNGEIMPACT_ID');
+            ->allowEmpty('E_CONTAINER');
             
         $validator
-            ->allowEmpty('IDX');
+            ->allowEmpty('E_CONTAINER_FEATURE_NAME');
 
         return $validator;
     }
