@@ -1,11 +1,12 @@
-<!-- File: src/Template/Dashboards/index.ctp -->
+<!-- File: src/Template/Dashboards/overview.ctp -->
 
 <div class="container-fluid">
+  <div class="row">
     <div class="col-md-2 ">
-    <?php echo $this->element('sidebar-dashboards'); ?>
+        <?php echo $this->element('sidebar-dashboards'); ?>
     </div>
 
-    <div class="col-md-10 main">
+    <div class="col-md-8 main">
       <h2 class="page-header"><?= __('Dashboard: Overview') ?></h2>
       
       <div class="row">
@@ -41,12 +42,11 @@
       </div>
 
     <div class="row">
-
         <div class="col-md-4">
             <div class="panel panel-primary">
             <div class="panel-heading text-center">
                 <?php 
-                    echo $this->Html->link(__('Deployments'), ['controller' => 'Operations','action' => 'deployments'], 
+                    echo $this->Html->link(__('Deployments'), ['controller' => 'Dashboards','action' => 'deploymentsAll'], 
                         ['class' => 'ppanel-heading ptext-heading']);
                 ?>
             </div>
@@ -106,7 +106,7 @@
             <div class="panel panel-primary">
             <div class="panel-heading  text-center">
                 <?php 
-                    echo $this->Html->link(__('Table Modifications'), ['controller' => 'Tablemods','action' => 'index'], 
+                    echo $this->Html->link(__('Table Mods'), ['controller' => 'Tablemods','action' => 'index'], 
                         ['class' => 'ppanel-heading ptext-heading']);
                 ?>
             </div>
@@ -121,13 +121,11 @@
         </div>
 
     </div>
+    </div>
 
-
-    <div class="row">
- 
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <div class="col-md-2">
+<div class="col-md-2">
+    <br/>
+    <h4 class="page-header"><?= __('Environmentals') ?></h4>
             <div class="panel panel-success">
             <div class="panel-heading  text-center"><strong>Projects</strong></div>
             <div class="panel-body">
@@ -138,10 +136,8 @@
                 </table>
             </div> 
             </div>
-        </div>
 
 
-         <div class="col-md-2">
             <div class="panel panel-success">
             <div class="panel-heading text-center"><strong>Databases</strong></div>
             <div class="panel-body">
@@ -152,9 +148,7 @@
                 </table>
             </div> 
             </div>
-        </div>
 
-        <div class="col-md-2">
             <div class="panel panel-success">
             <div class="panel-heading text-center"><strong>Schemas</strong></div>
             <div class="panel-body">
@@ -165,9 +159,7 @@
                 </table>
             </div> 
             </div>
-        </div> 
 
-        <div class="col-md-2">
             <div class="panel panel-success">
             <div class="panel-heading  text-center"><strong>Clients</strong></div>
             <div class="panel-body">
@@ -178,8 +170,7 @@
                 </table>
             </div> 
             </div>
-        </div>
     
     </div>
     </div>
-</div>
+  </div>

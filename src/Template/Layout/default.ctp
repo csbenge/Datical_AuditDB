@@ -64,7 +64,6 @@ $cakeDescription = 'Datical';
               if ($authUser)
               {
                 echo "<li>", $this->Html->link(__('Dashboards'), ['controller' => 'Dashboards','action' => 'overview']), "</li>";
-                echo "<li>", $this->Html->link(__('Deployments'), ['controller' => 'Operations','action' => 'deployments']), "</li>";
                 echo "<li>", $this->Html->link(__('Tables'), ['controller' => 'Operations','action' => 'tables']), "</li>";
               }
             ?>

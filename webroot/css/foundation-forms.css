@@ -29,6 +29,27 @@ a.ptext-heading-danger:focus {
   color: black;
 }
 
+/*  Panel Message */
+
+.panel-message {
+  border-color: #1E9944;
+}
+.panel-message > .panel-heading {
+  color: #3c763d;
+  background-color: #1E9944;
+  border-color: #1E9944;
+}
+.panel-message > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #1E9944;
+}
+.panel-message > .panel-heading .badge {
+  color: #dff0d8;
+  background-color: #3c763d;
+}
+.panel-message > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #1E9944;
+}
+
 
 /* Standard Forms */
 form {

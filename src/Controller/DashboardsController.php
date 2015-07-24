@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
+use Cake\Error\Debugger;
 
 /**
  * Dashboards Controller
@@ -13,7 +14,56 @@ class DashboardsController extends AppController
 {
 
      /**
-     * Index method
+     * Deployments method
+     *
+     * @return void
+     */
+    public function databasesAll()
+    {
+        // Get Databases and  Count
+        $databases = TableRegistry::get('Operations');
+        $query = $databases->find();
+        $query->select(['ID', 'PROJECT_NAME', 'STEP', 'ACTION_TYPE', 'DEPLOY_RESULT', 'STARTTIME', 'TOTALTIME', 'DEPLOYMODE'])
+            ->distinct(['STEP'])
+            ->order(['STARTTIME' => 'DESC']);
+        $databaseCount = $query->count();
+        $this->set('databaseCount', $databaseCount);
+        $this->set('operations', $this->paginate($query));
+        $this->set('_serialize', ['operations']);
+    }
+
+    /**
+     * Deployments method
+     *
+     * @return void
+     */
+    public function deploymentsAll()
+    {
+        $operations = TableRegistry::get('Operations');
+        $query = $operations->find();
+        $this->set('operations', $this->paginate($query));
+        $this->set('_serialize', ['operations']);
+
+    }
+
+    public function deploymentsPassed()
+    {
+        $operations = TableRegistry::get('Operations');
+        $query = $operations->find()->where(['DEPLOY_RESULT' => 'PASS']);
+        $this->set('operations', $this->paginate($query));
+        $this->set('_serialize', ['operations']);
+    }
+
+    public function deploymentsFailed()
+    {
+        $operations = TableRegistry::get('Operations');
+        $query = $operations->find()->where(['DEPLOY_RESULT' => 'FAIL']);
+        $this->set('operations', $this->paginate($query));
+        $this->set('_serialize', ['operations']);
+    }
+
+     /**
+     * Overview method
      *
      * @return void
      */
