@@ -23,9 +23,9 @@ class ChangeimpactsSqlsTable extends Table
     public function initialize(array $config)
     {
         $this->belongsTo('Changesetimpacts');
-        $this->table('changeimpacts_sqls');
-        $this->displayField('CHANGEIMPACT_SQL_ID');
-        $this->primaryKey(['CHANGEIMPACT_SQL_ID']);
+        $this->table('CHANGEIMPACT_SQL');
+        $this->displayField('FK_CHANGEIMPACT_ID');
+        $this->primaryKey(['FK_CHANGEIMPACT_ID']);
     }
 
     /**

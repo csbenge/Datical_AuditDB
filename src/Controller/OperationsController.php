@@ -68,7 +68,7 @@ class OperationsController extends AppController
     public function view($id = null)
     {
         $operation = $this->Operations->get($id, [
-            'contain' => ['Opdatabases', 'ClientDetails', 'ChangesetDetails', 'Changeimpacts']
+            'contain' => ['Opdatabases', 'ChangesetDetails', 'Changeimpacts']
         ]);
         $this->set('operation', $operation);
         $this->set('_serialize', ['operation']);

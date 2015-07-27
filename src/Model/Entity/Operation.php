@@ -39,5 +39,17 @@ class Operation extends Entity
         'TOTALTIME' => true,
         'DEPLOYMODE' => true,
         'LOGPATH' => true,
+        'OPERATION_ID' => true,
+        'DTYPE' => true,
+        'E_VERSION' => true,
+        'CLIENT_TZ' => true,
+        'CLIENT_HOSTNAME' => true,
+        'CLIENT_IP' => true,
+        'CLIENT_TYPE' => true,
+        'CLIENT_USER' => true,
+        'CLIENT_ROLE' => true,
+        'ECONTAINER_CLASS' => true,
+        'E_CONTAINER' => true,
+        'E_CONTAINER_FEATURE_NAME' => true,
     ];
 }

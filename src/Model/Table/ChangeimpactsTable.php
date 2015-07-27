@@ -23,13 +23,13 @@ class ChangeimpactsTable extends Table
     public function initialize(array $config)
     {
         $this->belongsTo('ChangesetDetails');
-        $this->table('changeimpacts');
+        $this->table('CHANGEIMPACT');
         $this->displayField('ID');
         $this->primaryKey('ID');
 
         $this->hasMany('ChangeimpactsSqls', [
             'foreignKey' => 'ID',
-            'bindingKey' => 'CHANGEIMPACT_SQL_ID',
+            'bindingKey' => 'FK_CHANGEIMPACT_ID',
             'dependent' => true
         ]);
     }
@@ -71,7 +71,7 @@ class ChangeimpactsTable extends Table
             ->notEmpty('SKIPPED');
             
         $validator
-            ->allowEmpty('OPERATION_CHANGEIMPACTS_ID');
+            ->allowEmpty('FK_OPERATION_ID');
             
         $validator
             ->allowEmpty('CHNGESET_DETAIL_CHNGEIMPACT_ID');

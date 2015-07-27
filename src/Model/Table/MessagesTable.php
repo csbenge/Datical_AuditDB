@@ -22,9 +22,14 @@ class MessagesTable extends Table
      */
     public function initialize(array $config)
     {
-        $this->table('messages');
+        $this->table('MESSAGE');
         $this->displayField('ID');
         $this->primaryKey('ID');
+        $this->hasOne('Changeimpacts', [
+            'foreignKey' => 'FK_OPERATION_ID',
+            'bindingKey' => 'ID',
+            'dependent' => true
+        ]);
     }
 
     /**

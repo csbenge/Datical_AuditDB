@@ -22,26 +22,28 @@ class OperationsTable extends Table
      */
     public function initialize(array $config)
     {
-        $this->table('operations');
+        $this->table('OPERATION');
         $this->displayField('ID');
         $this->primaryKey('ID');
         $this->hasMany('Opdatabases', [
             'foreignKey' => 'ID',
-            'bindingKey' => 'OPDATABASE_DB_ID',
+            'bindingKey' => 'FK_OPDATABASE_ID',
             'dependent' => true
         ]);
+        /* Merged into OPERATION
         $this->hasMany('ClientDetails', [
             'foreignKey' => 'OPERATION_ID',
             'bindingKey' => 'ID',
             'dependent' => true
         ]);
+        */
         $this->hasMany('ChangesetDetails', [
-            'foreignKey' => 'OPERATION_CHANGESET_ID',
+            'foreignKey' => 'FK_OPERATION_ID',
             'bindingKey' => 'ID',
             'dependent' => true
         ]);
         $this->hasMany('Changeimpacts', [
-            'foreignKey' => 'OPERATION_CHANGEIMPACTS_ID',
+            'foreignKey' => 'FK_OPERATION_ID',
             'bindingKey' => 'ID',
             'dependent' => true
         ]);
@@ -136,6 +138,56 @@ class OperationsTable extends Table
             
         $validator
             ->allowEmpty('LOGPATH');
+            $validator
+            ->requirePresence('DTYPE', 'create')
+            ->notEmpty('DTYPE');
+            
+        $validator
+            ->add('E_VERSION', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('E_VERSION', 'create')
+            ->notEmpty('E_VERSION');
+            
+        $validator
+            ->requirePresence('CHANGEID', 'create')
+            ->notEmpty('CHANGEID');
+            
+        $validator
+            ->requirePresence('AUTHOR', 'create')
+            ->notEmpty('AUTHOR');
+            
+        $validator
+            ->requirePresence('FILENAME', 'create')
+            ->notEmpty('FILENAME');
+            
+        $validator
+            ->allowEmpty('CHECKSUM');
+            
+        $validator
+            ->allowEmpty('DBMS');
+            
+        $validator
+            ->allowEmpty('LABELS');
+            
+        $validator
+            ->allowEmpty('CONTEXTS');
+            
+        $validator
+            ->allowEmpty('FAIL_ON_ERROR');
+            
+        $validator
+            ->allowEmpty('ON_VALIDATION_FAIL');
+            
+        $validator
+            ->allowEmpty('ON_RUN_ALWAYS');
+            
+        $validator
+            ->allowEmpty('RUN_ON_CHANGE');
+            
+        $validator
+            ->allowEmpty('RESULT');
+            
+        $validator
+            ->allowEmpty('OPERATION_CHANGESET_ID');
 
         return $validator;
     }

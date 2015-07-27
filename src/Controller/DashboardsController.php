@@ -127,7 +127,7 @@ class DashboardsController extends AppController
         $this->set('schemaCount', $schemaCount); 
 
         // Get Unique Client Count
-        $clientDetails = TableRegistry::get('ClientDetails');
+        $clientDetails = TableRegistry::get('Operations');
         $query = $clientDetails->find();
         $query->select(['CLIENT_HOSTNAME'])->distinct(['CLIENT_HOSTNAME']);
         $clientCount = $query->count();

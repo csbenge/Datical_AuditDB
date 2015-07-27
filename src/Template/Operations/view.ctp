@@ -1,6 +1,6 @@
 <!-- File: src/Template/Operations/view.ctp -->
 
-<h3><i class="fa fa-database fa-green"></i> <?= h($operation->PROJECT_NAME) ?>:<?= h($operation->STEP) ?> - <?= h($operation->OPDATE) ?></h3>
+<h3><i class="fa fa-database fa-green"></i> <?= h($operation->PROJECT_NAME) ?>:<?= h($operation->STEP) ?> - <?= h($operation->STARTTIME) ?></h3>
 
 <div class="row">
     <div class="col-md-2">
@@ -122,26 +122,25 @@
         <div class="panel-heading"><strong>CLIENT</strong></div>
         <div class="panel-body">
             <table class="table table-hover table-condensed">
-            <?php foreach ($operation->client_details as $client_details): ?>
             <tr>
                 <td><strong><?= __('USER') ?>:</strong></td>
-                <td><?= h($client_details->CLIENT_USER) ?></td>
+                <td><?= h($operation->CLIENT_USER) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('ROLE') ?>:</strong></td>
-                <td><?= h($client_details->CLIENT_ROLE) ?></td>
+                <td><?= h($operation->CLIENT_ROLE) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('HOST') ?>:</strong></td>
-                <td><?= h($client_details->CLIENT_HOSTNAME) ?></td>
+                <td><?= h($operation->CLIENT_HOSTNAME) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('IP') ?>:</strong></td>
-                <td><?= h($client_details->CLIENT_IP) ?></td>
+                <td><?= h($operation->CLIENT_IP) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('TYPE') ?>:</strong></td>
-                <td><?= h($client_details->CLIENT_TYPE) ?></td>
+                <td><?= h($operation->CLIENT_TYPE) ?></td>
             </tr>
             <tr>
                 <td>_  </td>
@@ -151,7 +150,6 @@
                 <td>_  </td>
                 <td>_  </td>
             </tr>
-            <?php endforeach; ?>
             </table>
         </div>
         </div>

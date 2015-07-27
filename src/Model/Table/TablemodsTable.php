@@ -22,7 +22,7 @@ class TablemodsTable extends Table
      */
     public function initialize(array $config)
     {
-        $this->table('tablemods');
+        $this->table('TABLEMOD');
         $this->displayField('ID');
         $this->primaryKey('ID');
     }

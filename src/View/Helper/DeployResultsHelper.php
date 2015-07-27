@@ -10,6 +10,19 @@ class DeployResultsHelper extends Helper
 {
     public $helpers = ['Html'];
 
+    public function getChangeImpact($id)
+    {
+
+        // Look id in CHANGEIMPACT
+        // take FK_CHANGESET_DETAILS_ID in CHANGEIMPACT and lookup ID in CHANGESET_DETAILS
+        // Get CHANGEID
+
+        // FK_OPERATION+ID in CHANGESET_DETAILS look up OPERATION
+        // Get PROJECT_NAME, etc.
+        $result = "40-addcoo";
+        return $result;
+    }
+
     public function getRowCount($list)
     {
     	$result = count($list);
@@ -62,9 +75,9 @@ class DeployResultsHelper extends Helper
     public function prettyUpAction($action)
     {
     	$result = '';
-    	if ($action == "update") {
+    	if ($action == "DEPLOY") {
     		$result = 'Deploy';
-    	} elseif ($action == "rollback") {
+    	} elseif ($action == "ROLLBACK") {
     		$result = 'Rollback'; 
     	}
         return $result;

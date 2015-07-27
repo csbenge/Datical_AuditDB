@@ -26,6 +26,8 @@
                     <th><?= __('Level') ?></th>
                     <th><?= __('Time') ?></th>
                     <th><?= __('Text') ?></th>
+                    <th><?= __('Changeset') ?></th>
+                    <th><?= __('Changeset') ?></th>
                 </tr>
                 </thead>
                 <?php foreach ($latestMessages as $latestMessage): ?>
@@ -33,6 +35,8 @@
                     <td width="50px"><?= $this->DeployResults->prettyUpMessageLevel(h($latestMessage->MESSAGE_LEVEL)) ?></td>
                     <td width="175px"><?= $latestMessage->MESSAGE_TIME ?></td>
                     <td><?= $latestMessage->TEXT ?></td>
+                    <td><?= $latestMessage->FK_CHANGEIMPACT_ID ?></td>
+                    <td><?= $this->DeployResults->getChangeImpact(h($latestMessage->FK_CHANGEIMPACT_ID)) ?></td>
                 </tr>
                 <?php endforeach; ?>
                 </table>

@@ -23,12 +23,12 @@ class ChangesetDetailsTable extends Table
     public function initialize(array $config)
     {
         $this->belongsTo('Operations');
-        $this->table('changeset_details');
+        $this->table('CHANGESET_DETAILS');
         $this->displayField('ID');
         $this->primaryKey('ID');
         $this->hasMany('Changeimpacts', [
-            'foreignKey' => 'CHNGESET_DETAIL_CHNGEIMPACT_ID',
-            'bindingKey' => 'ID',
+            'foreignKey' => 'FK_OPERATION_ID',
+            'bindingKey' => 'FK_OPERATION_ID',
             'dependent' => true
         ]);
     }
@@ -93,7 +93,7 @@ class ChangesetDetailsTable extends Table
             ->allowEmpty('RESULT');
             
         $validator
-            ->allowEmpty('OPERATION_CHANGESET_ID');
+            ->allowEmpty('FK_OPERATION_ID');
 
         return $validator;
     }

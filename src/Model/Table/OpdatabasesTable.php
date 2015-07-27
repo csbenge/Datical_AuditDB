@@ -22,8 +22,8 @@ class OpdatabasesTable extends Table
      */
     public function initialize(array $config)
     {
-        $this->belongsTo('Operations');
-        $this->table('opdatabases');
+        $this->belongsTo('OPERATION');
+        $this->table('OPDATABASE');
         $this->displayField('ID');
         $this->primaryKey('ID');
     }
