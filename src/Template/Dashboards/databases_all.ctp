@@ -1,14 +1,16 @@
-<!-- File: src/Template/Operations/index.ctp -->
+<!-- File: src/Template/Dashboards/dashboards_all.ctp -->
 
 <div class="col-md-2 sidebar">
     <?php echo $this->element('sidebar-dashboards'); ?>
 </div>
 
 <div class="col-md-10 main">
-  <h2 class="page-header"><?= __('Dashboard->Databases->All') ?></h2>
+<br/>
+  <div class="panel panel-primary">
+    <div class="panel-heading"><i class="fa fa-database fa-white fa-lg"></i> <strong><big><?= __('Databases') ?></big></strong></div>
+    <div class="panel-body">
 
-  <?php if (!($operations->isEmpty())) { ?>
-
+    <?php if (!($operations->isEmpty())) { ?>
     <table class="table table-striped table-bordered table-hover table-condensed">
     <thead>
         <tr>
@@ -42,7 +44,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8 text-center">
+  <div class="col-md-12 text-center">
     <ul class="pagination">
         <?= $this->Paginator->prev('< ' . __('previous')) ?>
         <?= $this->Paginator->numbers() ?>
@@ -50,5 +52,7 @@
         <small><?= $this->Paginator->counter() ?></small>
     </ul>
   </div>
-  <div class="col-md-4"></div>
+</div>
+
+</div>
 </div>

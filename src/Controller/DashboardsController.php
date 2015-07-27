@@ -24,8 +24,9 @@ class DashboardsController extends AppController
         $databases = TableRegistry::get('Operations');
         $query = $databases->find();
         $query->select(['ID', 'PROJECT_NAME', 'STEP', 'ACTION_TYPE', 'DEPLOY_RESULT', 'STARTTIME', 'TOTALTIME', 'DEPLOYMODE'])
-            ->distinct(['STEP'])
-            ->order(['STARTTIME' => 'DESC']);
+            ->order(['PROJECT_NAME' => 'DESC', 'STARTTIME' => 'ASC']);
+        //$query->select(['ID', 'PROJECT_NAME', 'STEP', 'ACTION_TYPE', 'DEPLOY_RESULT', 'STARTTIME', 'TOTALTIME', 'DEPLOYMODE'])
+        //    ->distinct(['STEP']);
         $databaseCount = $query->count();
         $this->set('databaseCount', $databaseCount);
         $this->set('operations', $this->paginate($query));
