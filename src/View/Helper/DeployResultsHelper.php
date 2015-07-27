@@ -5,21 +5,47 @@
 namespace App\View\Helper;
 
 use Cake\View\Helper;
+use Cake\ORM\TableRegistry;
 
 class DeployResultsHelper extends Helper
 {
     public $helpers = ['Html'];
 
-    public function getChangeImpact($id)
+    public function getChangeImpact_ChangeID($id)
     {
 
         // Look id in CHANGEIMPACT
-        // take FK_CHANGESET_DETAILS_ID in CHANGEIMPACT and lookup ID in CHANGESET_DETAILS
-        // Get CHANGEID
+        // Get ChangeImpact Count
+        $changeimpacts = TableRegistry::get('Changeimpacts');
+        $changeimpact  = $changeimpacts->get($id, ['contain' => [] ]);
+        // Take FK_CHANGESET_DETAILS_ID in CHANGEIMPACT and lookup ID in CHANGESET_DETAILS
+        $changesetdetails = TableRegistry::get('ChangesetDetails');
+        $changesetdetail  = $changesetdetails->get($changeimpact->FK_CHANGESET_DETAILS_ID, ['contain' => [] ]);
 
-        // FK_OPERATION+ID in CHANGESET_DETAILS look up OPERATION
+        // FK_OPERATION_ID in CHANGESET_DETAILS look up OPERATION
+        $operations = TableRegistry::get('Operations');
+        $operation  = $operations->get($changesetdetail->FK_OPERATION_ID, ['contain' => [] ]);
         // Get PROJECT_NAME, etc.
-        $result = "40-addcoo";
+        $result = $operation->PROJECT_NAME;
+        return $result;
+    }
+
+    public function getChangeImpact_ChangeIDID($id)
+    {
+
+        // Look id in CHANGEIMPACT
+        // Get ChangeImpact Count
+        $changeimpacts = TableRegistry::get('Changeimpacts');
+        $changeimpact  = $changeimpacts->get($id, ['contain' => [] ]);
+        // Take FK_CHANGESET_DETAILS_ID in CHANGEIMPACT and lookup ID in CHANGESET_DETAILS
+        $changesetdetails = TableRegistry::get('ChangesetDetails');
+        $changesetdetail  = $changesetdetails->get($changeimpact->FK_CHANGESET_DETAILS_ID, ['contain' => [] ]);
+
+        // FK_OPERATION_ID in CHANGESET_DETAILS look up OPERATION
+        $operations = TableRegistry::get('Operations');
+        $operation  = $operations->get($changesetdetail->FK_OPERATION_ID, ['contain' => [] ]);
+        // Get PROJECT_NAME, etc.
+        $result = $operation->ID;
         return $result;
     }
 
@@ -49,7 +75,7 @@ class DeployResultsHelper extends Helper
         $class = '<span class="label label-default">';
         if ($result == "PASS") {
             $class = '<span class="label label-success">';
-        } elseif ($result == "FAIL") {
+        } elseif ($result == "FAIL" or $result == "ERROR") {
             $class = '<span class="label label-danger">';
         } elseif ($result == "WARN") {
             $class = '<span class="label label-warning">';

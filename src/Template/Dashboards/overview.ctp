@@ -10,7 +10,7 @@
       <h2 class="page-header"><?= __('Dashboard: Overview') ?></h2>
       
       <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="panel panel-danger">
             <div class="panel-heading text-center">
                 <?php 
@@ -25,18 +25,17 @@
                 <tr>
                     <th><?= __('Level') ?></th>
                     <th><?= __('Time') ?></th>
+                    <th><?= __('Project') ?></th>
                     <th><?= __('Text') ?></th>
-                    <th><?= __('Changeset') ?></th>
-                    <th><?= __('Changeset') ?></th>
                 </tr>
                 </thead>
                 <?php foreach ($latestMessages as $latestMessage): ?>
                 <tr>
                     <td width="50px"><?= $this->DeployResults->prettyUpMessageLevel(h($latestMessage->MESSAGE_LEVEL)) ?></td>
                     <td width="175px"><?= $latestMessage->MESSAGE_TIME ?></td>
+                    <td><?= $this->Html->link(h($this->DeployResults->getChangeImpact_ChangeID(h($latestMessage->FK_CHANGEIMPACT_ID))), ['controller' => 'Operations', 'action' => 'view', $this->DeployResults->getChangeImpact_ChangeIDID(h($latestMessage->FK_CHANGEIMPACT_ID))]) ?>
+                    </td>
                     <td><?= $latestMessage->TEXT ?></td>
-                    <td><?= $latestMessage->FK_CHANGEIMPACT_ID ?></td>
-                    <td><?= $this->DeployResults->getChangeImpact(h($latestMessage->FK_CHANGEIMPACT_ID)) ?></td>
                 </tr>
                 <?php endforeach; ?>
                 </table>
