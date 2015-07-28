@@ -11,6 +11,16 @@ use App\Controller\AppController;
 class ChangesetDetailsController extends AppController
 {
 
+     public $paginate = [
+        'limit' => 15
+    ];
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Paginator');
+    }
+
     /**
      * Index method
      *

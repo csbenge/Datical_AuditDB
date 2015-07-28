@@ -78,6 +78,10 @@ class DashboardsController extends AppController
             ->limit(3);
         $this->set('latestMessages', $latestMessages);
 
+        $query = $messages->find();
+        $messageCount = $query->count();
+        $this->set('messageCount', $messageCount);
+
         // Get Deployment/Operation Count
         $operations = TableRegistry::get('Operations');
         $query = $operations->find();

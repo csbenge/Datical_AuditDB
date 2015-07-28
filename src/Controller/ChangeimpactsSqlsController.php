@@ -11,6 +11,16 @@ use App\Controller\AppController;
 class ChangeimpactsSqlsController extends AppController
 {
 
+     public $paginate = [
+        'limit' => 10
+    ];
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Paginator');
+    }
+
     /**
      * Index method
      *

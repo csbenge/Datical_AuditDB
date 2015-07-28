@@ -12,7 +12,7 @@ class OperationsController extends AppController
 {
 
     public $paginate = [
-        'limit' => 25,
+        'limit' => 15,
         'order' => [
             'Operations.PROJECT_NAME' => 'asc'
         ]

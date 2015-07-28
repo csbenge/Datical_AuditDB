@@ -6,5 +6,4 @@
     <li><?= $this->Html->link(__('TableMods'), ['controller' => 'Tablemods', 'action' => 'index']) ?></li>
     <li><?= $this->Html->link(__('ChangeImpacts'), ['controller' => 'Changeimpacts', 'action' => 'index']) ?></li>
      <li><?= $this->Html->link(__('ChangeImpactsSQLs'), ['controller' => 'ChangeimpactsSqls', 'action' => 'index']) ?></li>
-    <li><?= $this->Html->link(__('ClientDetails'), ['controller' => 'ClientDetails', 'action' => 'index']) ?></li>
   </ul>

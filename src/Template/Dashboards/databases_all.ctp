@@ -1,9 +1,5 @@
 <!-- File: src/Template/Dashboards/dashboards_all.ctp -->
 
-<div class="col-md-2 sidebar">
-    <?php echo $this->element('sidebar-dashboards'); ?>
-</div>
-
 <div class="col-md-10 main">
 <br/>
   <div class="panel panel-primary">

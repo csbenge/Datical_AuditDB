@@ -30,6 +30,7 @@ $cakeDescription = 'Datical';
     <?= $this->Html->css('bootstrap.css') ?>
     <?= $this->Html->css('foundation-forms.css') ?>
     <?= $this->Html->css('font-awesome.css') ?>
+    <?= $this->Html->css('sb-admin.css') ?>
 
     <?= $this->Html->script('jquery.min.js') ?>
     <?= $this->Html->script('bootstrap.min.js') ?>
@@ -41,67 +42,90 @@ $cakeDescription = 'Datical';
 </head>
 <body>
 
-<header class="navbar navbar-static-top bs-docs-nav " id="top" role="banner">
-<nav class="navbar navbar-default navbar-inverse">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-       <a class="navbar-brand" href="#">
-        <img src="/img/Datical_CMYK_RVS-medium.png" height="22" width="153" alt="Datical" />
-      </a>
-    </div>
+  <div id="wrapper">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-         <?php
-              if ($authUser)
-              {
-                echo "<li>", $this->Html->link(__('Dashboards'), ['controller' => 'Dashboards','action' => 'overview']), "</li>";
-                echo "<li>", $this->Html->link(__('Tables'), ['controller' => 'Operations','action' => 'tables']), "</li>";
-              }
-            ?>
-            <?php
-              if ($authUserRole == "Admin") 
-              {
-                echo "<li>", $this->Html->link(__('Users'), ['controller' => 'Users','action' => 'index']), "</li>";
-              }
-            ?>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-         <?php
-            if ($authUser)
-            {
-              echo "<li>", $this->Html->link(__('Logout'), ['controller' => 'Users','action' => 'logout']), "</li>";
-              echo "<li>", " ", $this->Html->link($authUserEmail, ['controller' => 'Users','action' => 'view', $authUserID]), "</li>";
-            }
-          ?>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-</header>
+      <!-- Navigation -->
 
-    <div class="container-fluid">
-    
-        <div id="content">
-          <?= $this->Flash->render() ?>
-          <?= $this->Flash->render('auth') ?>
-        </div>
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+             <a class="navbar-brand" href="#"> <img src="/img/Datical_CMYK_RVS-medium.png" height="24" width="153" alt="Datical" /></a>
+          </div>
 
-        <?= $this->fetch('content') ?>
+          <!-- Top Menu Items -->
 
-    </div>
+          <?php if ($authUser) { ?>
+            <ul class="nav navbar-right top-nav">
+               <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?= $authUserEmail ?> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <?= $this->Html->link(__('Logout'), ['controller' => 'Users','action' => 'logout']); ?>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+          <?php } ?>
 
-        <footer>
-        </footer>
-        
+          <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+              <ul class="nav navbar-nav side-nav">
+                  <li>
+                      <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-dashboard"></i> Dashboards <i class="fa fa-fw fa-caret-down"></i></a>
+                      <ul id="demo" class="collapse">
+                          <li>
+                              <?= $this->Html->link(__('Overview'), ['controller' => 'dashboards', 'action' => 'overview']) ?>
+                          </li>
+                          <li><?= $this->Html->link(__('Databases All'), ['controller' => 'Dashboards','action' => 'databasesAll']) ?></li>
+                      </ul>
+                  </li>
+
+                  <li>
+                      <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-power-off"></i> Deployments <i class="fa fa-fw fa-caret-down"></i></a>
+                      <ul id="demo2" class="collapse">
+                          <li><?= $this->Html->link(__('All'), ['controller' => 'Dashboards','action' => 'deploymentsAll']) ?></li>
+                          <li><?= $this->Html->link(__('Passed'), ['controller' => 'Dashboards','action' => 'deploymentsPassed']) ?></li>
+                          <li><?=  $this->Html->link(__('Failed'), ['controller' => 'Dashboards','action' => 'deploymentsFailed']) ?></li>
+                      </ul>
+                  </li>
+
+                  <li> 
+                    <a href="/operations/tables"><i class="fa fa-fw fa-table"></i> Tables</a></li>
+                      
+                  </li>
+                  <li>
+                      <a href="/users"><i class="fa fa-fw fa-user"></i> Users</a>
+                  </li>
+                
+              </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </nav>
+
+      <div class="mainbody" id="page-wrapper">
+
+          <div class="container-fluid">
+            <div id="content">
+            <?= $this->Flash->render() ?>
+            <?= $this->Flash->render('auth') ?>
+      </div>
+
+      <?= $this->fetch('content') ?>
+  </div>
 </body>
-</html>

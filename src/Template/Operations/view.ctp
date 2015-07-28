@@ -21,10 +21,6 @@
                 <td><?= $this->DeployResults->prettyUpAction(h($operation->ACTION_TYPE)) ?></td>
             </tr>
             <tr>
-                <td><strong><?= __('TIME') ?>:</strong></td>
-                <td><?= h($operation->STARTTIME) ?></td>
-            </tr>
-            <tr>
                 <td><strong><?= __('LABELS') ?>:</strong></td>
                 <td><?= h($operation->LABELS) ?></td>
             </tr>
@@ -79,26 +75,26 @@
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-2">
         <div class="panel panel-success">
         <div class="panel-heading"><strong>TIME</strong></div>
         <div class="panel-body">
             <table class="table table-hover table-condensed">
             <tr>
-                <td><strong><?= __('DATE') ?>:</strong></td>
-                <td><?= h($operation->OPDATE) ?></td>
-            </tr>
-            <tr>
-                <td><strong><?= __('START TIME') ?>:</strong></td>
+                <td><strong><?= __('START') ?>:</strong></td>
                 <td><?= h($operation->STARTTIME) ?></td>
             </tr>
             <tr>
-                <td><strong><?= __('STOP TIME') ?>:</strong></td>
+                <td><strong><?= __('STOP') ?>:</strong></td>
                 <td><?= h($operation->STOPTIME) ?></td>
             </tr>
             <tr>
-                <td><strong><?= __('TOTAL TIME') ?>:</strong></td>
+                <td><strong><?= __('TOTAL') ?>:</strong></td>
                 <td><?= h($operation->TOTALTIME) ?></td>
+            </tr>
+            <tr>
+                <td>_  </td>
+                <td>_  </td>
             </tr>
             <tr>
                 <td>_  </td>
@@ -155,7 +151,7 @@
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-2">
         <div class="panel panel-warning">
         <div class="panel-heading"><strong>DATABASE</strong></div>
         <div class="panel-body">
@@ -174,7 +170,7 @@
                 <td><?= h($operations->DBNAME) ?></td>
             </tr>
             <tr>
-                <td><strong><?= __('USERNAME') ?>:</strong></td>
+                <td><strong><?= __('USER') ?>:</strong></td>
                 <td><?= h($operations->USERNAME) ?></td>
             </tr>
             <tr>
@@ -186,7 +182,7 @@
                 <td><?= h($operations->PORT) ?></td>
             </tr>
             <tr>
-                <td><strong><?= __('LAST_DEPLOY') ?>:</strong></td>
+                <td><strong><?= __('LAST') ?>:</strong></td>
                 <td><?= h($operations->LAST_DEPLOY) ?></td>
             </tr>
             <?php endforeach; ?>
@@ -200,7 +196,7 @@
 <!-- CHANGESET DETAILS: CHANGESET DETAILS-->
 
 <div class="row">
-<div class="col-md-12">
+<div class="col-md-10">
     <div class="panel panel-primary">
     <div class="panel-heading"><strong><?= __('ChangeSet(s) Details') ?></strong></div>
     <div class="panel-body">

@@ -1,4 +1,13 @@
 
+/* DIV */
+.mainbody{
+       position: absolute;
+       top: 40px; /* Header Height */
+       bottom: 10px; /* Footer Height */
+       width: 100%;
+    }
+
+
 /* Glyphicon Colors */
 .fa-green {
   color: green;

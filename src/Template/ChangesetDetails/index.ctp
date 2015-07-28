@@ -5,7 +5,7 @@
     <?php echo $this->element('sidebar-tables'); ?>
     </div>
 
-    <div class="col-md-10 main">
+    <div class="col-md-8 main">
       <h2 class="page-header"><?= __('CHANGESET_DETAILS') ?></h2>
 
 <table class="table table-striped table-bordered table-hover table-condensed">
