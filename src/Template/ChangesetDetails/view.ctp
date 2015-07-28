@@ -4,7 +4,7 @@
 <div class="changesetDetails view large-10 medium-9 columns">
 
     <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
         <div class="panel panel-primary">
         <div class="panel-heading"><strong>SUMMARY</strong></div>
         <div class="panel-body">
@@ -42,6 +42,10 @@
                 <td><strong><?= __('RESULT') ?>:</strong></td>
                 <td><?= $this->DeployResults->prettyUpResult(h($changesetDetail->RESULT)) ?></td>
             </tr>
+            <tr>
+                <td><strong><?= __('MESSAGE') ?>:</strong></td>
+                <td><?= $this->DeployResults->getDeploymentMessage(h($changesetDetail->ID)) ?></td>
+            </tr>
             </table>
         </div> 
         </div>
@@ -61,8 +65,8 @@
                 <td><?= h($changesetDetail->E_VERSION) ?></td>
             </tr>
             <tr>
-                <td><strong><?= __('OPERATION_CHANGESET_ID') ?>:</strong></td>
-                <td><?= h($changesetDetail->OPERATION_CHANGESET_ID) ?></td>
+                <td><strong><?= __('FK_OPERATION_ID') ?>:</strong></td>
+                <td><?= h($changesetDetail->FK_OPERATION_ID) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('ON_VALIDATION_FAIL') ?>:</strong></td>

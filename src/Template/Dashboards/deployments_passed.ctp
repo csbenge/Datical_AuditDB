@@ -1,10 +1,12 @@
 <!-- File: src/Template/Dashboards/deployments_all.ctp -->
 
 <div class="col-md-10 main">
-<br/>
+  <h2 class="page-header">Dashboard <small>Deployments Passed</small></h2>
+  
+<div class="col-md-12 main">
 <div class="panel panel-green">
     <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-database fa-fw"></i> Deployments: Passed</h3>
+        <h3 class="panel-title"><i class="fa fa-database fa-fw"></i> Deployments</h3>
     </div>
     <div class="panel-body">
         <div class="table-responsive">

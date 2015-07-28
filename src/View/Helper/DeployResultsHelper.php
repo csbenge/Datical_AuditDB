@@ -49,6 +49,17 @@ class DeployResultsHelper extends Helper
         return $result;
     }
 
+    public function getDeploymentMessage($id)
+    {
+
+        $changeimpacts = TableRegistry::get('Changeimpacts');
+
+        $query = $changeimpacts->find()->where(['FK_CHANGESET_DETAILS_ID' => 4018]);
+        $data = $query->toArray();
+        $result = $data[0]->FAILUREMESSAGE;
+        return $result;
+    }
+
     public function getRowCount($list)
     {
     	$result = count($list);

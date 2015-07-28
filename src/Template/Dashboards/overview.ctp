@@ -201,11 +201,11 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-table fa-4x"></i>
+                        <i class="fa fa-server fa-4x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?= h($schemaCount) ?></div>
-                        <div>Schemas</div>
+                        <div class="huge"><?= h($serverCount) ?></div>
+                        <div>Servers</div>
                     </div>
                 </div>
             </div>

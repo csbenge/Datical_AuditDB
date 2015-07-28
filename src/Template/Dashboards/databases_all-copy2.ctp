@@ -1,15 +1,10 @@
-<!-- File: src/Template/Dashboards/deployments_all.ctp -->
+<!-- File: src/Template/Dashboards/dashboards_all.ctp -->
 
 <div class="col-md-10 main">
-  <h2 class="page-header">Dashboard <small>Deployments All</small></h2>
-  
-<div class="col-md-12 main">
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-database fa-fw"></i> Deployments</h3>
-    </div>
+<br/>
+  <div class="panel panel-primary">
+    <div class="panel-heading"><i class="fa fa-database fa-white fa-lg"></i> <strong><big><?= __('Databases') ?></big></strong></div>
     <div class="panel-body">
-        <div class="table-responsive">
 
     <?php if (!($operations->isEmpty())) { ?>
     <table class="table table-striped table-bordered table-hover table-condensed">
@@ -42,20 +37,18 @@
     <?php } else { ?>
         <div class="well">There are no deployments.</div>
     <?php } ?>
-        </div>
-
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?><br/>
-            <small><?= $this->Paginator->counter() ?></small>
-        </ul>
-      </div>
-    </div>
-
-    </div>
 </div>
+
+<div class="row">
+  <div class="col-md-12 text-center">
+    <ul class="pagination">
+        <?= $this->Paginator->prev('< ' . __('previous')) ?>
+        <?= $this->Paginator->numbers() ?>
+        <?= $this->Paginator->next(__('next') . ' >') ?><br/>
+        <small><?= $this->Paginator->counter() ?></small>
+    </ul>
+  </div>
+</div>
+
 </div>
 </div>

@@ -84,6 +84,7 @@ $cakeDescription = 'Datical';
           <?php } ?>
 
           <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+          <?php if ($authUser) { ?>
           <div class="collapse navbar-collapse navbar-ex1-collapse">
               <ul class="nav navbar-nav side-nav">
                   <li>
@@ -92,7 +93,10 @@ $cakeDescription = 'Datical';
                           <li>
                               <?= $this->Html->link(__('Overview'), ['controller' => 'dashboards', 'action' => 'overview']) ?>
                           </li>
-                          <li><?= $this->Html->link(__('Databases All'), ['controller' => 'Dashboards','action' => 'databasesAll']) ?></li>
+                          <li>
+                              <?= $this->Html->link(__('Environmentals'), ['controller' => 'dashboards', 'action' => 'environmentals']) ?>
+                          </li>
+                          <li><?= $this->Html->link(__('Databases'), ['controller' => 'Dashboards','action' => 'databasesAll']) ?></li>
                       </ul>
                   </li>
 
@@ -115,6 +119,7 @@ $cakeDescription = 'Datical';
                 
               </ul>
           </div>
+          <?php } ?>
           <!-- /.navbar-collapse -->
       </nav>
 

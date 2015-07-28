@@ -10,26 +10,29 @@
     <table class="table table-striped table-bordered table-hover table-condensed">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('PROJECT') ?></th>
-            <th><?= $this->Paginator->sort('STEP') ?></th>
-            <th><?= $this->Paginator->sort('DEPLOY_TIME') ?></th>
-            <th><?= $this->Paginator->sort('DURATION') ?></th>
-            <th><?= $this->Paginator->sort('ACTION') ?></th>
-            <th><?= $this->Paginator->sort('MODE') ?></th>
-            <th><?= $this->Paginator->sort('RESULT') ?></th>
+            <th><?= $this->Paginator->sort('DATABASE') ?></th>
+            <th><?= $this->Paginator->sort('SERVER') ?></th>
+            <th><?= $this->Paginator->sort('ENGINE') ?></th>
+            <th><?= $this->Paginator->sort('PORT') ?></th>
+            <th><?= $this->Paginator->sort('SID') ?></th>
+            <th><?= $this->Paginator->sort('SERVICE_NAME') ?></th>
+            <th><?= $this->Paginator->sort('APPLICATION') ?></th>
+            <th><?= $this->Paginator->sort('INSTANCE') ?></th>
+            <th><?= $this->Paginator->sort('LAST_DEPLOY') ?></th>
         </tr>
     </thead>
     <tbody>
     <?php foreach ($operations as $operation): ?>
         <tr>
-            <td><i class="fa fa-database fa-green"></i> <?= $this->Html->link(h($operation->PROJECT_NAME), ['controller' => 'Operations', 'action' => 'view', $operation->ID]) ?>
-            </td>
-            <td><?= h($operation->STEP) ?></td>
-            <td><?= h($operation->STARTTIME) ?></td>
-            <td><?= h($operation->TOTALTIME) ?></td>
-            <td><?= $this->DeployResults->prettyUpAction(h($operation->ACTION_TYPE)) ?></td>
-            <td><?= $this->DeployResults->prettyUpCase(h($operation->DEPLOYMODE)) ?></td>
-            <td><?= $this->DeployResults->prettyUpResult(h($operation->DEPLOY_RESULT)) ?></td>
+            <td><?= h($operation->DBNAME) ?></td>
+            <td><?= h($operation->HOST) ?></td>
+            <td><?= h($operation->ENGINE) ?></td>
+            <td><?= h($operation->PORT) ?></td>
+            <td><?= h($operation->SID) ?></td>
+            <td><?= h($operation->SERVICE_NAME) ?></td>
+            <td><?= h($operation->APPLICATION_NAME) ?></td>
+            <td><?= h($operation->INSTANCE_NAME) ?></td>
+            <td><?= h($operation->LAST_DEPLOY) ?></td>
         </tr>
     <?php endforeach; ?>
     </tbody>

@@ -21,10 +21,11 @@ class DashboardsController extends AppController
     public function databasesAll()
     {
         // Get Databases and  Count
-        $databases = TableRegistry::get('Operations');
+        $databases = TableRegistry::get('Opdatabases');
         $query = $databases->find();
-        $query->select(['ID', 'PROJECT_NAME', 'STEP', 'ACTION_TYPE', 'DEPLOY_RESULT', 'STARTTIME', 'TOTALTIME', 'DEPLOYMODE'])
-            ->order(['PROJECT_NAME' => 'DESC', 'STARTTIME' => 'ASC']);
+        $query->select(['ID', 'DBNAME', 'LAST_DEPLOY', 'HOST', 'PORT', 'ENGINE', 'SID', 'SERVICE_NAME'])
+            ->order(['DBNAME' => 'DESC', 'LAST_DEPLOY' => 'ASC'])
+            ->distinct(['DBNAME']);
         //$query->select(['ID', 'PROJECT_NAME', 'STEP', 'ACTION_TYPE', 'DEPLOY_RESULT', 'STARTTIME', 'TOTALTIME', 'DEPLOYMODE'])
         //    ->distinct(['STEP']);
         $databaseCount = $query->count();
@@ -61,6 +62,57 @@ class DashboardsController extends AppController
         $query = $operations->find()->where(['DEPLOY_RESULT' => 'FAIL']);
         $this->set('operations', $this->paginate($query));
         $this->set('_serialize', ['operations']);
+    }
+
+    /**
+     * Environmentals method
+     *
+     * @return void
+     */
+    public function environmentals()
+    {
+
+        // Get Databases and  Count
+        $databases = TableRegistry::get('Operations');
+       
+        // Get Project List Count
+        $query = $databases->find();
+        $query->select(['PROJECT_NAME', 'STARTTIME'])->distinct(['PROJECT_NAME']);
+        $projectCount = $query->count();
+        $this->set('projectCount', $projectCount);
+        $this->set('projectList', $this->paginate($query));
+
+
+         // Get Databases and  Count
+        $databases = TableRegistry::get('Operations');
+        $query = $databases->find();
+        $query->select(['ID', 'PROJECT_NAME', 'STEP', 'ACTION_TYPE', 'DEPLOY_RESULT', 'STARTTIME', 'TOTALTIME', 'DEPLOYMODE'])
+            ->order(['PROJECT_NAME' => 'DESC', 'STARTTIME' => 'ASC'])
+            ->distinct(['STEP']);
+        $databaseCount = $query->count();
+        $this->set('databaseCount', $databaseCount);
+
+        // Get database names
+        $dbnames = TableRegistry::get('Opdatabases');
+        $query = $dbnames->find();
+        $query->select(['DBNAME', 'LAST_DEPLOY'])->distinct(['DBNAME']);
+        $this->set('databaseList', $this->paginate($query));
+
+        // Get Database Servers Count
+        $dbnames = TableRegistry::get('Opdatabases');
+        $query = $dbnames->find();
+        $query->select(['DBNAME', 'HOST'])->distinct(['HOST']);
+        $serverCount = $query->count();
+        $this->set('serverCount', $serverCount);
+        $this->set('serverList', $this->paginate($query));
+
+        // Get Unique Client Count
+        $clientDetails = TableRegistry::get('Operations');
+        $query = $clientDetails->find();
+        $query->select(['CLIENT_HOSTNAME', 'CLIENT_USER', 'CLIENT_TYPE'])->distinct(['CLIENT_HOSTNAME']);
+        $clientCount = $query->count();
+        $this->set('clientCount', $clientCount);
+        $this->set('clientList', $this->paginate($query));
     }
 
      /**
@@ -122,13 +174,13 @@ class DashboardsController extends AppController
         $query->select(['STEP'])->distinct(['STEP']);
         $databaseCount = $query->count();
         $this->set('databaseCount', $databaseCount);
-
-        // Get Schema Count
-        $schemas = TableRegistry::get('Operations');
-        $query = $schemas->find();
-        $query->select(['STEP'])->distinct(['STEP']);
-        $schemaCount = $query->count();
-        $this->set('schemaCount', $schemaCount); 
+        
+        // Get Database Servers Count
+        $dbnames = TableRegistry::get('Opdatabases');
+        $query = $dbnames->find();
+        $query->select(['DBNAME', 'HOST'])->distinct(['HOST']);
+        $serverCount = $query->count();
+        $this->set('serverCount', $projectCount);
 
         // Get Unique Client Count
         $clientDetails = TableRegistry::get('Operations');

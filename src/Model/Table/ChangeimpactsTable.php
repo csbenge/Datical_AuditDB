@@ -74,7 +74,7 @@ class ChangeimpactsTable extends Table
             ->allowEmpty('FK_OPERATION_ID');
             
         $validator
-            ->allowEmpty('CHNGESET_DETAIL_CHNGEIMPACT_ID');
+            ->allowEmpty('FK_CHANGESET_DETAILS_ID');
             
         $validator
             ->allowEmpty('IDX');

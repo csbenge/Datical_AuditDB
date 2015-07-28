@@ -22,8 +22,8 @@ class Changeimpact extends Entity
         'CANROLLBACK' => true,
         'FAILUREMESSAGE' => true,
         'SKIPPED' => true,
-        'OPERATION_CHANGEIMPACTS_ID' => true,
-        'CHNGESET_DETAIL_CHNGEIMPACT_ID' => true,
+        'FK_OPERATION_ID' => true,
+        'FK_CHANGESET_DETAILS_ID' => true,
         'IDX' => true,
     ];
 }
