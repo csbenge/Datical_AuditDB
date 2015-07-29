@@ -1,7 +1,7 @@
 <!-- File: src/Template/Dashboards/deployments_all.ctp -->
 
 <div class="col-md-10 main">
-  <h2 class="page-header">Dashboard <small>Deployments Passed</small></h2>
+  <h2 class="page-header"><i class="fa fa-fw fa-power-off"></i>Deployments <small>Passed</small></h2>
   
 <div class="col-md-12 main">
 <div class="panel panel-green">

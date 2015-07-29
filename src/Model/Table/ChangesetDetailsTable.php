@@ -27,8 +27,8 @@ class ChangesetDetailsTable extends Table
         $this->displayField('ID');
         $this->primaryKey('ID');
         $this->hasMany('Changeimpacts', [
-            'foreignKey' => 'FK_OPERATION_ID',
-            'bindingKey' => 'FK_OPERATION_ID',
+            'foreignKey' => 'FK_CHANGESET_DETAILS_ID',
+            'bindingKey' => 'ID',
             'dependent' => true
         ]);
     }
@@ -94,6 +94,9 @@ class ChangesetDetailsTable extends Table
             
         $validator
             ->allowEmpty('FK_OPERATION_ID');
+
+        $validator
+            ->allowEmpty('FK_CHANGESET_DETAILS_ID');
 
         return $validator;
     }

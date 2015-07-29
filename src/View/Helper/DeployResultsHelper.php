@@ -54,7 +54,7 @@ class DeployResultsHelper extends Helper
 
         $changeimpacts = TableRegistry::get('Changeimpacts');
 
-        $query = $changeimpacts->find()->where(['FK_CHANGESET_DETAILS_ID' => 4018]);
+        $query = $changeimpacts->find()->where(['FK_CHANGESET_DETAILS_ID' => $id]);
         $data = $query->toArray();
         $result = $data[0]->FAILUREMESSAGE;
         return $result;

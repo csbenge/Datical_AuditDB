@@ -30,5 +30,6 @@ class ChangesetDetail extends Entity
         'RUN_ON_CHANGE' => true,
         'RESULT' => true,
         'FK_OPERATION_ID' => true,
+        'FK_CHANGESET_DETAILS_ID' => true,
     ];
 }

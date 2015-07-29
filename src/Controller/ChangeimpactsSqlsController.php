@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * ChangeimpactsSqls Controller
@@ -46,6 +47,16 @@ class ChangeimpactsSqlsController extends AppController
         ]);
         $this->set('changeimpactsSql', $changeimpactsSql);
         $this->set('_serialize', ['changeimpactsSql']);
+
+        // Get Change Description from CHANGE_IMPACTS
+        $changeimpacts = TableRegistry::get('Changeimpacts');
+        $changeimpact  = $changeimpacts->get($id, ['contain' => [] ]);
+        $this->set('changeimpactDesc', $changeimpact->CHANGE_DESCRIPTION);
+
+        // Get ChnageSet ID from ChangeSet Details
+        $changesetdetails = TableRegistry::get('ChangesetDetails');
+        $changesetdetail  = $changesetdetails->get($changeimpact->FK_CHANGESET_DETAILS_ID, ['contain' => [] ]);
+        $this->set('changesetID', $changesetdetail->CHANGEID);
     }
 
     /**

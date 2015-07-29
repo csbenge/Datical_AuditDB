@@ -1,7 +1,9 @@
 <!-- File: src/Template/Dashboards/dashboards_all.ctp -->
 
 <div class="col-md-10 main">
-<br/>
+  <h2 class="page-header"><i class="fa fa-fw fa-dashboard"></i>Dashboard <small>Databases All</small></h2>
+
+<div class="col-md-12 main">
   <div class="panel panel-primary">
     <div class="panel-heading"><i class="fa fa-database fa-white fa-lg"></i> <strong><big><?= __('Databases') ?></big></strong></div>
     <div class="panel-body">
@@ -53,5 +55,6 @@
   </div>
 </div>
 
+</div>
 </div>
 </div>

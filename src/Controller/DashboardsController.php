@@ -42,7 +42,7 @@ class DashboardsController extends AppController
     public function deploymentsAll()
     {
         $operations = TableRegistry::get('Operations');
-        $query = $operations->find();
+        $query = $operations->find()->order(['STARTTIME' => 'DESC']);
         $this->set('operations', $this->paginate($query));
         $this->set('_serialize', ['operations']);
 
@@ -51,7 +51,7 @@ class DashboardsController extends AppController
     public function deploymentsPassed()
     {
         $operations = TableRegistry::get('Operations');
-        $query = $operations->find()->where(['DEPLOY_RESULT' => 'PASS']);
+        $query = $operations->find()->where(['DEPLOY_RESULT' => 'PASS'])->order(['STARTTIME' => 'DESC']);
         $this->set('operations', $this->paginate($query));
         $this->set('_serialize', ['operations']);
     }
@@ -59,7 +59,7 @@ class DashboardsController extends AppController
     public function deploymentsFailed()
     {
         $operations = TableRegistry::get('Operations');
-        $query = $operations->find()->where(['DEPLOY_RESULT' => 'FAIL']);
+        $query = $operations->find()->where(['DEPLOY_RESULT' => 'FAIL'])->order(['STARTTIME' => 'DESC']);
         $this->set('operations', $this->paginate($query));
         $this->set('_serialize', ['operations']);
     }
@@ -71,34 +71,24 @@ class DashboardsController extends AppController
      */
     public function environmentals()
     {
-
-        // Get Databases and  Count
-        $databases = TableRegistry::get('Operations');
        
-        // Get Project List Count
-        $query = $databases->find();
+        // Get Project List & Count
+        $databases = TableRegistry::get('Operations');
+        $query = $databases->find()->order(['STARTTIME' => 'DESC']);
         $query->select(['PROJECT_NAME', 'STARTTIME'])->distinct(['PROJECT_NAME']);
         $projectCount = $query->count();
         $this->set('projectCount', $projectCount);
         $this->set('projectList', $this->paginate($query));
 
-
-         // Get Databases and  Count
-        $databases = TableRegistry::get('Operations');
-        $query = $databases->find();
-        $query->select(['ID', 'PROJECT_NAME', 'STEP', 'ACTION_TYPE', 'DEPLOY_RESULT', 'STARTTIME', 'TOTALTIME', 'DEPLOYMODE'])
-            ->order(['PROJECT_NAME' => 'DESC', 'STARTTIME' => 'ASC'])
-            ->distinct(['STEP']);
-        $databaseCount = $query->count();
-        $this->set('databaseCount', $databaseCount);
-
-        // Get database names
+        // Get Database Names & Count
         $dbnames = TableRegistry::get('Opdatabases');
-        $query = $dbnames->find();
+        $query = $dbnames->find()->order(['LAST_DEPLOY' => 'DESC']);
+        $databaseCount = $query->count();
         $query->select(['DBNAME', 'LAST_DEPLOY'])->distinct(['DBNAME']);
+        $this->set('databaseCount', $databaseCount);
         $this->set('databaseList', $this->paginate($query));
 
-        // Get Database Servers Count
+        // Get Database Servers & Count
         $dbnames = TableRegistry::get('Opdatabases');
         $query = $dbnames->find();
         $query->select(['DBNAME', 'HOST'])->distinct(['HOST']);
@@ -106,7 +96,7 @@ class DashboardsController extends AppController
         $this->set('serverCount', $serverCount);
         $this->set('serverList', $this->paginate($query));
 
-        // Get Unique Client Count
+        // Get Unique Clients &  Count
         $clientDetails = TableRegistry::get('Operations');
         $query = $clientDetails->find();
         $query->select(['CLIENT_HOSTNAME', 'CLIENT_USER', 'CLIENT_TYPE'])->distinct(['CLIENT_HOSTNAME']);

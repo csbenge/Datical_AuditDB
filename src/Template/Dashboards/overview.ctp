@@ -1,7 +1,7 @@
 <!-- File: src/Template/Dashboards/overview.ctp -->
 
 <div class="col-md-8 main">
-  <h2 class="page-header">Dashboard <small>Deployments Overview</small></h2>
+  <h2 class="page-header"><i class="fa fa-fw fa-dashboard"></i>Dashboard <small>Deployments Overview</small></h2>
   
   <div class="row">
     <div class="col-lg-12 col-md-6">
@@ -17,7 +17,10 @@
                     </div>
                 </div>
             </div>
+
+            <?php if (!($latestMessages->isEmpty())) { ?>
             <div class="panel-footer">
+
             <table class="table table-hover table-condensed table-stripped">
             <thead>
             <tr>
@@ -37,16 +40,19 @@
             </tr>
             <?php endforeach; ?>
             </table>
-                    <span class="pull-left">
-                    <?php 
-                        echo $this->Html->link(__('View Details'), ['controller' => 'Messages','action' => 'index'], 
-                        ['class' => '']);
-                    ?>
-                    </span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
+                <span class="pull-left">
+                <?php 
+                    echo $this->Html->link(__('View Details'), ['controller' => 'Messages','action' => 'index'], 
+                    ['class' => '']);
+                ?>
+                </span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
+            </div>
+            <?php } else { ?>
+                
+            <?php } ?>
+
         </div>
     </div>
 

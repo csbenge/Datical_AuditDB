@@ -3,7 +3,7 @@
 <!-- Environment -->
 
 <div class="col-md-10">
-  <h2 class="page-header">Dashboard <small>Environmentals</small></h2>
+  <h2 class="page-header"><i class="fa fa-fw fa-dashboard"></i>Dashboard <small>Environmentals</small></h2>
     <div class="col-md-3">
         <div class="panel panel-primary">
             <div class="panel-heading">
