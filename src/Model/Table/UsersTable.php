@@ -26,10 +26,6 @@ class UsersTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
-        $this->hasMany('Articles', [
-            'foreignKey' => 'user_id',
-            'dependent' => true
-        ]);
     }
 
     /**

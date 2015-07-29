@@ -12,7 +12,7 @@ use Cake\ORM\TableRegistry;
 class ChangeimpactsSqlsController extends AppController
 {
 
-     public $paginate = [
+    public $paginate = [
         'limit' => 10
     ];
 

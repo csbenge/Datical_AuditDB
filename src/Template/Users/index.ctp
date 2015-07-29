@@ -3,14 +3,16 @@
 <div class="container-fluid">
     <div class="col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-      <br/>
       <h3><?= __('Actions') ?></h3>
-        <li><?= $this->Html->link(__('Add User'), ['action' => 'add']) ?></li>
+        <?php if (($authUserRole == "Admin") || ($authUserRole == "Manager")) { ?>
+            <li><?= $this->Html->link(__('Add User'), ['action' => 'add']) ?></li>
+        <?php } ?>
+      </ul>
       </ul>
     </div>
 
     <div class="col-md-8 main">
-      <h2 class="page-header"><?= __('Users') ?></h2>
+    <h2 class="page-header"><i class="fa fa-fw fa-user"></i>Users <small>All</small></h2>
 
     <table class="table table-striped table-bordered table-hover table-condensed">
     <thead>
@@ -34,16 +36,17 @@
             <td nowrap class="actions">
                 <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $user->id]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete: {0}?', $user->email)]) ?>
             </td>
         </tr>
 
     <?php endforeach; ?>
     </tbody>
     </table>
-    <div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4 text-center">
+ 
+ <div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-7 text-center">
     <ul class="pagination">
         <?= $this->Paginator->prev('< ' . __('previous')) ?>
         <?= $this->Paginator->numbers() ?>
@@ -51,7 +54,7 @@
         <small><?= $this->Paginator->counter() ?></small>
     </ul>
   </div>
-  <div class="col-md-4"></div>
+  <div class="col-md-3"></div>
 </div>
 
 </div>

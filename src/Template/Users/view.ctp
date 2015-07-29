@@ -1,45 +1,47 @@
 <!-- File: src/Template/Users/view.ctp -->
 
-<br/>
-<div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
-        <?php
-          if ($authUserRole == "Admin") 
-          {
-            echo "<li>", $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]), "</li>";
-            echo "<li>", $this->Html->link(__('List Users'), ['action' => 'index']), "</li>";
-            echo "<li>", $this->Html->link(__('New User'), ['action' => 'add']), "</li>";
-           }
-        ?>
-        
-    </ul>
-</div>
-<div class="users view large-10 medium-9 columns">
-    <h2><?= h($user->id) ?></h2>
-    <div class="row">
-        <div class="large-6 columns strings">
-            <h6 class="subheader"><?= __('First Name') ?></h6>
-            <p><?= h($user->firstname) ?></p>
-            <h6 class="subheader"><?= __('Last Name') ?></h6>
-            <p><?= h($user->lastname) ?></p>
-            <h6 class="subheader"><?= __('Email Address') ?></h6>
-            <p><?= h($user->email) ?></p>
-            <h6 class="subheader"><?= __('Password') ?></h6>
-            <p><?= h($user->password) ?></p>
-        </div>
-        <div class="large-2 columns numbers end">
-            <h6 class="subheader"><?= __('ID') ?></h6>
-            <p><?= $this->Number->format($user->id) ?></p>
-            <h6 class="subheader"><?= __('Role') ?></h6>
-            <p><?= h($user->role) ?></p>
-        </div>
-        <div class="large-2 columns dates end">
-            <h6 class="subheader"><?= __('Created') ?></h6>
-            <p><?= h($user->created) ?></p>
-            <h6 class="subheader"><?= __('Modified') ?></h6>
-            <p><?= h($user->modified) ?></p>
-        </div>
+<div class="container-fluid">
+    <div class="col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+      <h3><?= __('Actions') ?></h3>
+       <?php if (($authUserRole == "Admin") || ($authUserRole == "Manager")) { ?>
+            <li><?= $this->Html->link(__('Add User'), ['action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?></li>
+            <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
+        <?php } ?>
+        <?php if ($authUserRole == "Admin") { ?>
+            <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete: {0}?', $user->email)]) ?></li>
+        <?php } ?>
+      </ul>
     </div>
+
+    <div class="col-md-8 main">
+    <h2 class="page-header"><i class="fa fa-fw fa-user"></i>User <small><?= h($user->email) ?></small></h2>
+        <table class="table table-striped table-bordered table-hover table-condensed">
+        <tr>
+            <td><strong><?= __('First Name') ?>:</strong></td>
+            <td><?= h($user->firstname) ?></td>
+        </tr>
+        <tr>
+            <td><strong><?= __('Last Name') ?>:</strong></td>
+            <td><?= h($user->lastname) ?></td>
+        </tr>
+        <tr>
+            <td><strong><?= __('Email Address') ?>:</strong></td>
+            <td><?= h($user->email) ?></td>
+        </tr>
+        <tr>
+            <td><strong><?= __('Role') ?>:</strong></td>
+            <td><?= h($user->role) ?></td>
+        </tr>
+        <tr>
+            <td><strong><?= __('Added') ?>:</strong></td>
+            <td><?= h($user->created) ?></td>
+        </tr>
+        <tr>
+            <td><strong><?= __('Updated') ?>:</strong></td>
+            <td><?= h($user->modified) ?></td>
+        </tr>
+        </table>
+    </div> 
 </div>

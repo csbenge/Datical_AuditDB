@@ -49,6 +49,18 @@ class DeployResultsHelper extends Helper
         return $result;
     }
 
+    public function getChangeImpactSQL($id)
+    {
+
+        // Look id in CHANGEIMPACT
+        // Get ChangeImpact Count
+        $changeimpactssqls = TableRegistry::get('ChangeimpactsSqls');
+        $query  = $changeimpactssqls->find()->where(['FK_CHANGEIMPACT_ID' => $id]);
+        $data = $query->toArray();
+        $result = $data[0]->SQL_TEXT;
+        return $result;
+    }
+
     public function getDeploymentMessage($id)
     {
 

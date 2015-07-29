@@ -37,8 +37,8 @@
     </table>
     
 <div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4 text-center">
+  <div class="col-md-2"></div>
+  <div class="col-md-7 text-center">
     <ul class="pagination">
         <?= $this->Paginator->prev('< ' . __('previous')) ?>
         <?= $this->Paginator->numbers() ?>
@@ -46,7 +46,7 @@
         <small><?= $this->Paginator->counter() ?></small>
     </ul>
   </div>
-  <div class="col-md-4"></div>
+  <div class="col-md-3"></div>
 </div>
 
 </div>

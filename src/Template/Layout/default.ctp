@@ -127,9 +127,14 @@ $cakeDescription = 'Datical';
 
           <div class="container-fluid">
             <div id="content">
-            <?= $this->Flash->render() ?>
-            <?= $this->Flash->render('auth') ?>
-      </div>
+              <div class="row">
+                <div class="col-md-10 main">
+                  <?= $this->Flash->render() ?>
+                  <?= $this->Flash->render('auth') ?>
+                </div>
+                <div class="col-md-2 main"></div>
+              </div>
+            </div>
 
       <?= $this->fetch('content') ?>
   </div>

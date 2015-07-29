@@ -3,7 +3,7 @@
 
 <div class="changesetDetails view large-10 medium-9 columns">
 
-    <div class="row">
+  <div class="row">
     <div class="col-md-5">
         <div class="panel panel-primary">
         <div class="panel-heading"><strong>SUMMARY</strong></div>
@@ -17,7 +17,6 @@
                 <td><strong><?= __('AUTHOR') ?>:</strong></td>
                 <td><?= h($changesetDetail->AUTHOR) ?></td>
             </tr>
-            
             <tr>
                 <td><strong><?= __('DBMS') ?>:</strong></td>
                 <td><?= h($changesetDetail->DBMS) ?></td>
@@ -96,23 +95,17 @@
         <div class="panel-heading"><strong>CHANGE IMPACT(s)</strong></div>
         <div class="panel-body">
 
-<table class="table table-hover table-condensed">
+<table class="table table-striped table-bordered table-hover table-condensed">
 
         <?php if (!empty($changesetDetail->changeimpacts)): ?>
             <tr>
-                <th><?= __('ID') ?></th>
-                <th><?= __('AUTHOR') ?></th>
                 <th><?= __('CHANGE_DESCRIPTION') ?></th>
-                <th><?= __('SQL') ?></th>
+                <th><?= __('SQL_TEXT') ?></th>
             </tr>
         <?php foreach ($changesetDetail->changeimpacts as $changeimpacts): ?>
             <tr>
-                <td><?= h($changeimpacts->ID) ?></td>
-                <td><?= h($changeimpacts->AUTHOR) ?></td>
                 <td><?= h($changeimpacts->CHANGE_DESCRIPTION) ?></td>
-                <td>
-                    <?= $this->Html->link(__('View SQL'), ['controller' => 'ChangeimpactsSqls', 'action' => 'view', $changeimpacts->ID]) ?>
-                </td>
+                <td><?= $this->DeployResults->getChangeImpactSQL(h($changeimpacts->ID)) ?></td>
             </tr>
             </tr>
         <?php endforeach; ?>
