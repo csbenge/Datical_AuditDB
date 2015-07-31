@@ -100,14 +100,13 @@
             </tr>
             </table>
             <span class="pull-left">
-                    <?php 
-                        echo $this->Html->link(__('View Details'), ['controller' => 'Dashboards','action' => 'deploymentsAll'], 
-                    ['class' => '']);
-            ?></span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
+                <?php 
+                    echo $this->Html->link(__('View Details'), ['controller' => 'Dashboards','action' => 'deploymentsAll'], 
+                ['class' => '']);
+        ?></span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
             </div>
-        
         </div>
     </div>
 
@@ -124,17 +123,24 @@
                     </div>
                 </div>
             </div>
-            <a href="#">
-                <div class="panel-footer">
-                    <span class="pull-left">
-                    <?php 
-                        echo $this->Html->link(__('View Details'), ['controller' => 'Changeimpacts','action' => 'index'], 
-                    ['class' => '']);
-            ?></span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
+            <div class="panel-footer">
+            <table class="table table-hover table-condensed">
+            <tr>
+                <td colspan="2" style="text-align:center;"><strong>LATEST</strong></td>
+            </tr>
+            <tr>
+                <td><strong>DESC</strong></td>
+                <td><?= $latestChangeImpact->CHANGE_DESCRIPTION ?></td>
+            </tr>
+            </table>
+            <span class="pull-left">
+                <?php 
+                    echo $this->Html->link(__('View Details'), ['controller' => 'Dashboards','action' => 'deploymentsAll'], 
+                ['class' => '']);
+        ?></span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
+            </div>
         </div>
     </div>
 
@@ -151,18 +157,24 @@
                     </div>
                 </div>
             </div>
-            <a href="#">
-                <div class="panel-footer">
-                    <span class="pull-left">
-                    <?php 
-                    echo $this->Html->link(__('View Details'), ['controller' => 'Tablemods','action' => 'index'], 
-                    ['class' => '']);
-                    ?>
-                    </span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
+            <div class="panel-footer">
+            <table class="table table-hover table-condensed">
+            <tr>
+                <td colspan="2" style="text-align:center;"><strong>LATEST</strong></td>
+            </tr>
+            <tr>
+                <td><strong>TABLE</strong></td>
+                <td><?= $latestTableMod->TABLENAME ?></td>
+            </tr>
+            </table>
+            <span class="pull-left">
+                <?php 
+                    echo $this->Html->link(__('View Details'), ['controller' => 'Dashboards','action' => 'deploymentsAll'], 
+                ['class' => '']);
+        ?></span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
+            </div>
         </div>
     </div>
 

@@ -143,6 +143,8 @@ class DashboardsController extends AppController
         $query = $changeimpacts->find();
         $changeImpactsCount = $query->count();
         $this->set('changeImpactsCount', $changeImpactsCount);
+        $query = $changeimpacts->find()->where(['FK_OPERATION_ID' => $latestOperation->ID])->first();
+        $this->set('latestChangeImpact', $query);
 
 
         // Get Table Mods
@@ -150,6 +152,8 @@ class DashboardsController extends AppController
         $query = $tableMods->find();
         $tableModCount = $query->count();
         $this->set('tableModCount', $tableModCount);
+        $query = $tableMods->find()->where(['FK_OPERATION_ID' => $latestOperation->ID])->first();
+        $this->set('latestTableMod', $query);
 
 
         // Get Project Count
@@ -159,18 +163,17 @@ class DashboardsController extends AppController
         $this->set('projectCount', $projectCount);
         
         // Get Database Count
-        $databases = TableRegistry::get('Operations');
-        $query = $databases->find();
-        $query->select(['STEP'])->distinct(['STEP']);
+        $dbnames = TableRegistry::get('Opdatabases');
+        $query = $dbnames->find()->order(['LAST_DEPLOY' => 'DESC']);
         $databaseCount = $query->count();
         $this->set('databaseCount', $databaseCount);
         
-        // Get Database Servers Count
+        // Get Database Servers & Count
         $dbnames = TableRegistry::get('Opdatabases');
         $query = $dbnames->find();
         $query->select(['DBNAME', 'HOST'])->distinct(['HOST']);
         $serverCount = $query->count();
-        $this->set('serverCount', $projectCount);
+        $this->set('serverCount', $serverCount);
 
         // Get Unique Client Count
         $clientDetails = TableRegistry::get('Operations');

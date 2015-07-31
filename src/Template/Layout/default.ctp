@@ -55,7 +55,7 @@ $cakeDescription = 'Datical';
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-             <a class="navbar-brand" href="#"> <img src="/img/Datical_CMYK_RVS-medium.png" height="24" width="153" alt="Datical" /></a>
+             <a class="navbar-brand" href="#"> <img src="/img/Datical_CMYK_RVS-medium.png" height="25" width="153" alt="Datical" /></a> 
           </div>
 
           <!-- Top Menu Items -->
@@ -87,6 +87,7 @@ $cakeDescription = 'Datical';
           <?php if ($authUser) { ?>
           <div class="collapse navbar-collapse navbar-ex1-collapse">
               <ul class="nav navbar-nav side-nav">
+                  <li><a><big>Audit Reports Beta</big></a></li>
                   <li>
                       <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-dashboard"></i> Dashboards <i class="fa fa-fw fa-caret-down"></i></a>
                       <ul id="demo" class="collapse">
