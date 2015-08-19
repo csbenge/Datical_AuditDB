@@ -1,14 +1,14 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\OpdatabasesTable;
+use App\Model\Table\OpDatabasesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\OpdatabasesTable Test Case
+ * App\Model\Table\OpDatabasesTable Test Case
  */
-class OpdatabasesTableTest extends TestCase
+class OpDatabasesTableTest extends TestCase
 {
 
     /**
@@ -17,7 +17,7 @@ class OpdatabasesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.opdatabases'
+        'app.op_databases'
     ];
 
     /**
@@ -28,8 +28,8 @@ class OpdatabasesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Opdatabases') ? [] : ['className' => 'App\Model\Table\OpdatabasesTable'];
-        $this->Opdatabases = TableRegistry::get('Opdatabases', $config);
+        $config = TableRegistry::exists('OpDatabases') ? [] : ['className' => 'App\Model\Table\OpDatabasesTable'];
+        $this->OpDatabases = TableRegistry::get('OpDatabases', $config);
     }
 
     /**
@@ -39,7 +39,7 @@ class OpdatabasesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Opdatabases);
+        unset($this->OpDatabases);
 
         parent::tearDown();
     }

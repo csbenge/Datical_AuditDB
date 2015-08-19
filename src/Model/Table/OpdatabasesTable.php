@@ -1,17 +1,17 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Opdatabase;
+use App\Model\Entity\OpDatabase;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Opdatabases Model
+ * OpDatabases Model
  *
  */
-class OpdatabasesTable extends Table
+class OpDatabasesTable extends Table
 {
 
     /**
@@ -22,8 +22,7 @@ class OpdatabasesTable extends Table
      */
     public function initialize(array $config)
     {
-        $this->belongsTo('OPERATION');
-        $this->table('OPDATABASE');
+        $this->table('op_databases');
         $this->displayField('ID');
         $this->primaryKey('ID');
     }
@@ -40,10 +39,6 @@ class OpdatabasesTable extends Table
             ->allowEmpty('ID', 'create');
             
         $validator
-            ->requirePresence('DTYPE', 'create')
-            ->notEmpty('DTYPE');
-            
-        $validator
             ->add('E_VERSION', 'valid', ['rule' => 'numeric'])
             ->requirePresence('E_VERSION', 'create')
             ->notEmpty('E_VERSION');
@@ -58,16 +53,16 @@ class OpdatabasesTable extends Table
             ->allowEmpty('DRIVER');
             
         $validator
-            ->allowEmpty('DRIVERVERSION');
+            ->allowEmpty('DRIVER_VERSION');
             
         $validator
-            ->allowEmpty('JDBCVERSION');
+            ->allowEmpty('JDBC_VERSION');
             
         $validator
             ->allowEmpty('ENGINE');
             
         $validator
-            ->allowEmpty('USERNAME');
+            ->allowEmpty('USER_NAME');
             
         $validator
             ->allowEmpty('HOST');
@@ -83,7 +78,7 @@ class OpdatabasesTable extends Table
             ->allowEmpty('SERVICE_NAME');
             
         $validator
-            ->allowEmpty('DBNAME');
+            ->allowEmpty('DB_NAME');
             
         $validator
             ->allowEmpty('APPLICATION_NAME');
@@ -107,13 +102,7 @@ class OpdatabasesTable extends Table
             ->allowEmpty('LAST_CHANGELOG_SYNC');
             
         $validator
-            ->allowEmpty('ECONTAINER_CLASS');
-            
-        $validator
-            ->allowEmpty('E_CONTAINER');
-            
-        $validator
-            ->allowEmpty('E_CONTAINER_FEATURE_NAME');
+            ->allowEmpty('FK_PROJECTS_UUID');
 
         return $validator;
     }

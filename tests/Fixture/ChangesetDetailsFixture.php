@@ -18,31 +18,30 @@ class ChangesetDetailsFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'ID' => ['type' => 'biginteger', 'length' => 20, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'DTYPE' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'E_VERSION' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'CHANGEID' => ['type' => 'string', 'length' => 100, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'AUTHOR' => ['type' => 'string', 'length' => 100, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'FILENAME' => ['type' => 'string', 'length' => 500, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'CHECKSUM' => ['type' => 'string', 'length' => 100, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'DBMS' => ['type' => 'string', 'length' => 20, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'LABELS' => ['type' => 'string', 'length' => 1000, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'CONTEXTS' => ['type' => 'string', 'length' => 1000, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'FAIL_ON_ERROR' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'ON_VALIDATION_FAIL' => ['type' => 'string', 'length' => 20, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'ON_RUN_ALWAYS' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'RUN_ON_CHANGE' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'RESULT' => ['type' => 'string', 'length' => 20, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'OPERATION_CHANGESET_ID' => ['type' => 'biginteger', 'length' => 20, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'E_VERSION' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => 'Current version', 'precision' => null, 'autoIncrement' => null],
+        'CHANGESET_ID' => ['type' => 'string', 'length' => 100, 'null' => false, 'default' => null, 'comment' => 'Change set ID', 'precision' => null, 'fixed' => null],
+        'AUTHOR' => ['type' => 'string', 'length' => 100, 'null' => false, 'default' => null, 'comment' => 'Author of change', 'precision' => null, 'fixed' => null],
+        'FILENAME' => ['type' => 'string', 'length' => 500, 'null' => false, 'default' => null, 'comment' => 'Changelog file name', 'precision' => null, 'fixed' => null],
+        'CHECKSUM' => ['type' => 'string', 'length' => 100, 'null' => true, 'default' => null, 'comment' => 'Change set checksum', 'precision' => null, 'fixed' => null],
+        'DBMS' => ['type' => 'string', 'length' => 20, 'null' => true, 'default' => null, 'comment' => 'DBMS filter setting', 'precision' => null, 'fixed' => null],
+        'LABELS' => ['type' => 'string', 'length' => 1000, 'null' => true, 'default' => null, 'comment' => 'Change set labels', 'precision' => null, 'fixed' => null],
+        'CONTEXTS' => ['type' => 'string', 'length' => 1000, 'null' => true, 'default' => null, 'comment' => 'Change set contexts', 'precision' => null, 'fixed' => null],
+        'FAIL_ON_ERROR' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'comment' => 'Change set deployment will halt on error', 'precision' => null],
+        'ON_VALIDATION_FAIL' => ['type' => 'string', 'length' => 20, 'null' => true, 'default' => null, 'comment' => 'Change set deployment will halt on validation', 'precision' => null, 'fixed' => null],
+        'ON_RUN_ALWAYS' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'comment' => 'Always deploy the change set', 'precision' => null],
+        'RUN_ON_CHANGE' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'comment' => 'Deploy the change set on change', 'precision' => null],
+        'RESULT' => ['type' => 'string', 'length' => 20, 'null' => true, 'default' => null, 'comment' => 'Deploy result: PASS, WARN, FAIL, SYNC', 'precision' => null, 'fixed' => null],
+        'FK_OPERATIONS_ID' => ['type' => 'biginteger', 'length' => 20, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => 'Foreign key for OPERATIONS table ID column', 'precision' => null, 'autoIncrement' => null],
         '_indexes' => [
-            'OPERATION_CHANGESET' => ['type' => 'index', 'columns' => ['OPERATION_CHANGESET_ID'], 'length' => []],
+            'OPERATION_CHANGESET' => ['type' => 'index', 'columns' => ['FK_OPERATIONS_ID'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['ID'], 'length' => []],
-            'OPERATION_CHANGESET' => ['type' => 'foreign', 'columns' => ['OPERATION_CHANGESET_ID'], 'references' => ['operations', 'ID'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
+            'OPERATION_CHANGESET' => ['type' => 'foreign', 'columns' => ['FK_OPERATIONS_ID'], 'references' => ['operations', 'ID'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
-            'collation' => 'latin1_swedish_ci'
+            'collation' => 'utf8_general_ci'
         ],
     ];
     // @codingStandardsIgnoreEnd
@@ -55,9 +54,8 @@ class ChangesetDetailsFixture extends TestFixture
     public $records = [
         [
             'ID' => '',
-            'DTYPE' => 'Lorem ipsum dolor sit amet',
             'E_VERSION' => 1,
-            'CHANGEID' => 'Lorem ipsum dolor sit amet',
+            'CHANGESET_ID' => 'Lorem ipsum dolor sit amet',
             'AUTHOR' => 'Lorem ipsum dolor sit amet',
             'FILENAME' => 'Lorem ipsum dolor sit amet',
             'CHECKSUM' => 'Lorem ipsum dolor sit amet',
@@ -69,7 +67,7 @@ class ChangesetDetailsFixture extends TestFixture
             'ON_RUN_ALWAYS' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'RUN_ON_CHANGE' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'RESULT' => 'Lorem ipsum dolor ',
-            'OPERATION_CHANGESET_ID' => ''
+            'FK_OPERATIONS_ID' => ''
         ],
     ];
 }

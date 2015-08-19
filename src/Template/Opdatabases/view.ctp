@@ -1,68 +1,62 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Html->link(__('Edit Opdatabase'), ['action' => 'edit', $opdatabase->ID]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Opdatabase'), ['action' => 'delete', $opdatabase->ID], ['confirm' => __('Are you sure you want to delete # {0}?', $opdatabase->ID)]) ?> </li>
-        <li><?= $this->Html->link(__('List Opdatabases'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Opdatabase'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Edit Op Database'), ['action' => 'edit', $opDatabase->ID]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Op Database'), ['action' => 'delete', $opDatabase->ID], ['confirm' => __('Are you sure you want to delete # {0}?', $opDatabase->ID)]) ?> </li>
+        <li><?= $this->Html->link(__('List Op Databases'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Op Database'), ['action' => 'add']) ?> </li>
     </ul>
 </div>
-<div class="opdatabases view large-10 medium-9 columns">
-    <h2><?= h($opdatabase->ID) ?></h2>
+<div class="opDatabases view large-10 medium-9 columns">
+    <h2><?= h($opDatabase->ID) ?></h2>
     <div class="row">
         <div class="large-5 columns strings">
-            <h6 class="subheader"><?= __('DTYPE') ?></h6>
-            <p><?= h($opdatabase->DTYPE) ?></p>
             <h6 class="subheader"><?= __('VENDOR') ?></h6>
-            <p><?= h($opdatabase->VENDOR) ?></p>
+            <p><?= h($opDatabase->VENDOR) ?></p>
             <h6 class="subheader"><?= __('VERSION') ?></h6>
-            <p><?= h($opdatabase->VERSION) ?></p>
+            <p><?= h($opDatabase->VERSION) ?></p>
             <h6 class="subheader"><?= __('DRIVER') ?></h6>
-            <p><?= h($opdatabase->DRIVER) ?></p>
-            <h6 class="subheader"><?= __('DRIVERVERSION') ?></h6>
-            <p><?= h($opdatabase->DRIVERVERSION) ?></p>
-            <h6 class="subheader"><?= __('JDBCVERSION') ?></h6>
-            <p><?= h($opdatabase->JDBCVERSION) ?></p>
+            <p><?= h($opDatabase->DRIVER) ?></p>
+            <h6 class="subheader"><?= __('DRIVER VERSION') ?></h6>
+            <p><?= h($opDatabase->DRIVER_VERSION) ?></p>
+            <h6 class="subheader"><?= __('JDBC VERSION') ?></h6>
+            <p><?= h($opDatabase->JDBC_VERSION) ?></p>
             <h6 class="subheader"><?= __('ENGINE') ?></h6>
-            <p><?= h($opdatabase->ENGINE) ?></p>
-            <h6 class="subheader"><?= __('USERNAME') ?></h6>
-            <p><?= h($opdatabase->USERNAME) ?></p>
+            <p><?= h($opDatabase->ENGINE) ?></p>
+            <h6 class="subheader"><?= __('USER NAME') ?></h6>
+            <p><?= h($opDatabase->USER_NAME) ?></p>
             <h6 class="subheader"><?= __('HOST') ?></h6>
-            <p><?= h($opdatabase->HOST) ?></p>
+            <p><?= h($opDatabase->HOST) ?></p>
             <h6 class="subheader"><?= __('SID') ?></h6>
-            <p><?= h($opdatabase->SID) ?></p>
+            <p><?= h($opDatabase->SID) ?></p>
             <h6 class="subheader"><?= __('SERVICE NAME') ?></h6>
-            <p><?= h($opdatabase->SERVICE_NAME) ?></p>
-            <h6 class="subheader"><?= __('DBNAME') ?></h6>
-            <p><?= h($opdatabase->DBNAME) ?></p>
+            <p><?= h($opDatabase->SERVICE_NAME) ?></p>
+            <h6 class="subheader"><?= __('DB NAME') ?></h6>
+            <p><?= h($opDatabase->DB_NAME) ?></p>
             <h6 class="subheader"><?= __('APPLICATION NAME') ?></h6>
-            <p><?= h($opdatabase->APPLICATION_NAME) ?></p>
+            <p><?= h($opDatabase->APPLICATION_NAME) ?></p>
             <h6 class="subheader"><?= __('INSTANCE NAME') ?></h6>
-            <p><?= h($opdatabase->INSTANCE_NAME) ?></p>
+            <p><?= h($opDatabase->INSTANCE_NAME) ?></p>
             <h6 class="subheader"><?= __('URL') ?></h6>
-            <p><?= h($opdatabase->URL) ?></p>
-            <h6 class="subheader"><?= __('ECONTAINER CLASS') ?></h6>
-            <p><?= h($opdatabase->ECONTAINER_CLASS) ?></p>
-            <h6 class="subheader"><?= __('E CONTAINER') ?></h6>
-            <p><?= h($opdatabase->E_CONTAINER) ?></p>
-            <h6 class="subheader"><?= __('E CONTAINER FEATURE NAME') ?></h6>
-            <p><?= h($opdatabase->E_CONTAINER_FEATURE_NAME) ?></p>
+            <p><?= h($opDatabase->URL) ?></p>
+            <h6 class="subheader"><?= __('FK PROJECTS UUID') ?></h6>
+            <p><?= h($opDatabase->FK_PROJECTS_UUID) ?></p>
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('ID') ?></h6>
-            <p><?= $this->Number->format($opdatabase->ID) ?></p>
+            <p><?= $this->Number->format($opDatabase->ID) ?></p>
             <h6 class="subheader"><?= __('E VERSION') ?></h6>
-            <p><?= $this->Number->format($opdatabase->E_VERSION) ?></p>
+            <p><?= $this->Number->format($opDatabase->E_VERSION) ?></p>
             <h6 class="subheader"><?= __('PORT') ?></h6>
-            <p><?= $this->Number->format($opdatabase->PORT) ?></p>
+            <p><?= $this->Number->format($opDatabase->PORT) ?></p>
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('LAST DEPLOY') ?></h6>
-            <p><?= h($opdatabase->LAST_DEPLOY) ?></p>
+            <p><?= h($opDatabase->LAST_DEPLOY) ?></p>
             <h6 class="subheader"><?= __('LAST ROLLBACK') ?></h6>
-            <p><?= h($opdatabase->LAST_ROLLBACK) ?></p>
+            <p><?= h($opDatabase->LAST_ROLLBACK) ?></p>
             <h6 class="subheader"><?= __('LAST CHANGELOG SYNC') ?></h6>
-            <p><?= h($opdatabase->LAST_CHANGELOG_SYNC) ?></p>
+            <p><?= h($opDatabase->LAST_CHANGELOG_SYNC) ?></p>
         </div>
     </div>
 </div>

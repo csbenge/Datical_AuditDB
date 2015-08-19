@@ -221,7 +221,7 @@ return [
             //'port' => 'nonstandard_port_number',
             'username' => 'root',
             'password' => 'password',
-            'database' => 'datical_auditdb',
+            'database' => 'datical_auditdb2',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'cacheMetadata' => true,

@@ -1,14 +1,14 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\Tablemods;
+use App\Model\Table\TableMods;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\Tablemods Test Case
+ * App\Model\Table\TableMods Test Case
  */
-class TablemodsTest extends TestCase
+class TableModsTest extends TestCase
 {
 
     /**
@@ -19,8 +19,8 @@ class TablemodsTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('mods') ? [] : ['className' => 'App\Model\Table\Tablemods'];
-        $this->Tablemods = TableRegistry::get('mods', $config);
+        $config = TableRegistry::exists('Mods') ? [] : ['className' => 'App\Model\Table\TableMods'];
+        $this->TableMods = TableRegistry::get('Mods', $config);
     }
 
     /**
@@ -30,7 +30,7 @@ class TablemodsTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Tablemods);
+        unset($this->TableMods);
 
         parent::tearDown();
     }

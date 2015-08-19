@@ -23,12 +23,12 @@ class ChangesetDetailsTable extends Table
     public function initialize(array $config)
     {
         $this->belongsTo('Operations');
-        $this->table('CHANGESET_DETAILS');
+        $this->table('changeset_details');
         $this->displayField('ID');
         $this->primaryKey('ID');
-        $this->hasMany('Changeimpacts', [
-            'foreignKey' => 'FK_CHANGESET_DETAILS_ID',
-            'bindingKey' => 'ID',
+        $this->hasMany('ChangeImpacts', [
+            'foreignKey' => 'ID',
+            'bindingKey' => 'FK_CHANGESET_DETAILS_ID',
             'dependent' => true
         ]);
     }
@@ -43,60 +43,53 @@ class ChangesetDetailsTable extends Table
     {
         $validator
             ->allowEmpty('ID', 'create');
-            
-        $validator
-            ->requirePresence('DTYPE', 'create')
-            ->notEmpty('DTYPE');
-            
+
         $validator
             ->add('E_VERSION', 'valid', ['rule' => 'numeric'])
             ->requirePresence('E_VERSION', 'create')
             ->notEmpty('E_VERSION');
-            
+
         $validator
-            ->requirePresence('CHANGEID', 'create')
-            ->notEmpty('CHANGEID');
-            
+            ->requirePresence('CHANGESET_ID', 'create')
+            ->notEmpty('CHANGESET_ID');
+
         $validator
             ->requirePresence('AUTHOR', 'create')
             ->notEmpty('AUTHOR');
-            
+
         $validator
             ->requirePresence('FILENAME', 'create')
             ->notEmpty('FILENAME');
-            
-        $validator
-            ->allowEmpty('CHECKSUM');
-            
-        $validator
-            ->allowEmpty('DBMS');
-            
-        $validator
-            ->allowEmpty('LABELS');
-            
-        $validator
-            ->allowEmpty('CONTEXTS');
-            
-        $validator
-            ->allowEmpty('FAIL_ON_ERROR');
-            
-        $validator
-            ->allowEmpty('ON_VALIDATION_FAIL');
-            
-        $validator
-            ->allowEmpty('ON_RUN_ALWAYS');
-            
-        $validator
-            ->allowEmpty('RUN_ON_CHANGE');
-            
-        $validator
-            ->allowEmpty('RESULT');
-            
-        $validator
-            ->allowEmpty('FK_OPERATION_ID');
 
         $validator
-            ->allowEmpty('FK_CHANGESET_DETAILS_ID');
+            ->allowEmpty('CHECKSUM');
+
+        $validator
+            ->allowEmpty('DBMS');
+
+        $validator
+            ->allowEmpty('LABELS');
+
+        $validator
+            ->allowEmpty('CONTEXTS');
+
+        $validator
+            ->allowEmpty('FAIL_ON_ERROR');
+
+        $validator
+            ->allowEmpty('ON_VALIDATION_FAIL');
+
+        $validator
+            ->allowEmpty('ON_RUN_ALWAYS');
+
+        $validator
+            ->allowEmpty('RUN_ON_CHANGE');
+
+        $validator
+            ->allowEmpty('RESULT');
+
+        $validator
+            ->allowEmpty('FK_OPERATIONS_ID');
 
         return $validator;
     }

@@ -9,9 +9,8 @@
     <fieldset>
         <legend><?= __('Add Changeset Detail') ?></legend>
         <?php
-            echo $this->Form->input('DTYPE');
             echo $this->Form->input('E_VERSION');
-            echo $this->Form->input('CHANGEID');
+            echo $this->Form->input('CHANGESET_ID');
             echo $this->Form->input('AUTHOR');
             echo $this->Form->input('FILENAME');
             echo $this->Form->input('CHECKSUM');
@@ -23,7 +22,7 @@
             echo $this->Form->input('ON_RUN_ALWAYS');
             echo $this->Form->input('RUN_ON_CHANGE');
             echo $this->Form->input('RESULT');
-            echo $this->Form->input('OPERATION_CHANGESET_ID');
+            echo $this->Form->input('FK_OPERATIONS_ID');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

@@ -1,14 +1,14 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\ChangeimpactsTable;
+use App\Model\Table\ChangeImpactsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\ChangeimpactsTable Test Case
+ * App\Model\Table\ChangeImpactsTable Test Case
  */
-class ChangeimpactsTableTest extends TestCase
+class ChangeImpactsTableTest extends TestCase
 {
 
     /**
@@ -17,7 +17,7 @@ class ChangeimpactsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.changeimpacts'
+        'app.change_impacts'
     ];
 
     /**
@@ -28,8 +28,8 @@ class ChangeimpactsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Changeimpacts') ? [] : ['className' => 'App\Model\Table\ChangeimpactsTable'];
-        $this->Changeimpacts = TableRegistry::get('Changeimpacts', $config);
+        $config = TableRegistry::exists('ChangeImpacts') ? [] : ['className' => 'App\Model\Table\ChangeImpactsTable'];
+        $this->ChangeImpacts = TableRegistry::get('ChangeImpacts', $config);
     }
 
     /**
@@ -39,7 +39,7 @@ class ChangeimpactsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Changeimpacts);
+        unset($this->ChangeImpacts);
 
         parent::tearDown();
     }

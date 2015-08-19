@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * ChangesetDetails Controller
@@ -10,16 +11,6 @@ use App\Controller\AppController;
  */
 class ChangesetDetailsController extends AppController
 {
-
-     public $paginate = [
-        'limit' => 15
-    ];
-
-    public function initialize()
-    {
-        parent::initialize();
-        $this->loadComponent('Paginator');
-    }
 
     /**
      * Index method
@@ -42,10 +33,16 @@ class ChangesetDetailsController extends AppController
     public function view($id = null)
     {
         $changesetDetail = $this->ChangesetDetails->get($id, [
-            'contain' => ['Changeimpacts']
+            'contain' => ['ChangeImpacts']
         ]);
         $this->set('changesetDetail', $changesetDetail);
         $this->set('_serialize', ['changesetDetail']);
+
+        $changeImpacts = TableRegistry::get('ChangeImpacts');
+        $query = $changeImpacts->find()->where(['FK_CHANGESET_DETAILS_ID' => $id]);
+
+        $this->set('changeImpacts', $query);
+        $this->set('_serialize', ['changeImpacts']);
     }
 
     /**

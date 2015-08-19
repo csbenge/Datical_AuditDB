@@ -18,25 +18,22 @@ class MessagesFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'ID' => ['type' => 'biginteger', 'length' => 20, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'DTYPE' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'E_VERSION' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'MESSAGE_TIME' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'MESSAGE_LEVEL' => ['type' => 'string', 'length' => 4000, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'TEXT' => ['type' => 'string', 'length' => 4000, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'CHANGEIMPACT_MESSAGES_ID' => ['type' => 'biginteger', 'length' => 20, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'CHANGEIMPACT_MESSAGES_IDX' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'ECONTAINER_CLASS' => ['type' => 'string', 'length' => 500, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'E_VERSION' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => 'Current version', 'precision' => null, 'autoIncrement' => null],
+        'MESSAGE_TIME' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => 'Message creation time', 'precision' => null],
+        'MESSAGE_LEVEL' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'comment' => 'Severity of message: INFO, WARNING, ERROR', 'precision' => null, 'fixed' => null],
+        'TEXT' => ['type' => 'string', 'length' => 4000, 'null' => false, 'default' => null, 'comment' => 'Text of change impacts message', 'precision' => null, 'fixed' => null],
+        'FK_CHANGE_IMPACTS_ID' => ['type' => 'biginteger', 'length' => 20, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => 'Foreign key for CHANGE_IMPACTS to ID column', 'precision' => null, 'autoIncrement' => null],
+        'MESSAGES_IDX' => ['type' => 'biginteger', 'length' => 20, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => 'Sequential index', 'precision' => null, 'autoIncrement' => null],
         '_indexes' => [
-            'MESSAGEDTYPE' => ['type' => 'index', 'columns' => ['DTYPE'], 'length' => []],
-            'CHANGEIMPACT_MESSAGES_KEY' => ['type' => 'index', 'columns' => ['CHANGEIMPACT_MESSAGES_ID'], 'length' => []],
+            'CHANGEIMPACT_MESSAGES_KEY' => ['type' => 'index', 'columns' => ['FK_CHANGE_IMPACTS_ID'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['ID'], 'length' => []],
-            'CHANGEIMPACT_MESSAGES_KEY' => ['type' => 'foreign', 'columns' => ['CHANGEIMPACT_MESSAGES_ID'], 'references' => ['changeimpacts', 'ID'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
+            'CHANGEIMPACT_MESSAGES_KEY' => ['type' => 'foreign', 'columns' => ['FK_CHANGE_IMPACTS_ID'], 'references' => ['change_impacts', 'ID'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
-            'collation' => 'latin1_swedish_ci'
+            'collation' => 'utf8_general_ci'
         ],
     ];
     // @codingStandardsIgnoreEnd
@@ -49,14 +46,12 @@ class MessagesFixture extends TestFixture
     public $records = [
         [
             'ID' => '',
-            'DTYPE' => 'Lorem ipsum dolor sit amet',
             'E_VERSION' => 1,
-            'MESSAGE_TIME' => '2015-07-23 19:57:13',
+            'MESSAGE_TIME' => '2015-08-16 23:36:01',
             'MESSAGE_LEVEL' => 'Lorem ipsum dolor sit amet',
             'TEXT' => 'Lorem ipsum dolor sit amet',
-            'CHANGEIMPACT_MESSAGES_ID' => '',
-            'CHANGEIMPACT_MESSAGES_IDX' => 1,
-            'ECONTAINER_CLASS' => 'Lorem ipsum dolor sit amet'
+            'FK_CHANGE_IMPACTS_ID' => '',
+            'MESSAGES_IDX' => ''
         ],
     ];
 }

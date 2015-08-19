@@ -4,9 +4,9 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Opdatabase Entity.
+ * OpDatabase Entity.
  */
-class Opdatabase extends Entity
+class OpDatabase extends Entity
 {
 
     /**
@@ -15,28 +15,25 @@ class Opdatabase extends Entity
      * @var array
      */
     protected $_accessible = [
-        'DTYPE' => true,
         'E_VERSION' => true,
         'VENDOR' => true,
         'VERSION' => true,
         'DRIVER' => true,
-        'DRIVERVERSION' => true,
-        'JDBCVERSION' => true,
+        'DRIVER_VERSION' => true,
+        'JDBC_VERSION' => true,
         'ENGINE' => true,
-        'USERNAME' => true,
+        'USER_NAME' => true,
         'HOST' => true,
         'PORT' => true,
         'SID' => true,
         'SERVICE_NAME' => true,
-        'DBNAME' => true,
+        'DB_NAME' => true,
         'APPLICATION_NAME' => true,
         'INSTANCE_NAME' => true,
         'URL' => true,
         'LAST_DEPLOY' => true,
         'LAST_ROLLBACK' => true,
         'LAST_CHANGELOG_SYNC' => true,
-        'ECONTAINER_CLASS' => true,
-        'E_CONTAINER' => true,
-        'E_CONTAINER_FEATURE_NAME' => true,
+        'FK_PROJECTS_UUID' => true,
     ];
 }

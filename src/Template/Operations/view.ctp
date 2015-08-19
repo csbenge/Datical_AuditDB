@@ -1,6 +1,6 @@
 <!-- File: src/Template/Operations/view.ctp -->
 
-<h3><i class="fa fa-database fa-green"></i> <?= h($operation->PROJECT_NAME) ?>:<?= h($operation->STEP) ?> - <?= h($operation->STARTTIME) ?></h3>
+<h3><i class="fa fa-database fa-green"></i> <?= h($operation->PROJECT_NAME) ?>:<?= h($operation->STEP) ?> - <?= h($operation->START_TIME) ?></h3>
 
 <div class="row">
     <div class="col-md-2">
@@ -30,10 +30,10 @@
             </tr>
             <tr>
                 <td><strong><?= __('TYPE') ?>:</strong></td>
-                <td><?= $this->DeployResults->prettyUpCase(h($operation->DEPLOYMODE)) ?></td>
+                <td><?= $this->DeployResults->prettyUpCase(h($operation->DEPLOY_MODE)) ?></td>
             </tr>
             </table>
-        </div> 
+        </div>
         </div>
     </div>
 
@@ -52,11 +52,11 @@
             </tr>
             <tr>
                 <td><strong><?= __('ROWS TOUCHED') ?>:</strong></td>
-                <td><?= $this->DeployResults->prettyUpCount($operation->TOTALROWSTOUCHED) ?></td>
+                <td><?= $this->DeployResults->prettyUpCount($operation->TOTAL_ROWS_TOUCHED) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('VALUES DELETED') ?>:</strong></td>
-                <td><?= $this->DeployResults->prettyUpCount($operation->TOTALVALUESDELETED) ?></td>
+                <td><?= $this->DeployResults->prettyUpCount($operation->TOTAL_VALUES_DELETED) ?></td>
             </tr>
             <tr>
                 <td>_  </td>
@@ -82,15 +82,15 @@
             <table class="table table-hover table-condensed">
             <tr>
                 <td><strong><?= __('START') ?>:</strong></td>
-                <td><?= h($operation->STARTTIME) ?></td>
+                <td><?= h($operation->START_TIME) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('STOP') ?>:</strong></td>
-                <td><?= h($operation->STOPTIME) ?></td>
+                <td><?= h($operation->STOP_TIME) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('TOTAL') ?>:</strong></td>
-                <td><?= h($operation->TOTALTIME) ?></td>
+                <td><?= h($operation->TOTAL_TIME) ?></td>
             </tr>
             <tr>
                 <td>_  </td>
@@ -131,16 +131,12 @@
                 <td><?= h($operation->CLIENT_HOSTNAME) ?></td>
             </tr>
             <tr>
-                <td><strong><?= __('IP') ?>:</strong></td>
-                <td><?= h($operation->CLIENT_IP) ?></td>
-            </tr>
-            <tr>
                 <td><strong><?= __('TYPE') ?>:</strong></td>
                 <td><?= h($operation->CLIENT_TYPE) ?></td>
             </tr>
             <tr>
-                <td>_  </td>
-                <td>_  </td>
+                <td><strong><?= __('TIMEZONE') ?>:</strong></td>
+                <td><?= h($operation->CLIENT_TZ) ?></td>
             </tr>
             <tr>
                 <td>_  </td>
@@ -166,12 +162,12 @@
                 <td><?= h($operations->ENGINE) ?></td>
             </tr>
             <tr>
-                <td><strong><?= __('DBNAME') ?>:</strong></td>
-                <td><?= h($operations->DBNAME) ?></td>
+                <td><strong><?= __('DB_NAME') ?>:</strong></td>
+                <td><?= h($operations->DB_NAME) ?></td>
             </tr>
             <tr>
-                <td><strong><?= __('USER') ?>:</strong></td>
-                <td><?= h($operations->USERNAME) ?></td>
+                <td><strong><?= __('USER_NAME') ?>:</strong></td>
+                <td><?= h($operations->USER_NAME) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('HOST') ?>:</strong></td>
@@ -205,15 +201,13 @@
         <tr>
             <th><?= __('CHANGESET_ID') ?></th>
             <th><?= __('AUTHOR') ?></th>
-            <th><?= __('AUTHOR') ?></th>
             <th><?= __('LABELS') ?></th>
             <th><?= __('CONTEXTS') ?></th>
             <th><?= __('RESULT') ?></th>
         </tr>
         <?php foreach ($operation->changeset_details as $changeset_details): ?>
         <tr>
-            <td><?= $this->Html->link(__($changeset_details->CHANGEID), ['controller' => 'ChangesetDetails', 'action' => 'view', $changeset_details->ID]) ?></td>
-            <td><?= h($changeset_details->AUTHOR) ?></td>
+            <td><?= $this->Html->link(__($changeset_details->CHANGESET_ID), ['controller' => 'ChangesetDetails', 'action' => 'view', $changeset_details->ID]) ?></td>
             <td><?= h($changeset_details->AUTHOR) ?></td>
             <td><?= h($changeset_details->LABELS) ?></td>
             <td><?= h($changeset_details->CONTEXTS) ?></td>

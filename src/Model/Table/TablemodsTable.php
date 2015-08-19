@@ -1,17 +1,17 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Tablemod;
+use App\Model\Entity\TableMod;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Tablemods Model
+ * TableMods Model
  *
  */
-class TablemodsTable extends Table
+class TableModsTable extends Table
 {
 
     /**
@@ -22,7 +22,7 @@ class TablemodsTable extends Table
      */
     public function initialize(array $config)
     {
-        $this->table('TABLEMOD');
+        $this->table('table_mods');
         $this->displayField('ID');
         $this->primaryKey('ID');
     }
@@ -39,40 +39,26 @@ class TablemodsTable extends Table
             ->allowEmpty('ID', 'create');
             
         $validator
-            ->requirePresence('DTYPE', 'create')
-            ->notEmpty('DTYPE');
-            
-        $validator
             ->add('E_VERSION', 'valid', ['rule' => 'numeric'])
             ->requirePresence('E_VERSION', 'create')
             ->notEmpty('E_VERSION');
             
         $validator
-            ->allowEmpty('TABLENAME');
+            ->allowEmpty('TABLE_NAME');
             
         $validator
-            ->add('ROWSTOUCHED', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('ROWSTOUCHED');
+            ->add('ROWS_TOUCHED', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('ROWS_TOUCHED');
             
         $validator
-            ->add('VALUESDELETED', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('VALUESDELETED');
+            ->add('VALUES_DELETED', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('VALUES_DELETED');
             
         $validator
-            ->allowEmpty('OPERATION_TABLEMODS_ID');
+            ->allowEmpty('FK_OPERATIONS_ID');
             
         $validator
-            ->add('OPERATION_TABLEMODS_IDX', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('OPERATION_TABLEMODS_IDX');
-            
-        $validator
-            ->allowEmpty('ECONTAINER_CLASS');
-            
-        $validator
-            ->allowEmpty('E_CONTAINER');
-            
-        $validator
-            ->allowEmpty('E_CONTAINER_FEATURE_NAME');
+            ->allowEmpty('OPERATIONS_TABLE_MODS_IDX');
 
         return $validator;
     }

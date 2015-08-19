@@ -1,17 +1,17 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Changeimpact;
+use App\Model\Entity\ChangeImpact;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Changeimpacts Model
+ * ChangeImpacts Model
  *
  */
-class ChangeimpactsTable extends Table
+class ChangeImpactsTable extends Table
 {
 
     /**
@@ -23,15 +23,14 @@ class ChangeimpactsTable extends Table
     public function initialize(array $config)
     {
         $this->belongsTo('ChangesetDetails');
-        $this->table('CHANGEIMPACT');
+        $this->table('change_impacts');
         $this->displayField('ID');
         $this->primaryKey('ID');
-
-        $this->hasMany('ChangeimpactsSqls', [
-            'foreignKey' => 'ID',
-            'bindingKey' => 'FK_CHANGEIMPACT_ID',
-            'dependent' => true
-        ]);
+        $this->hasMany('ChangeImpactSqls', [
+           'foreignKey' => 'ID',
+           'bindingKey' => 'FK_CHANGE_IMPACTS_ID',
+           'dependent' => true
+       ]);
     }
 
     /**
@@ -44,40 +43,33 @@ class ChangeimpactsTable extends Table
     {
         $validator
             ->allowEmpty('ID', 'create');
-            
-        $validator
-            ->requirePresence('DTYPE', 'create')
-            ->notEmpty('DTYPE');
-            
+
         $validator
             ->add('E_VERSION', 'valid', ['rule' => 'numeric'])
             ->requirePresence('E_VERSION', 'create')
             ->notEmpty('E_VERSION');
-            
+
         $validator
             ->allowEmpty('CHANGE_DESCRIPTION');
-            
+
         $validator
-            ->allowEmpty('AUTHOR');
-            
+            ->allowEmpty('CAN_ROLLBACK');
+
         $validator
-            ->allowEmpty('CANROLLBACK');
-            
-        $validator
-            ->allowEmpty('FAILUREMESSAGE');
-            
+            ->allowEmpty('FAILURE_MESSAGE');
+
         $validator
             ->requirePresence('SKIPPED', 'create')
             ->notEmpty('SKIPPED');
-            
+
         $validator
-            ->allowEmpty('FK_OPERATION_ID');
-            
+            ->allowEmpty('FK_OPERATIONS_ID');
+
         $validator
             ->allowEmpty('FK_CHANGESET_DETAILS_ID');
-            
+
         $validator
-            ->allowEmpty('IDX');
+            ->allowEmpty('CHANGE_IMPACTS_IDX');
 
         return $validator;
     }

@@ -1,55 +1,49 @@
-<!-- File: src/Template/Operations/index.ctp -->
-
-<div class="container-fluid">
-    <div class="col-md-2 sidebar">
-    <?php echo $this->element('sidebar-tables'); ?>
-    </div>
-
-    <div class="col-md-8 main">
-      <h2 class="page-header"><?= __('OPERATION') ?></h2>
-
-<table class="table table-striped table-bordered table-hover table-condensed">
-<thead>
-    <tr>
-        <th><?= $this->Paginator->sort('PROJECT_NAME') ?></th>
-        <th><?= $this->Paginator->sort('STEP') ?></th>
-        <th><?= $this->Paginator->sort('ID') ?></th>
-        <th><?= $this->Paginator->sort('OPDATABASE_DB_ID') ?></th>
-        <th><?= $this->Paginator->sort('E_VERSION') ?></th>
-        <th><?= $this->Paginator->sort('OPDATE') ?></th>
-        <th><?= $this->Paginator->sort('DEPLOY_THRESHOLD') ?></th>
-        <th><?= $this->Paginator->sort('VALIDITY_SETTING') ?></th>
-    </tr>
-</thead>
-<tbody>
-<?php foreach ($operations as $operation): ?>
-    <tr>
-        <td><?= $this->Html->link(h($operation->PROJECT_NAME), ['action' => 'view', $operation->ID]) ?>
-        </td>
-        <td><?= h($operation->STEP) ?></td>
-        <td><?= $this->Number->format($operation->ID) ?></td>
-        <td><?= $this->Number->format($operation->OPDATABASE_DB_ID) ?></td>
-        <td><?= $this->Number->format($operation->E_VERSION) ?></td>
-        <td><?= h($operation->OPDATE) ?></td>
-        <td><?= h($operation->DEPLOY_THRESHOLD) ?></td>
-        <td><?= h($operation->VALIDITY_SETTING) ?></td>
-    </tr>
-<?php endforeach; ?>
-</tbody>
-</table>
-
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-7 text-center">
-    <ul class="pagination">
-        <?= $this->Paginator->prev('< ' . __('previous')) ?>
-        <?= $this->Paginator->numbers() ?>
-        <?= $this->Paginator->next(__('next') . ' >') ?><br/>
-        <small><?= $this->Paginator->counter() ?></small>
+<div class="actions columns large-2 medium-3">
+    <h3><?= __('Actions') ?></h3>
+    <ul class="side-nav">
+        <li><?= $this->Html->link(__('New Operation'), ['action' => 'add']) ?></li>
     </ul>
-  </div>
-  <div class="col-md-3"></div>
 </div>
+<div class="operations index large-10 medium-9 columns">
+    <table cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th><?= $this->Paginator->sort('ID') ?></th>
+            <th><?= $this->Paginator->sort('E_VERSION') ?></th>
+            <th><?= $this->Paginator->sort('PROJECT_NAME') ?></th>
+            <th><?= $this->Paginator->sort('CLIENT_TZ') ?></th>
+            <th><?= $this->Paginator->sort('CLIENT_HOSTNAME') ?></th>
+            <th><?= $this->Paginator->sort('CLIENT_IP') ?></th>
+            <th><?= $this->Paginator->sort('CLIENT_TYPE') ?></th>
+            <th class="actions"><?= __('Actions') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($operations as $operation): ?>
+        <tr>
+            <td><?= $this->Number->format($operation->ID) ?></td>
+            <td><?= $this->Number->format($operation->E_VERSION) ?></td>
+            <td><?= h($operation->PROJECT_NAME) ?></td>
+            <td><?= h($operation->CLIENT_TZ) ?></td>
+            <td><?= h($operation->CLIENT_HOSTNAME) ?></td>
+            <td><?= h($operation->CLIENT_IP) ?></td>
+            <td><?= h($operation->CLIENT_TYPE) ?></td>
+            <td class="actions">
+                <?= $this->Html->link(__('View'), ['action' => 'view', $operation->ID]) ?>
+                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $operation->ID]) ?>
+                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $operation->ID], ['confirm' => __('Are you sure you want to delete # {0}?', $operation->ID)]) ?>
+            </td>
+        </tr>
 
-</div>
+    <?php endforeach; ?>
+    </tbody>
+    </table>
+    <div class="paginator">
+        <ul class="pagination">
+            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->numbers() ?>
+            <?= $this->Paginator->next(__('next') . ' >') ?>
+        </ul>
+        <p><?= $this->Paginator->counter() ?></p>
+    </div>
 </div>

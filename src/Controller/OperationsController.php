@@ -24,19 +24,7 @@ class OperationsController extends AppController
         $this->loadComponent('Paginator');
     }
 
-    /**
-     * Index method
-     *
-     * @return void
-     */
-    public function index()
-    {
-        $this->set('operations', $this->paginate($this->Operations));
-        $this->set('_serialize', ['operations']);
-
-    }
-
-    /**
+  /**
      * Deployments method
      *
      * @return void
@@ -59,6 +47,17 @@ class OperationsController extends AppController
     }
 
     /**
+     * Index method
+     *
+     * @return void
+     */
+    public function index()
+    {
+        $this->set('operations', $this->paginate($this->Operations));
+        $this->set('_serialize', ['operations']);
+    }
+
+    /**
      * View method
      *
      * @param string|null $id Operation id.
@@ -68,7 +67,7 @@ class OperationsController extends AppController
     public function view($id = null)
     {
         $operation = $this->Operations->get($id, [
-            'contain' => ['Opdatabases', 'ChangesetDetails', 'Changeimpacts']
+            'contain' => ['OpDatabases', 'ChangesetDetails', 'ChangeImpacts']
         ]);
         $this->set('operation', $operation);
         $this->set('_serialize', ['operation']);

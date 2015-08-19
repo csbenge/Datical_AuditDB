@@ -11,24 +11,20 @@
     <h2><?= h($message->ID) ?></h2>
     <div class="row">
         <div class="large-5 columns strings">
-            <h6 class="subheader"><?= __('DTYPE') ?></h6>
-            <p><?= h($message->DTYPE) ?></p>
             <h6 class="subheader"><?= __('MESSAGE LEVEL') ?></h6>
             <p><?= h($message->MESSAGE_LEVEL) ?></p>
             <h6 class="subheader"><?= __('TEXT') ?></h6>
             <p><?= h($message->TEXT) ?></p>
-            <h6 class="subheader"><?= __('ECONTAINER CLASS') ?></h6>
-            <p><?= h($message->ECONTAINER_CLASS) ?></p>
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('ID') ?></h6>
             <p><?= $this->Number->format($message->ID) ?></p>
             <h6 class="subheader"><?= __('E VERSION') ?></h6>
             <p><?= $this->Number->format($message->E_VERSION) ?></p>
-            <h6 class="subheader"><?= __('CHANGEIMPACT MESSAGES ID') ?></h6>
-            <p><?= $this->Number->format($message->CHANGEIMPACT_MESSAGES_ID) ?></p>
-            <h6 class="subheader"><?= __('CHANGEIMPACT MESSAGES IDX') ?></h6>
-            <p><?= $this->Number->format($message->CHANGEIMPACT_MESSAGES_IDX) ?></p>
+            <h6 class="subheader"><?= __('FK CHANGE IMPACTS ID') ?></h6>
+            <p><?= $this->Number->format($message->FK_CHANGE_IMPACTS_ID) ?></p>
+            <h6 class="subheader"><?= __('MESSAGES IDX') ?></h6>
+            <p><?= $this->Number->format($message->MESSAGES_IDX) ?></p>
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('MESSAGE TIME') ?></h6>

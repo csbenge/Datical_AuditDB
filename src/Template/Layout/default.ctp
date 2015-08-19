@@ -55,7 +55,7 @@ $cakeDescription = 'Datical';
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-             <a class="navbar-brand" href="#"> <img src="/img/Datical_CMYK_RVS-medium.png" height="25" width="153" alt="Datical" /></a> 
+             <a class="navbar-brand" href="#"> <img src="/img/Datical_CMYK_RVS-medium.png" height="25" width="153" alt="Datical" /></a>
           </div>
 
           <!-- Top Menu Items -->
@@ -110,14 +110,13 @@ $cakeDescription = 'Datical';
                       </ul>
                   </li>
 
-                  <li> 
-                    <a href="/operations/tables"><i class="fa fa-fw fa-table"></i> Tables</a></li>
-                      
+                  <li>
+                    <a href="/projects"><i class="fa fa-fw fa-folder"></i> Projects</a></li>
                   </li>
                   <li>
                       <a href="/users"><i class="fa fa-fw fa-user"></i> Users</a>
                   </li>
-                
+
               </ul>
           </div>
           <?php } ?>

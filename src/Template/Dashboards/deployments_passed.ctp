@@ -1,8 +1,8 @@
 <!-- File: src/Template/Dashboards/deployments_all.ctp -->
 
 <div class="col-md-10 main">
-  <h2 class="page-header"><i class="fa fa-fw fa-power-off"></i>Deployments <small>Passed</small></h2>
-  
+  <h2 class="page-header"><i class="fa fa-fw fa-power-off"></i>Deployments <small> All</small></h2>
+
 <div class="col-md-12 main">
 <div class="panel panel-green">
     <div class="panel-heading">
@@ -12,15 +12,25 @@
         <div class="table-responsive">
 
     <?php if (!($operations->isEmpty())) { ?>
+        <?php
+            echo $this->Form->select('project', [
+                'Projects' => [ 'All' => 'All',
+                'BookShop' => 'BookShop',
+                'Vehicles' => 'Vehicles']
+            ]);
+        ?>
     <table class="table table-striped table-bordered table-hover table-condensed">
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('PROJECT') ?></th>
             <th><?= $this->Paginator->sort('STEP') ?></th>
-            <th><?= $this->Paginator->sort('DEPLOY_TIME') ?></th>
-            <th><?= $this->Paginator->sort('DURATION') ?></th>
+            <th><?= $this->Paginator->sort('LABELS') ?></th>
+            <th><?= $this->Paginator->sort('CHANGES') ?></th>
+            <th><?= $this->Paginator->sort('START_TIME') ?></th>
+            <th><?= $this->Paginator->sort('TOTAL_TIME') ?></th>
             <th><?= $this->Paginator->sort('ACTION') ?></th>
             <th><?= $this->Paginator->sort('MODE') ?></th>
+
             <th><?= $this->Paginator->sort('RESULT') ?></th>
         </tr>
     </thead>
@@ -30,10 +40,12 @@
             <td><i class="fa fa-database fa-green"></i> <?= $this->Html->link(h($operation->PROJECT_NAME), ['controller' => 'Operations', 'action' => 'view', $operation->ID]) ?>
             </td>
             <td><?= h($operation->STEP) ?></td>
-            <td><?= h($operation->STARTTIME) ?></td>
-            <td><?= h($operation->TOTALTIME) ?></td>
+            <td><?= h($operation->LABELS) ?></td>
+            <td><?= h($operation->TOTAL_CHANGESETS) ?></td>
+            <td><?= h($operation->START_TIME) ?></td>
+            <td><?= h($operation->TOTAL_TIME) ?></td>
             <td><?= $this->DeployResults->prettyUpAction(h($operation->ACTION_TYPE)) ?></td>
-            <td><?= $this->DeployResults->prettyUpCase(h($operation->DEPLOYMODE)) ?></td>
+            <td><?= $this->DeployResults->prettyUpCase(h($operation->DEPLOY_MODE)) ?></td>
             <td><?= $this->DeployResults->prettyUpResult(h($operation->DEPLOY_RESULT)) ?></td>
         </tr>
     <?php endforeach; ?>
@@ -56,5 +68,6 @@
     </div>
 
     </div>
+</div>
 </div>
 </div>

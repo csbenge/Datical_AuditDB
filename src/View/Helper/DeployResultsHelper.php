@@ -16,7 +16,7 @@ class DeployResultsHelper extends Helper
 
         // Look id in CHANGEIMPACT
         // Get ChangeImpact Count
-        $changeimpacts = TableRegistry::get('Changeimpacts');
+        $changeimpacts = TableRegistry::get('ChangeImpacts');
         $changeimpact  = $changeimpacts->get($id, ['contain' => [] ]);
         // Take FK_CHANGESET_DETAILS_ID in CHANGEIMPACT and lookup ID in CHANGESET_DETAILS
         $changesetdetails = TableRegistry::get('ChangesetDetails');
@@ -24,7 +24,7 @@ class DeployResultsHelper extends Helper
 
         // FK_OPERATION_ID in CHANGESET_DETAILS look up OPERATION
         $operations = TableRegistry::get('Operations');
-        $operation  = $operations->get($changesetdetail->FK_OPERATION_ID, ['contain' => [] ]);
+        $operation  = $operations->get($changesetdetail->FK_OPERATIONS_ID, ['contain' => [] ]);
         // Get PROJECT_NAME, etc.
         $result = $operation->PROJECT_NAME;
         return $result;
@@ -35,7 +35,7 @@ class DeployResultsHelper extends Helper
 
         // Look id in CHANGEIMPACT
         // Get ChangeImpact Count
-        $changeimpacts = TableRegistry::get('Changeimpacts');
+        $changeimpacts = TableRegistry::get('ChangeImpacts');
         $changeimpact  = $changeimpacts->get($id, ['contain' => [] ]);
         // Take FK_CHANGESET_DETAILS_ID in CHANGEIMPACT and lookup ID in CHANGESET_DETAILS
         $changesetdetails = TableRegistry::get('ChangesetDetails');
@@ -43,7 +43,7 @@ class DeployResultsHelper extends Helper
 
         // FK_OPERATION_ID in CHANGESET_DETAILS look up OPERATION
         $operations = TableRegistry::get('Operations');
-        $operation  = $operations->get($changesetdetail->FK_OPERATION_ID, ['contain' => [] ]);
+        $operation  = $operations->get($changesetdetail->FK_OPERATIONS_ID, ['contain' => [] ]);
         // Get PROJECT_NAME, etc.
         $result = $operation->ID;
         return $result;
@@ -54,8 +54,8 @@ class DeployResultsHelper extends Helper
 
         // Look id in CHANGEIMPACT
         // Get ChangeImpact Count
-        $changeimpactssqls = TableRegistry::get('ChangeimpactsSqls');
-        $query  = $changeimpactssqls->find()->where(['FK_CHANGEIMPACT_ID' => $id]);
+        $changeimpactssqls = TableRegistry::get('ChangeImpactSqls');
+        $query  = $changeimpactssqls->find()->where(['FK_CHANGE_IMPACTS_ID' => $id]);
         $data = $query->toArray();
         $result = $data[0]->SQL_TEXT;
         return $result;
@@ -64,7 +64,7 @@ class DeployResultsHelper extends Helper
     public function getDeploymentMessage($id)
     {
 
-        $changeimpacts = TableRegistry::get('Changeimpacts');
+        $changeimpacts = TableRegistry::get('ChangeImpacts');
 
         $query = $changeimpacts->find()->where(['FK_CHANGESET_DETAILS_ID' => $id]);
         $data = $query->toArray();
@@ -127,7 +127,7 @@ class DeployResultsHelper extends Helper
     	if ($action == "DEPLOY") {
     		$result = 'Deploy';
     	} elseif ($action == "ROLLBACK") {
-    		$result = 'Rollback'; 
+    		$result = 'Rollback';
     	}
         return $result;
     }

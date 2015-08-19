@@ -4,9 +4,9 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Tablemod Entity.
+ * TableMod Entity.
  */
-class Tablemod extends Entity
+class TableMod extends Entity
 {
 
     /**
@@ -15,15 +15,11 @@ class Tablemod extends Entity
      * @var array
      */
     protected $_accessible = [
-        'DTYPE' => true,
         'E_VERSION' => true,
-        'TABLENAME' => true,
-        'ROWSTOUCHED' => true,
-        'VALUESDELETED' => true,
-        'OPERATION_TABLEMODS_ID' => true,
-        'OPERATION_TABLEMODS_IDX' => true,
-        'ECONTAINER_CLASS' => true,
-        'E_CONTAINER' => true,
-        'E_CONTAINER_FEATURE_NAME' => true,
+        'TABLE_NAME' => true,
+        'ROWS_TOUCHED' => true,
+        'VALUES_DELETED' => true,
+        'FK_OPERATIONS_ID' => true,
+        'OPERATIONS_TABLE_MODS_IDX' => true,
     ];
 }

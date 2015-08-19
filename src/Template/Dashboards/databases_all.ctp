@@ -13,6 +13,7 @@
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('DATABASE') ?></th>
+            <th><?= $this->Paginator->sort('USERNAME') ?></th>
             <th><?= $this->Paginator->sort('SERVER') ?></th>
             <th><?= $this->Paginator->sort('ENGINE') ?></th>
             <th><?= $this->Paginator->sort('PORT') ?></th>
@@ -26,7 +27,8 @@
     <tbody>
     <?php foreach ($operations as $operation): ?>
         <tr>
-            <td><?= h($operation->DBNAME) ?></td>
+            <td><?= h($operation->DB_NAME) ?></td>
+            <td><?= h($operation->USER_NAME) ?></td>
             <td><?= h($operation->HOST) ?></td>
             <td><?= h($operation->ENGINE) ?></td>
             <td><?= h($operation->PORT) ?></td>

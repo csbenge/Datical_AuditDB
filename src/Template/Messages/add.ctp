@@ -9,14 +9,12 @@
     <fieldset>
         <legend><?= __('Add Message') ?></legend>
         <?php
-            echo $this->Form->input('DTYPE');
             echo $this->Form->input('E_VERSION');
             echo $this->Form->input('MESSAGE_TIME');
             echo $this->Form->input('MESSAGE_LEVEL');
             echo $this->Form->input('TEXT');
-            echo $this->Form->input('CHANGEIMPACT_MESSAGES_ID');
-            echo $this->Form->input('CHANGEIMPACT_MESSAGES_IDX');
-            echo $this->Form->input('ECONTAINER_CLASS');
+            echo $this->Form->input('FK_CHANGE_IMPACTS_ID');
+            echo $this->Form->input('MESSAGES_IDX');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

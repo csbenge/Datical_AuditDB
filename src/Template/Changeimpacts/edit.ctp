@@ -3,28 +3,26 @@
     <ul class="side-nav">
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $changeimpact->ID],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $changeimpact->ID)]
+                ['action' => 'delete', $changeImpact->ID],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $changeImpact->ID)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Changeimpacts'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Change Impacts'), ['action' => 'index']) ?></li>
     </ul>
 </div>
-<div class="changeimpacts form large-10 medium-9 columns">
-    <?= $this->Form->create($changeimpact) ?>
+<div class="changeImpacts form large-10 medium-9 columns">
+    <?= $this->Form->create($changeImpact) ?>
     <fieldset>
-        <legend><?= __('Edit Changeimpact') ?></legend>
+        <legend><?= __('Edit Change Impact') ?></legend>
         <?php
-            echo $this->Form->input('DTYPE');
             echo $this->Form->input('E_VERSION');
             echo $this->Form->input('CHANGE_DESCRIPTION');
-            echo $this->Form->input('AUTHOR');
-            echo $this->Form->input('CANROLLBACK');
-            echo $this->Form->input('FAILUREMESSAGE');
+            echo $this->Form->input('CAN_ROLLBACK');
+            echo $this->Form->input('FAILURE_MESSAGE');
             echo $this->Form->input('SKIPPED');
-            echo $this->Form->input('OPERATION_CHANGEIMPACTS_ID');
-            echo $this->Form->input('CHNGESET_DETAIL_CHNGEIMPACT_ID');
-            echo $this->Form->input('IDX');
+            echo $this->Form->input('FK_OPERATIONS_ID');
+            echo $this->Form->input('FK_CHANGESET_DETAILS_ID');
+            echo $this->Form->input('CHANGE_IMPACTS_IDX');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

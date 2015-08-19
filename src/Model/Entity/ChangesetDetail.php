@@ -15,9 +15,8 @@ class ChangesetDetail extends Entity
      * @var array
      */
     protected $_accessible = [
-        'DTYPE' => true,
         'E_VERSION' => true,
-        'CHANGEID' => true,
+        'CHANGESET_ID' => true,
         'AUTHOR' => true,
         'FILENAME' => true,
         'CHECKSUM' => true,
@@ -29,7 +28,6 @@ class ChangesetDetail extends Entity
         'ON_RUN_ALWAYS' => true,
         'RUN_ON_CHANGE' => true,
         'RESULT' => true,
-        'FK_OPERATION_ID' => true,
-        'FK_CHANGESET_DETAILS_ID' => true,
+        'FK_OPERATIONS_ID' => true,
     ];
 }

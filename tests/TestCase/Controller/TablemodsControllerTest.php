@@ -1,13 +1,13 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\TablemodsController;
+use App\Controller\TableModsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\TablemodsController Test Case
+ * App\Controller\TableModsController Test Case
  */
-class TablemodsControllerTest extends IntegrationTestCase
+class TableModsControllerTest extends IntegrationTestCase
 {
 
     /**
@@ -16,7 +16,7 @@ class TablemodsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.tablemods'
+        'app.table_mods'
     ];
 
     /**

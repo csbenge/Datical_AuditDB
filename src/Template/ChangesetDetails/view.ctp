@@ -1,5 +1,5 @@
 
-<h3><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <?= h($changesetDetail->DTYPE) ?>: <?= h($changesetDetail->CHANGEID) ?></h3>
+<h3><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <?= h($changesetDetail->CHANGESET_ID) ?></h3>
 
 <div class="changesetDetails view large-10 medium-9 columns">
 
@@ -10,8 +10,8 @@
         <div class="panel-body">
             <table class="table table-hover table-condensed">
             <tr>
-                <td><strong><?= __('ID') ?>:</strong></td>
-                <td><?= h($changesetDetail->CHANGEID) ?></td>
+                <td><strong><?= __('CHANGESET ID') ?>:</strong></td>
+                <td><?= h($changesetDetail->CHANGESET_ID) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('AUTHOR') ?>:</strong></td>
@@ -41,12 +41,8 @@
                 <td><strong><?= __('RESULT') ?>:</strong></td>
                 <td><?= $this->DeployResults->prettyUpResult(h($changesetDetail->RESULT)) ?></td>
             </tr>
-            <tr>
-                <td><strong><?= __('MESSAGE') ?>:</strong></td>
-                <td><?= $this->DeployResults->getDeploymentMessage(h($changesetDetail->ID)) ?></td>
-            </tr>
             </table>
-        </div> 
+        </div>
         </div>
     </div>
 
@@ -55,18 +51,6 @@
         <div class="panel-heading"><strong>SETTINGS</strong></div>
         <div class="panel-body">
             <table class="table table-hover table-condensed">
-            <tr>
-                <td><strong><?= __('ID') ?>:</strong></td>
-                <td><?= h($changesetDetail->ID) ?></td>
-            </tr>
-            <tr>
-                <td><strong><?= __('E_VERSION') ?>:</strong></td>
-                <td><?= h($changesetDetail->E_VERSION) ?></td>
-            </tr>
-            <tr>
-                <td><strong><?= __('FK_OPERATION_ID') ?>:</strong></td>
-                <td><?= h($changesetDetail->FK_OPERATION_ID) ?></td>
-            </tr>
             <tr>
                 <td><strong><?= __('ON_VALIDATION_FAIL') ?>:</strong></td>
                 <td><?= h($changesetDetail->ON_VALIDATION_FAIL) ?></td>
@@ -84,7 +68,7 @@
                 <td><?= h($changesetDetail->RUN_ON_CHANGE) ?></td>
             </tr>
             </table>
-        </div> 
+        </div>
         </div>
     </div>
 </div>
@@ -97,12 +81,12 @@
 
 <table class="table table-striped table-bordered table-hover table-condensed">
 
-        <?php if (!empty($changesetDetail->changeimpacts)): ?>
+        <?php if (!empty($changeImpacts)): ?>
             <tr>
                 <th><?= __('CHANGE_DESCRIPTION') ?></th>
                 <th><?= __('SQL_TEXT') ?></th>
             </tr>
-        <?php foreach ($changesetDetail->changeimpacts as $changeimpacts): ?>
+        <?php foreach ($changeImpacts as $changeimpacts): ?>
             <tr>
                 <td><?= h($changeimpacts->CHANGE_DESCRIPTION) ?></td>
                 <td><?= $this->DeployResults->getChangeImpactSQL(h($changeimpacts->ID)) ?></td>
@@ -110,7 +94,7 @@
             </tr>
         <?php endforeach; ?>
         <?php endif; ?>
-        
+
 </table>
 
 </div>

@@ -22,14 +22,9 @@ class MessagesTable extends Table
      */
     public function initialize(array $config)
     {
-        $this->table('MESSAGE');
+        $this->table('messages');
         $this->displayField('ID');
         $this->primaryKey('ID');
-        $this->hasOne('Changeimpacts', [
-            'foreignKey' => 'FK_OPERATION_ID',
-            'bindingKey' => 'ID',
-            'dependent' => true
-        ]);
     }
 
     /**
@@ -42,10 +37,6 @@ class MessagesTable extends Table
     {
         $validator
             ->allowEmpty('ID', 'create');
-            
-        $validator
-            ->requirePresence('DTYPE', 'create')
-            ->notEmpty('DTYPE');
             
         $validator
             ->add('E_VERSION', 'valid', ['rule' => 'numeric'])
@@ -66,14 +57,10 @@ class MessagesTable extends Table
             ->notEmpty('TEXT');
             
         $validator
-            ->allowEmpty('CHANGEIMPACT_MESSAGES_ID');
+            ->allowEmpty('FK_CHANGE_IMPACTS_ID');
             
         $validator
-            ->add('CHANGEIMPACT_MESSAGES_IDX', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('CHANGEIMPACT_MESSAGES_IDX');
-            
-        $validator
-            ->allowEmpty('ECONTAINER_CLASS');
+            ->allowEmpty('MESSAGES_IDX');
 
         return $validator;
     }

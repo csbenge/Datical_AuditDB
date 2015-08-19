@@ -4,9 +4,9 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Changeimpact Entity.
+ * ChangeImpact Entity.
  */
-class Changeimpact extends Entity
+class ChangeImpact extends Entity
 {
 
     /**
@@ -15,15 +15,13 @@ class Changeimpact extends Entity
      * @var array
      */
     protected $_accessible = [
-        'DTYPE' => true,
         'E_VERSION' => true,
         'CHANGE_DESCRIPTION' => true,
-        'AUTHOR' => true,
-        'CANROLLBACK' => true,
-        'FAILUREMESSAGE' => true,
+        'CAN_ROLLBACK' => true,
+        'FAILURE_MESSAGE' => true,
         'SKIPPED' => true,
-        'FK_OPERATION_ID' => true,
+        'FK_OPERATIONS_ID' => true,
         'FK_CHANGESET_DETAILS_ID' => true,
-        'IDX' => true,
+        'CHANGE_IMPACTS_IDX' => true,
     ];
 }

@@ -2,8 +2,10 @@
 
 <div class="col-md-8 main">
   <h2 class="page-header"><i class="fa fa-fw fa-dashboard"></i>Dashboard <small>Deployments Overview</small></h2>
-  
+
   <div class="row">
+
+    <?php if (!($latestMessages->isEmpty())) { ?>
     <div class="col-lg-12 col-md-6">
         <div class="panel panel-danger">
             <div class="panel-heading">
@@ -18,7 +20,7 @@
                 </div>
             </div>
 
-            <?php if (!($latestMessages->isEmpty())) { ?>
+
             <div class="panel-footer">
 
             <table class="table table-hover table-condensed table-stripped">
@@ -34,29 +36,27 @@
             <tr>
                 <td width="50px"><?= $this->DeployResults->prettyUpMessageLevel(h($latestMessage->MESSAGE_LEVEL)) ?></td>
                 <td width="175px"><?= $latestMessage->MESSAGE_TIME ?></td>
-                <td><?= $this->Html->link(h($this->DeployResults->getChangeImpact_ChangeID(h($latestMessage->FK_CHANGEIMPACT_ID))), ['controller' => 'Operations', 'action' => 'view', $this->DeployResults->getChangeImpact_ChangeIDID(h($latestMessage->FK_CHANGEIMPACT_ID))]) ?>
+                <td><?= $this->Html->link(h($this->DeployResults->getChangeImpact_ChangeID(h($latestMessage->FK_CHANGE_IMPACTS_ID))), ['controller' => 'Operations', 'action' => 'view', $this->DeployResults->getChangeImpact_ChangeIDID(h($latestMessage->FK_CHANGE_IMPACTS_ID))]) ?>
                 </td>
                 <td><?= $latestMessage->TEXT ?></td>
             </tr>
             <?php endforeach; ?>
             </table>
                 <span class="pull-left">
-                <?php 
-                    echo $this->Html->link(__('View Details'), ['controller' => 'Messages','action' => 'index'], 
+                <?php
+                    echo $this->Html->link(__('View Details'), ['controller' => 'Messages','action' => 'index'],
                     ['class' => '']);
                 ?>
                 </span>
                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                 <div class="clearfix"></div>
             </div>
-            <?php } else { ?>
-                
-            <?php } ?>
-
         </div>
     </div>
 
-  </div>
+
+    <?php } ?>
+    </div>
 
 <div class="row">
 
@@ -80,30 +80,39 @@
             </tr>
             <tr>
                 <td><strong>PROJECT</strong></td>
-                <td><?= $latestOperation->PROJECT_NAME ?></td>
+
+                <td>
+                    <?= $latestOperation->PROJECT_NAME ?>
+                </td>
             </tr>
             <tr>
                 <td><strong>ENVIRONMENT</strong></td>
-                <td><?= $latestOperation->STEP ?><td>
+                <td>
+                    <?= $latestOperation->STEP ?>
+                <td>
             </tr>
             <tr>
                 <td><strong>TIME</strong></td>
-                <td><?= $latestOperation->STARTTIME ?></td>
+                <td>
+                    <?= $latestOperation->START_TIME ?>
+                </td>
             </tr>
             <tr>
                 <td><strong>DURATION</strong></td>
-                <td><?= $latestOperation->TOTALTIME ?></td>
+                <td>
+                    <?= $latestOperation->TOTAL_TIME ?>
+                </td>
             </tr>
             <tr>
                 <td><strong>RESULT</strong></td>
-                <td><?= $this->DeployResults->prettyUpResult(h($latestOperation->DEPLOY_RESULT)) ?></td>
+                <td>
+                    <?= $this->DeployResults->prettyUpResult(h($latestOperation->DEPLOY_RESULT)) ?>
+                </td>
             </tr>
             </table>
             <span class="pull-left">
-                <?php 
-                    echo $this->Html->link(__('View Details'), ['controller' => 'Dashboards','action' => 'deploymentsAll'], 
-                ['class' => '']);
-        ?></span>
+                <?= $this->Html->link(__('View Details'), ['controller' => 'Operations', 'action' => 'view', $latestOperation->ID]) ?>
+          </span>
                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                 <div class="clearfix"></div>
             </div>
@@ -134,8 +143,8 @@
             </tr>
             </table>
             <span class="pull-left">
-                <?php 
-                    echo $this->Html->link(__('View Details'), ['controller' => 'Dashboards','action' => 'deploymentsAll'], 
+                <?php
+                    echo $this->Html->link(__('View Details'), ['controller' => 'Dashboards','action' => 'deploymentsAll'],
                 ['class' => '']);
         ?></span>
                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -164,12 +173,12 @@
             </tr>
             <tr>
                 <td><strong>TABLE</strong></td>
-                <td><?= $latestTableMod->TABLENAME ?></td>
+                <td><?= $latestTableMod->TABLE_NAME ?></td>
             </tr>
             </table>
             <span class="pull-left">
-                <?php 
-                    echo $this->Html->link(__('View Details'), ['controller' => 'Dashboards','action' => 'deploymentsAll'], 
+                <?php
+                    echo $this->Html->link(__('View Details'), ['controller' => 'Dashboards','action' => 'deploymentsAll'],
                 ['class' => '']);
         ?></span>
                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -180,7 +189,7 @@
 
 </div>
 </div>
- 
+
 <!-- Environment -->
 
 <div class="col-md-2">
@@ -242,7 +251,7 @@
                 </div>
             </div>
         </div>
-    
+
     </div>
     </div>
   </div>

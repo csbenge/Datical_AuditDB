@@ -15,13 +15,11 @@ class Message extends Entity
      * @var array
      */
     protected $_accessible = [
-        'DTYPE' => true,
         'E_VERSION' => true,
         'MESSAGE_TIME' => true,
         'MESSAGE_LEVEL' => true,
         'TEXT' => true,
-        'CHANGEIMPACT_MESSAGES_ID' => true,
-        'CHANGEIMPACT_MESSAGES_IDX' => true,
-        'ECONTAINER_CLASS' => true,
+        'FK_CHANGE_IMPACTS_ID' => true,
+        'MESSAGES_IDX' => true,
     ];
 }

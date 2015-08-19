@@ -22,28 +22,21 @@ class OperationsTable extends Table
      */
     public function initialize(array $config)
     {
-        $this->table('OPERATION');
+        $this->table('operations');
         $this->displayField('ID');
         $this->primaryKey('ID');
         $this->hasMany('Opdatabases', [
             'foreignKey' => 'ID',
-            'bindingKey' => 'FK_OPDATABASE_ID',
+            'bindingKey' => 'FK_OP_DATABASES_ID',
             'dependent' => true
         ]);
-        /* Merged into OPERATION
-        $this->hasMany('ClientDetails', [
-            'foreignKey' => 'OPERATION_ID',
-            'bindingKey' => 'ID',
-            'dependent' => true
-        ]);
-        */
         $this->hasMany('ChangesetDetails', [
-            'foreignKey' => 'FK_OPERATION_ID',
+            'foreignKey' => 'FK_OPERATIONS_ID',
             'bindingKey' => 'ID',
             'dependent' => true
         ]);
         $this->hasMany('Changeimpacts', [
-            'foreignKey' => 'FK_OPERATION_ID',
+            'foreignKey' => 'FK_OPERATIONS_ID',
             'bindingKey' => 'ID',
             'dependent' => true
         ]);
@@ -59,135 +52,103 @@ class OperationsTable extends Table
     {
         $validator
             ->allowEmpty('ID', 'create');
-            
+
         $validator
             ->add('E_VERSION', 'valid', ['rule' => 'numeric'])
             ->requirePresence('E_VERSION', 'create')
             ->notEmpty('E_VERSION');
-            
+
         $validator
             ->allowEmpty('PROJECT_NAME');
-            
+
         $validator
-            ->add('OPDATE', 'valid', ['rule' => 'datetime'])
-            ->allowEmpty('OPDATE');
-            
+            ->allowEmpty('CLIENT_TZ');
+
+        $validator
+            ->allowEmpty('CLIENT_HOSTNAME');
+
+        $validator
+            ->allowEmpty('CLIENT_IP');
+
+        $validator
+            ->allowEmpty('CLIENT_TYPE');
+
+        $validator
+            ->allowEmpty('CLIENT_USER');
+
+        $validator
+            ->allowEmpty('CLIENT_ROLE');
+
         $validator
             ->allowEmpty('STEP');
-            
+
         $validator
             ->allowEmpty('DEPLOY_THRESHOLD');
-            
+
         $validator
             ->allowEmpty('VALIDITY_SETTING');
-            
+
         $validator
-            ->add('TOTALROWSTOUCHED', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('TOTALROWSTOUCHED');
-            
+            ->add('TOTAL_CHANGESETS', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('TOTAL_CHANGESETS');
+
         $validator
-            ->add('TOTALVALUESDELETED', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('TOTALVALUESDELETED');
-            
+            ->add('TOTAL_ROWS_TOUCHED', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('TOTAL_ROWS_TOUCHED');
+
         $validator
-            ->allowEmpty('OPDATABASE_DB_ID');
-            
+            ->add('TOTAL_VALUES_DELETED', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('TOTAL_VALUES_DELETED');
+
         $validator
-            ->allowEmpty('PREDICTEDSUCCESS');
-            
+            ->allowEmpty('FK_OP_DATABASES_ID');
+
+        $validator
+            ->allowEmpty('PREDICTED_SUCCESS');
+
         $validator
             ->allowEmpty('DEPLOY_RESULT');
-            
+
         $validator
             ->allowEmpty('DESCRIPTION');
-            
+
         $validator
             ->allowEmpty('ACTION_TYPE');
-            
+
         $validator
             ->allowEmpty('CONTEXTS');
-            
+
         $validator
             ->allowEmpty('LABELS');
-            
+
         $validator
-            ->allowEmpty('GENSQL');
-            
+            ->allowEmpty('GEN_SQL');
+
         $validator
-            ->allowEmpty('GENROLLBACKSQL');
-            
+            ->allowEmpty('GEN_ROLLBACK_SQL');
+
         $validator
-            ->allowEmpty('GENSQLPATH');
-            
+            ->allowEmpty('GEN_SQL_PATH');
+
         $validator
-            ->allowEmpty('GENROLLBACKSQLPATH');
-            
+            ->allowEmpty('GEN_ROLLBACK_SQL_PATH');
+
         $validator
-            ->add('STARTTIME', 'valid', ['rule' => 'datetime'])
-            ->allowEmpty('STARTTIME');
-            
+            ->add('START_TIME', 'valid', ['rule' => 'datetime'])
+            ->allowEmpty('START_TIME');
+
         $validator
-            ->add('STOPTIME', 'valid', ['rule' => 'datetime'])
-            ->allowEmpty('STOPTIME');
-            
+            ->add('STOP_TIME', 'valid', ['rule' => 'datetime'])
+            ->allowEmpty('STOP_TIME');
+
         $validator
-            ->allowEmpty('TOTALTIME');
-            
+            ->allowEmpty('TOTAL_TIME');
+
         $validator
-            ->allowEmpty('DEPLOYMODE');
-            
+            ->allowEmpty('DEPLOY_MODE');
+
         $validator
-            ->allowEmpty('LOGPATH');
-            $validator
-            ->requirePresence('DTYPE', 'create')
-            ->notEmpty('DTYPE');
-            
-        $validator
-            ->add('E_VERSION', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('E_VERSION', 'create')
-            ->notEmpty('E_VERSION');
-            
-        $validator
-            ->requirePresence('CHANGEID', 'create')
-            ->notEmpty('CHANGEID');
-            
-        $validator
-            ->requirePresence('AUTHOR', 'create')
-            ->notEmpty('AUTHOR');
-            
-        $validator
-            ->requirePresence('FILENAME', 'create')
-            ->notEmpty('FILENAME');
-            
-        $validator
-            ->allowEmpty('CHECKSUM');
-            
-        $validator
-            ->allowEmpty('DBMS');
-            
-        $validator
-            ->allowEmpty('LABELS');
-            
-        $validator
-            ->allowEmpty('CONTEXTS');
-            
-        $validator
-            ->allowEmpty('FAIL_ON_ERROR');
-            
-        $validator
-            ->allowEmpty('ON_VALIDATION_FAIL');
-            
-        $validator
-            ->allowEmpty('ON_RUN_ALWAYS');
-            
-        $validator
-            ->allowEmpty('RUN_ON_CHANGE');
-            
-        $validator
-            ->allowEmpty('RESULT');
-            
-        $validator
-            ->allowEmpty('OPERATION_CHANGESET_ID');
+            ->allowEmpty('LOG_PATH');
 
         return $validator;
     }

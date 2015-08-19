@@ -4,23 +4,22 @@ namespace App\Controller;
 use App\Controller\AppController;
 
 /**
- * Changeimpacts Controller
+ * ChangeImpacts Controller
  *
- * @property \App\Model\Table\ChangeimpactsTable $Changeimpacts
+ * @property \App\Model\Table\ChangeImpactsTable $ChangeImpacts
  */
-class ChangeimpactsController extends AppController
+class ChangeImpactsController extends AppController
 {
 
-    public $paginate = [
-        'limit' => 10
-    ];
+     public $paginate = [
+         'limit' => 10
+     ];
 
-    public function initialize()
-    {
-        parent::initialize();
-        $this->loadComponent('Paginator');
-    }
-
+     public function initialize()
+     {
+         parent::initialize();
+         $this->loadComponent('Paginator');
+     }
 
     /**
      * Index method
@@ -29,24 +28,24 @@ class ChangeimpactsController extends AppController
      */
     public function index()
     {
-        $this->set('changeimpacts', $this->paginate($this->Changeimpacts));
-        $this->set('_serialize', ['changeimpacts']);
+        $this->set('changeImpacts', $this->paginate($this->ChangeImpacts));
+        $this->set('_serialize', ['changeImpacts']);
     }
 
     /**
      * View method
      *
-     * @param string|null $id Changeimpact id.
+     * @param string|null $id Change Impact id.
      * @return void
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function view($id = null)
     {
-        $changeimpact = $this->Changeimpacts->get($id, [
+        $changeImpact = $this->ChangeImpacts->get($id, [
             'contain' => []
         ]);
-        $this->set('changeimpact', $changeimpact);
-        $this->set('_serialize', ['changeimpact']);
+        $this->set('changeImpact', $changeImpact);
+        $this->set('_serialize', ['changeImpact']);
     }
 
     /**
@@ -56,60 +55,60 @@ class ChangeimpactsController extends AppController
      */
     public function add()
     {
-        $changeimpact = $this->Changeimpacts->newEntity();
+        $changeImpact = $this->ChangeImpacts->newEntity();
         if ($this->request->is('post')) {
-            $changeimpact = $this->Changeimpacts->patchEntity($changeimpact, $this->request->data);
-            if ($this->Changeimpacts->save($changeimpact)) {
-                $this->Flash->success(__('The changeimpact has been saved.'));
+            $changeImpact = $this->ChangeImpacts->patchEntity($changeImpact, $this->request->data);
+            if ($this->ChangeImpacts->save($changeImpact)) {
+                $this->Flash->success(__('The change impact has been saved.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The changeimpact could not be saved. Please, try again.'));
+                $this->Flash->error(__('The change impact could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('changeimpact'));
-        $this->set('_serialize', ['changeimpact']);
+        $this->set(compact('changeImpact'));
+        $this->set('_serialize', ['changeImpact']);
     }
 
     /**
      * Edit method
      *
-     * @param string|null $id Changeimpact id.
+     * @param string|null $id Change Impact id.
      * @return void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
     {
-        $changeimpact = $this->Changeimpacts->get($id, [
+        $changeImpact = $this->ChangeImpacts->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $changeimpact = $this->Changeimpacts->patchEntity($changeimpact, $this->request->data);
-            if ($this->Changeimpacts->save($changeimpact)) {
-                $this->Flash->success(__('The changeimpact has been saved.'));
+            $changeImpact = $this->ChangeImpacts->patchEntity($changeImpact, $this->request->data);
+            if ($this->ChangeImpacts->save($changeImpact)) {
+                $this->Flash->success(__('The change impact has been saved.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The changeimpact could not be saved. Please, try again.'));
+                $this->Flash->error(__('The change impact could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('changeimpact'));
-        $this->set('_serialize', ['changeimpact']);
+        $this->set(compact('changeImpact'));
+        $this->set('_serialize', ['changeImpact']);
     }
 
     /**
      * Delete method
      *
-     * @param string|null $id Changeimpact id.
+     * @param string|null $id Change Impact id.
      * @return void Redirects to index.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $changeimpact = $this->Changeimpacts->get($id);
-        if ($this->Changeimpacts->delete($changeimpact)) {
-            $this->Flash->success(__('The changeimpact has been deleted.'));
+        $changeImpact = $this->ChangeImpacts->get($id);
+        if ($this->ChangeImpacts->delete($changeImpact)) {
+            $this->Flash->success(__('The change impact has been deleted.'));
         } else {
-            $this->Flash->error(__('The changeimpact could not be deleted. Please, try again.'));
+            $this->Flash->error(__('The change impact could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
     }
