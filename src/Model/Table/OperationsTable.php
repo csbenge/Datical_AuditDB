@@ -35,7 +35,12 @@ class OperationsTable extends Table
             'bindingKey' => 'ID',
             'dependent' => true
         ]);
-        $this->hasMany('Changeimpacts', [
+        $this->hasMany('ChangeImpacts', [
+            'foreignKey' => 'FK_OPERATIONS_ID',
+            'bindingKey' => 'ID',
+            'dependent' => true
+        ]);
+        $this->hasMany('RuleResps', [
             'foreignKey' => 'FK_OPERATIONS_ID',
             'bindingKey' => 'ID',
             'dependent' => true

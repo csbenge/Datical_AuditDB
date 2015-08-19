@@ -72,6 +72,15 @@ class DeployResultsHelper extends Helper
         return $result;
     }
 
+    public function getRuleRespsMsg($id)
+    {
+        $rulerespsmsg = TableRegistry::get('RuleRespMsgs');
+        $query  = $rulerespsmsg->find()->where(['FK_RULE_RESPS_ID' => $id]);
+        $data = $query->toArray();
+        $result = $data[0]->MESSAGE;
+        return $result;
+    }
+
     public function getRowCount($list)
     {
     	$result = count($list);

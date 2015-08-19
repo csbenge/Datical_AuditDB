@@ -58,18 +58,6 @@
                 <td><strong><?= __('VALUES DELETED') ?>:</strong></td>
                 <td><?= $this->DeployResults->prettyUpCount($operation->TOTAL_VALUES_DELETED) ?></td>
             </tr>
-            <tr>
-                <td>_  </td>
-                <td>_  </td>
-            </tr>
-            <tr>
-                <td>_</td>
-                <td>_ </td>
-            </tr>
-            <tr>
-                <td>_  </td>
-                <td>_  </td>
-            </tr>
             </table>
         </div>
         </div>
@@ -91,22 +79,6 @@
             <tr>
                 <td><strong><?= __('TOTAL') ?>:</strong></td>
                 <td><?= h($operation->TOTAL_TIME) ?></td>
-            </tr>
-            <tr>
-                <td>_  </td>
-                <td>_  </td>
-            </tr>
-            <tr>
-                <td>_  </td>
-                <td>_  </td>
-            </tr>
-            <tr>
-                <td>_  </td>
-                <td>_  </td>
-            </tr>
-            <tr>
-                <td>_  </td>
-                <td>_  </td>
             </tr>
             </table>
         </div>
@@ -135,12 +107,8 @@
                 <td><?= h($operation->CLIENT_TYPE) ?></td>
             </tr>
             <tr>
-                <td><strong><?= __('TIMEZONE') ?>:</strong></td>
+                <td><strong><?= __('TZONE') ?>:</strong></td>
                 <td><?= h($operation->CLIENT_TZ) ?></td>
-            </tr>
-            <tr>
-                <td>_  </td>
-                <td>_  </td>
             </tr>
             </table>
         </div>
@@ -166,16 +134,12 @@
                 <td><?= h($operations->DB_NAME) ?></td>
             </tr>
             <tr>
-                <td><strong><?= __('USER_NAME') ?>:</strong></td>
+                <td><strong><?= __('USER') ?>:</strong></td>
                 <td><?= h($operations->USER_NAME) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('HOST') ?>:</strong></td>
-                <td><?= h($operations->HOST) ?></td>
-            </tr>
-            <tr>
-                <td><strong><?= __('PORT') ?>:</strong></td>
-                <td><?= h($operations->PORT) ?></td>
+                <td><?= h($operations->HOST) ?>:<?= h($operations->PORT) ?></td>
             </tr>
             <tr>
                 <td><strong><?= __('LAST') ?>:</strong></td>
@@ -187,6 +151,32 @@
         </div>
     </div>
 
+</div>
+
+<!-- RULE RESPS -->
+
+<div class="row">
+<div class="col-md-10">
+    <div class="panel panel-red">
+    <div class="panel-heading"><strong><?= __('Rule Response(s)') ?></strong></div>
+    <div class="panel-body">
+    <?php if (!empty($operation->rule_resps)): ?>
+    <table class="table table-striped table-bordered table-hover table-condensed table-responsive">
+        <tr>
+            <th><?= __('RULE_NAME') ?></th>
+            <th><?= __('RULE_MESSAGE') ?></th>
+        </tr>
+        <?php foreach ($operation->rule_resps as $rule_resps): ?>
+        <tr>
+            <td><?= h($rule_resps->RULE_NAME) ?></td>
+            <td><?= $this->DeployResults->getRuleRespsMsg(h($rule_resps->ID)) ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+    <?php endif; ?>
+    </div>
+    </div>
+</div>
 </div>
 
 <!-- CHANGESET DETAILS: CHANGESET DETAILS-->
@@ -218,4 +208,5 @@
     <?php endif; ?>
     </div>
     </div>
+</div>
 </div>
