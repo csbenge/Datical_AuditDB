@@ -154,38 +154,72 @@
 </div>
 
 <!-- RULE RESPS -->
-<?php if (!empty($operation->rule_resps)): ?>
+
 <div class="row">
 <div class="col-md-10">
     <div class="panel panel-red">
     <div class="panel-heading"><strong><?= __('Rule Response(s)') ?></strong></div>
     <div class="panel-body">
-
+    <?php if (!empty($operation->rule_resps)): ?>
     <table class="table table-striped table-bordered table-hover table-condensed table-responsive">
         <tr>
-            <th><?= __('RULE_NAME') ?></th>
-            <th><?= __('RULE_MESSAGE') ?></th>
+          <th><?= h('RULE_NAME') ?></th>
+          <th><?= H('PHASE') ?></th>
+          <th style="text-align:center"><?= h('LEVEL') ?></th>
+          <th><?= h('MESSAGE') ?></th>
         </tr>
         <?php foreach ($operation->rule_resps as $rule_resps): ?>
         <tr>
-            <td><?= h($rule_resps->RULE_NAME) ?></td>
-            <td><?= $this->DeployResults->getRuleRespsMsg(h($rule_resps->ID)) ?></td>
+          <td><?= h($rule_resps->RULE_NAME) ?></td>
+          <td><?= h($rule_resps->PHASE) ?></td>
+          <td style="text-align:center"><?= $this->DeployResults->prettyUpResult(h($rule_resps->LEVEL_NAME)) ?></td>
+          <td><?= $this->DeployResults->getRuleRespsMsg(h($rule_resps->ID)) ?></td>
         </tr>
         <?php endforeach; ?>
     </table>
+    <?php endif; ?>
+    </div>
+    </div>
+</div>
+</div>
 
+<!-- STORED LOGIC COMPILE MESSAGES -->
+
+<div class="row">
+<div class="col-md-10">
+    <div class="panel panel-yellow">
+    <div class="panel-heading"><strong><?= __('Stored Logic State(s)') ?></strong></div>
+    <div class="panel-body">
+    <?php if (!empty($operation->stored_logic_states)): ?>
+    <table class="table table-striped table-bordered table-hover table-condensed table-responsive">
+        <tr>
+            <th><?= __('OBJECT_NAME') ?></th>
+            <th><?= __('OBJECT_TYPE') ?></th>
+            <th><?= __('STATE_BEFORE') ?></th>
+            <th><?= __('STATE_AFTER') ?></th>
+        </tr>
+        <?php foreach ($operation->stored_logic_states as $states): ?>
+        <tr>
+            <td><?= h($states->OBJECT_NAME) ?></td>
+            <td><?= h($states->OBJECT_TYPE) ?></td>
+            <td><?= $this->DeployResults->prettyUpResult(h($states->STATE_BEFORE)) ?></td>
+            <td><?= $this->DeployResults->prettyUpResult(h($states->STATE_AFTER)) ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+    <?php endif; ?>
     </div>
     </div>
 </div>
 </div>
-<?php endif; ?>
+
 
 <!-- CHANGESET DETAILS: CHANGESET DETAILS-->
 
 <div class="row">
 <div class="col-md-10">
     <div class="panel panel-primary">
-    <div class="panel-heading"><strong><?= __('ChangeSet(s) Details') ?></strong></div>
+    <div class="panel-heading"><strong><?= __('ChangeSet(s)') ?></strong></div>
     <div class="panel-body">
     <?php if (!empty($operation->changeset_details)): ?>
     <table class="table table-striped table-bordered table-hover table-condensed table-responsive">

@@ -45,6 +45,11 @@ class OperationsTable extends Table
             'bindingKey' => 'ID',
             'dependent' => true
         ]);
+        $this->hasMany('StoredLogicStates', [
+            'foreignKey' => 'FK_OPERATIONS_ID',
+            'bindingKey' => 'ID',
+            'dependent' => true
+        ]);
     }
 
     /**

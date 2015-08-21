@@ -3,34 +3,6 @@
 <div class="col-md-8 main">
   <h2 class="page-header"><i class="fa fa-fw fa-dashboard"></i>Dashboard <small>Deployments</small></h2>
 
-  <div class="row">
-    <div class="col-lg-12 col-md-6">
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-exclamation-triangle fa-3x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge"><?= h($messageCount) ?></div>
-                        <div>Messages</div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-footer">
-                <span class="pull-left">
-                <?php
-                    echo $this->Html->link(__('View Details'), ['controller' => 'Messages','action' => 'index'],
-                    ['class' => '']);
-                ?>
-                </span>
-                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-  </div>
-
 <div class="row">
 
     <div class="col-lg-4 col-md-6">
@@ -75,6 +47,32 @@
                     echo $this->Html->link(__('View Details'), ['controller' => 'Dashboards','action' => 'deploymentsAll'],
                         ['class' => '']);
                 ?></span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-exclamation-triangle fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><?= h($messageCount) ?></div>
+                        <div><strong>Messages</strong></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <span class="pull-left">
+                <?php
+                    echo $this->Html->link(__('View Details'), ['controller' => 'Messages','action' => 'index'],
+                    ['class' => '']);
+                ?>
+                </span>
                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                 <div class="clearfix"></div>
             </div>
@@ -131,6 +129,33 @@
             </div>
         </div>
     </div>
+
+    <div class="col-lg-4 col-md-6">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-code fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><?= h($storedLogicStatesCount) ?></div>
+                        <div><strong>Stored Logic States</strong></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+            <span class="pull-left">
+              <?php
+                  echo $this->Html->link(__('View Details'), ['controller' => 'StoredLogicStates','action' => 'index'],
+                  ['class' => '']);
+              ?>
+            </span>
+                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
 
 </div>
 </div>

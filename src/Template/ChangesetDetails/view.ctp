@@ -85,11 +85,13 @@
             <tr>
                 <th><?= __('CHANGE_DESCRIPTION') ?></th>
                 <th><?= __('SQL_TEXT') ?></th>
+                <th><?= __('MESSAGE') ?></th>
             </tr>
         <?php foreach ($changeImpacts as $changeimpacts): ?>
             <tr>
                 <td><?= h($changeimpacts->CHANGE_DESCRIPTION) ?></td>
                 <td><?= $this->DeployResults->getChangeImpactSQL(h($changeimpacts->ID)) ?></td>
+                <td><?= $this->DeployResults->getChangeImpactMessages(h($changeimpacts->ID)) ?></td>
             </tr>
             </tr>
         <?php endforeach; ?>

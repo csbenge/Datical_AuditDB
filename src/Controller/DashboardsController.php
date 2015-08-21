@@ -161,6 +161,13 @@ class DashboardsController extends AppController
         $ruleRespsCount = $query->count();
         $this->set('ruleRespsCount', $ruleRespsCount);
 
+        // Get StoredLogicStates Count
+        $storedLogicStates = TableRegistry::get('StoredLogicStates');
+        $query = $storedLogicStates->find();
+        if (!($query->isEmpty())) {
+          $storedLogicStatesCount = $query->count();
+          $this->set('storedLogicStatesCount', $storedLogicStatesCount);
+        }
 
         // Get Project Count
         $query = $databases->find();

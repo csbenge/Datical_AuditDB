@@ -72,6 +72,71 @@ class DeployResultsHelper extends Helper
         return $result;
     }
 
+    public function getMessagesChangeImpactDesc($id)
+    {
+        $changeimpacts = TableRegistry::get('ChangeImpacts');
+        $query  = $changeimpacts->find()->where(['ID' => $id]);
+        $data = $query->toArray();
+        $result = $data[0]->CHANGE_DESCRIPTION;
+        return $result;
+    }
+
+    public function getMessagesProjectName($id)
+    {
+        $changeimpacts = TableRegistry::get('ChangeImpacts');
+        $query  = $changeimpacts->find()->where(['ID' => $id]);
+        $data = $query->toArray();
+        $operationID = $data[0]->FK_OPERATIONS_ID;
+
+        $operations = TableRegistry::get('Operations');
+        $query  = $operations->find()->where([$operationID => $id]);
+        $data = $query->toArray();
+        $result = $data[0]->PROJECT_NAME;
+        return $result;
+    }
+
+    public function getMessagesProjectID($id)
+    {
+        $changeimpacts = TableRegistry::get('ChangeImpacts');
+        $query  = $changeimpacts->find()->where(['ID' => $id]);
+        $data = $query->toArray();
+        $operationID = $data[0]->FK_OPERATIONS_ID;
+
+        $operations = TableRegistry::get('Operations');
+        $query  = $operations->find()->where([$operationID => $id]);
+        $data = $query->toArray();
+        $result = $data[0]->ID;
+        return $result;
+    }
+
+    public function getMessagesProjectStep($id)
+    {
+        $changeimpacts = TableRegistry::get('ChangeImpacts');
+        $query  = $changeimpacts->find()->where(['ID' => $id]);
+        $data = $query->toArray();
+        $operationID = $data[0]->FK_OPERATIONS_ID;
+
+        $operations = TableRegistry::get('Operations');
+        $query  = $operations->find()->where([$operationID => $id]);
+        $data = $query->toArray();
+        $result = $data[0]->STEP;
+        return $result;
+    }
+
+    public function getChangeImpactMessages($id)
+    {
+        $messages = TableRegistry::get('Messages');
+        $query  = $messages->find()->where(['FK_CHANGE_IMPACTS_ID' => $id]);
+        $data = $query->toArray();
+        if (!empty($data)) {
+          $result = $data[0]->TEXT;
+        } else {
+          $result = null;
+        }
+
+        return $result;
+    }
+
     public function getRuleRespsMsg($id)
     {
         $rulerespsmsg = TableRegistry::get('RuleRespMsgs');
@@ -103,6 +168,45 @@ class DeployResultsHelper extends Helper
     {
     	$result = count($list);
         return '<span class="badge">' . $result . '</span>';
+    }
+
+    public function getStoredLogicCompMsgs($id)
+    {
+        $operations = TableRegistry::get('StoredLogicCompMsgs');
+        $query  = $operations->find()->where(['FK_STORED_LOGIC_STATES_ID' => $id]);
+        $messages = $query->toArray();
+        $result = "";
+        foreach ($messages as $message) {
+          $result = $result . $messages[0]->MESSAGE;
+        }
+        return $result;
+    }
+
+    public function getStoredLogicStateProjectID($id)
+    {
+        $operations = TableRegistry::get('Operations');
+        $query  = $operations->find()->where(['ID' => $id]);
+        $data = $query->toArray();
+        $result = $data[0]->ID;
+        return $result;
+    }
+
+    public function getStoredLogicStateProjectName($id)
+    {
+        $operations = TableRegistry::get('Operations');
+        $query  = $operations->find()->where(['ID' => $id]);
+        $data = $query->toArray();
+        $result = $data[0]->PROJECT_NAME;
+        return $result;
+    }
+
+    public function getStoredLogicStateProjectStep($id)
+    {
+        $operations = TableRegistry::get('Operations');
+        $query  = $operations->find()->where(['ID' => $id]);
+        $data = $query->toArray();
+        $result = $data[0]->STEP;
+        return $result;
     }
 
     public function prettyUpCase($words)
@@ -138,11 +242,11 @@ class DeployResultsHelper extends Helper
     public function prettyUpResult($result)
     {
     	$class = '<span class="label label-default">';
-    	if ($result == "PASS") {
+    	if (($result == "PASS") || ($result == "VALID")) {
     		$class = '<span class="label label-success">';
       } elseif ($result == "INFO") {
         $class = '<span class="label label-primary">';
-    	} elseif (($result == "FAIL")  || ($result == "ERROR")) {
+    	} elseif (($result == "FAIL")  || ($result == "ERROR")  || ($result == "INVALID")) {
     		$class = '<span class="label label-danger">';
     	} elseif (($result == "WARN")  || ($result == "WARNING")) {
     		$class = '<span class="label label-warning">';

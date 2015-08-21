@@ -22,9 +22,15 @@ class StoredLogicStatesTable extends Table
      */
     public function initialize(array $config)
     {
+        $this->belongsTo('Operations');
         $this->table('stored_logic_states');
         $this->displayField('ID');
         $this->primaryKey('ID');
+        $this->hasMany('StoredLogicCompMsgs', [
+            'foreignKey' => 'FK_OPERATIONS_ID',
+            'bindingKey' => 'ID',
+            'dependent' => true
+        ]);
     }
 
     /**
@@ -37,25 +43,25 @@ class StoredLogicStatesTable extends Table
     {
         $validator
             ->allowEmpty('ID', 'create');
-            
+
         $validator
             ->requirePresence('FK_OPERATIONS_ID', 'create')
             ->notEmpty('FK_OPERATIONS_ID');
-            
+
         $validator
             ->add('E_VERSION', 'valid', ['rule' => 'numeric'])
             ->requirePresence('E_VERSION', 'create')
             ->notEmpty('E_VERSION');
-            
+
         $validator
             ->allowEmpty('OBJECT_NAME');
-            
+
         $validator
             ->allowEmpty('OBJECT_TYPE');
-            
+
         $validator
             ->allowEmpty('STATE_AFTER');
-            
+
         $validator
             ->allowEmpty('STATE_BEFORE');
 
