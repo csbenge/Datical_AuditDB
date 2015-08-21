@@ -1,4 +1,4 @@
-<!-- File: src/Template/Dashboards/deployments_all.ctp -->
+<!-- File: src/Template/Projects/index.ctp -->
 
 <div class="col-md-10 main">
   <h2 class="page-header"><i class="fa fa-fw fa-folder"></i>Projects <small> All</small></h2>
@@ -24,7 +24,7 @@
     <tbody>
     <?php foreach ($projects as $project): ?>
         <tr>
-            <td><?= $this->Html->link(h($project->PROJECT_NAME), ['action' => 'view', $project->PROJECT_UUID]) ?></td>
+            <td><?= $this->Html->link(h($project->PROJECT_NAME), ['action' => 'view', $project->PROJECT_UUID, $project->PROJECT_NAME]) ?></td>
             <td><?= $this->Number->format($project->PROJECT_ID) ?></td>
             <td><?= h($project->PROJECT_UUID) ?></td>
         </tr>

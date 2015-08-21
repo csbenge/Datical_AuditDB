@@ -88,18 +88,7 @@ $cakeDescription = 'Datical';
           <div class="collapse navbar-collapse navbar-ex1-collapse">
               <ul class="nav navbar-nav side-nav">
                   <li><a><big>Audit Reports Beta</big></a></li>
-                  <li>
-                      <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-dashboard"></i> Dashboards <i class="fa fa-fw fa-caret-down"></i></a>
-                      <ul id="demo" class="collapse">
-                          <li>
-                              <?= $this->Html->link(__('Overview'), ['controller' => 'dashboards', 'action' => 'overview']) ?>
-                          </li>
-                          <li>
-                              <?= $this->Html->link(__('Environmentals'), ['controller' => 'dashboards', 'action' => 'environmentals']) ?>
-                          </li>
-                          <li><?= $this->Html->link(__('Databases'), ['controller' => 'Dashboards','action' => 'databasesAll']) ?></li>
-                      </ul>
-                  </li>
+                  <li><a href="/dashboards/overview"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
 
                   <li>
                       <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-power-off"></i> Deployments <i class="fa fa-fw fa-caret-down"></i></a>
@@ -110,12 +99,12 @@ $cakeDescription = 'Datical';
                       </ul>
                   </li>
 
-                  <li>
-                    <a href="/projects"><i class="fa fa-fw fa-folder"></i> Projects</a></li>
-                  </li>
-                  <li>
-                      <a href="/users"><i class="fa fa-fw fa-user"></i> Users</a>
-                  </li>
+
+                  <li><a href="/projects"><i class="fa fa-fw fa-folder"></i> Projects</a></li>
+                  <li><a href="/dashboards/databasesAll"><i class="fa fa-fw fa-database"></i>  Databases</a></li>
+                  <?php if ($authUserRole == 'Admin') { ?>
+                    <li><a href="/users"><i class="fa fa-fw fa-user"></i> Users</a></li>
+                  <?php } ?>
 
               </ul>
           </div>

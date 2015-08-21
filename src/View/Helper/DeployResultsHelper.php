@@ -81,6 +81,24 @@ class DeployResultsHelper extends Helper
         return $result;
     }
 
+    public function getRuleRespsProject($id)
+    {
+        $operations = TableRegistry::get('Operations');
+        $query  = $operations->find()->where(['ID' => $id]);
+        $data = $query->toArray();
+        $result = $data[0]->PROJECT_NAME;
+        return $result;
+    }
+
+    public function getRuleRespsStep($id)
+    {
+        $operations = TableRegistry::get('Operations');
+        $query  = $operations->find()->where(['ID' => $id]);
+        $data = $query->toArray();
+        $result = $data[0]->STEP;
+        return $result;
+    }
+
     public function getRowCount($list)
     {
     	$result = count($list);
@@ -122,9 +140,11 @@ class DeployResultsHelper extends Helper
     	$class = '<span class="label label-default">';
     	if ($result == "PASS") {
     		$class = '<span class="label label-success">';
-    	} elseif ($result == "FAIL") {
+      } elseif ($result == "INFO") {
+        $class = '<span class="label label-primary">';
+    	} elseif (($result == "FAIL")  || ($result == "ERROR")) {
     		$class = '<span class="label label-danger">';
-    	} elseif ($result == "WARN") {
+    	} elseif (($result == "WARN")  || ($result == "WARNING")) {
     		$class = '<span class="label label-warning">';
     	}
         return $class . $result . '</span>';

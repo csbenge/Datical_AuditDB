@@ -44,7 +44,6 @@ class DashboardsController extends AppController
         $query = $operations->find()->order(['START_TIME' => 'DESC']);
         $this->set('operations', $this->paginate($query));
         $this->set('_serialize', ['operations']);
-
     }
 
     public function deploymentsPassed()
@@ -142,8 +141,8 @@ class DashboardsController extends AppController
         $query = $changeimpacts->find();
         $changeImpactsCount = $query->count();
         $this->set('changeImpactsCount', $changeImpactsCount);
-        $query = $changeimpacts->find()->where(['FK_OPERATIONS_ID' => $latestOperation->ID])->first();
-        $this->set('latestChangeImpact', $query);
+        //$query = $changeimpacts->find()->where(['FK_OPERATIONS_ID' => $latestOperation->ID])->first();
+        //$this->set('latestChangeImpact', $query);
 
 
         // Get Table Mods
@@ -152,9 +151,15 @@ class DashboardsController extends AppController
         if (!($query->isEmpty())) {
           $tableModCount = $query->count();
           $this->set('tableModCount', $tableModCount);
-          $query = $tableMods->find()->where(['FK_OPERATIONS_ID' => $latestOperation->ID])->first();
-          $this->set('latestTableMod', $query);
+          //$query = $tableMods->find()->where(['FK_OPERATIONS_ID' => $latestOperation->ID])->first();
+          //$this->set('latestTableMod', $query);
         }
+
+        // Get Rule Resps
+        $ruleResps = TableRegistry::get('RuleResps');
+        $query = $ruleResps->find();
+        $ruleRespsCount = $query->count();
+        $this->set('ruleRespsCount', $ruleRespsCount);
 
 
         // Get Project Count

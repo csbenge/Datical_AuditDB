@@ -12,13 +12,7 @@
         <div class="table-responsive">
 
     <?php if (!($operations->isEmpty())) { ?>
-        <?php
-            echo $this->Form->select('project', [
-                'Projects' => [ 'All' => 'All',
-                'BookShop' => 'BookShop',
-                'Vehicles' => 'Vehicles']
-            ]);
-        ?>
+
     <table class="table table-striped table-bordered table-hover table-condensed">
     <thead>
         <tr>
@@ -52,7 +46,7 @@
     </tbody>
     </table>
     <?php } else { ?>
-        <div class="well">There are no deployments.</div>
+        <div class="well">There are no failed deployments.</div>
     <?php } ?>
         </div>
 

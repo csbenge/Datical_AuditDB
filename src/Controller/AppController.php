@@ -61,7 +61,7 @@ class AppController extends Controller
         $this->set('authUserLastName', $this->Auth->user('lastname'));
         $this->set('authUserEmail', $this->Auth->user('email'));
         $this->set('authUserRole', $this->Auth->user('role'));
-        
+
         // Allow the display action so our pages controller
         // continues to work.
         $this->Auth->allow(['display']);

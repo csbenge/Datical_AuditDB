@@ -154,13 +154,13 @@
 </div>
 
 <!-- RULE RESPS -->
-
+<?php if (!empty($operation->rule_resps)): ?>
 <div class="row">
 <div class="col-md-10">
     <div class="panel panel-red">
     <div class="panel-heading"><strong><?= __('Rule Response(s)') ?></strong></div>
     <div class="panel-body">
-    <?php if (!empty($operation->rule_resps)): ?>
+
     <table class="table table-striped table-bordered table-hover table-condensed table-responsive">
         <tr>
             <th><?= __('RULE_NAME') ?></th>
@@ -173,11 +173,12 @@
         </tr>
         <?php endforeach; ?>
     </table>
-    <?php endif; ?>
+
     </div>
     </div>
 </div>
 </div>
+<?php endif; ?>
 
 <!-- CHANGESET DETAILS: CHANGESET DETAILS-->
 

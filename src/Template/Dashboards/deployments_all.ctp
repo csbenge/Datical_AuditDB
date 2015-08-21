@@ -12,33 +12,7 @@
         <div class="table-responsive">
 
     <?php if (!($operations->isEmpty())) { ?>
-        <?php
-            echo $this->Form->select('project', [
-                'Projects' => [ 'All' => 'All Projects',
-                'BookShop' => 'BookShop',
-                'Vehicles' => 'Vehicles',
-                '3000' => 'Vehicles'
-                ]
-            ]);
-        ?>
-        <?php
-            echo $this->Form->select('days', [
-                'Time Lime' => [ 'All' => 'All Days',
-                '7'  => 'Last  7 Days',
-                '14' => 'Last 14 Days',
-                '30' => 'Last 30 Days',
-                '60' => 'Last 60 Days',
-                '90' => 'Last 90 Days'
-                ]
-            ]);
-        ?>
-        <?php
-            echo $this->Form->select('result', [
-                'Results' => [ 'All' => 'All Results',
-                'Pass' => 'Pass',
-                'Fail' => 'Fail']
-            ]);
-        ?>
+      
     <table class="table table-striped table-bordered table-hover table-condensed">
     <thead>
         <tr>

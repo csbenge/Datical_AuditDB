@@ -1,7 +1,7 @@
 <!-- File: src/Template/Dashboards/dashboards_all.ctp -->
 
 <div class="col-md-10 main">
-  <h2 class="page-header"><i class="fa fa-fw fa-dashboard"></i>Dashboard <small>Databases All</small></h2>
+  <h2 class="page-header"><i class="fa fa-fw fa-database"></i>Databases <small>All</small></h2>
 
 <div class="col-md-12 main">
   <div class="panel panel-primary">
@@ -14,7 +14,7 @@
         <tr>
             <th><?= $this->Paginator->sort('DATABASE') ?></th>
             <th><?= $this->Paginator->sort('USERNAME') ?></th>
-            <th><?= $this->Paginator->sort('SERVER') ?></th>
+            <th><?= $this->Paginator->sort('HOST') ?></th>
             <th><?= $this->Paginator->sort('ENGINE') ?></th>
             <th><?= $this->Paginator->sort('PORT') ?></th>
             <th><?= $this->Paginator->sort('SID') ?></th>

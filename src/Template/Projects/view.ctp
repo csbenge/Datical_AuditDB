@@ -1,226 +1,65 @@
-<!-- File: src/Template/Dashboards/overview.ctp -->
+<!-- File: src/Template/Projects/view.ctp -->
 
 <div class="col-md-10 main">
-  <h2 class="page-header"><i class="fa fa-fw fa-folder"></i>Project <small><?= $latestOperation->PROJECT_NAME ?></small></h2>
+  <h2 class="page-header"><i class="fa fa-fw fa-folder"></i>Project <small> <?= h($project->PROJECT_NAME) ?></small></h2>
 
-  <div class="row">
-
-    <?php if (!($latestMessages->isEmpty())) { ?>
-    <div class="col-lg-12 col-md-6">
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-exclamation-triangle fa-3x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge"><?= h($messageCount) ?></div>
-                        <div>Messages</div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="panel-footer">
-
-            <table class="table table-hover table-condensed table-stripped">
-            <thead>
-            <tr>
-                <th><?= __('Level') ?></th>
-                <th><?= __('Time') ?></th>
-                <th><?= __('Project') ?></th>
-                <th><?= __('Message') ?></th>
-            </tr>
-            </thead>
-            <?php foreach ($latestMessages as $latestMessage): ?>
-            <tr>
-                <td width="50px"><?= $this->DeployResults->prettyUpMessageLevel(h($latestMessage->MESSAGE_LEVEL)) ?></td>
-                <td width="175px"><?= $latestMessage->MESSAGE_TIME ?></td>
-                <td><?= $this->Html->link(h($this->DeployResults->getChangeImpact_ChangeID(h($latestMessage->FK_CHANGE_IMPACTS_ID))), ['controller' => 'Operations', 'action' => 'view', $this->DeployResults->getChangeImpact_ChangeIDID(h($latestMessage->FK_CHANGE_IMPACTS_ID))]) ?>
-                </td>
-                <td><?= $latestMessage->TEXT ?></td>
-            </tr>
-            <?php endforeach; ?>
-            </table>
-                <span class="pull-left">
-                <?php
-                    echo $this->Html->link(__('View Details'), ['controller' => 'Messages','action' => 'index'],
-                    ['class' => '']);
-                ?>
-                </span>
-                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                <div class="clearfix"></div>
-            </div>
-        </div>
+<div class="col-md-12 main">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-power-off fa-fw"></i> Deployments</h3>
     </div>
+    <div class="panel-body">
+        <div class="table-responsive">
 
+    <?php if (!($operations->isEmpty())) { ?>
+
+    <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+        <tr>
+            <th><?= $this->Paginator->sort('STEP') ?></th>
+            <th><?= $this->Paginator->sort('LABELS') ?></th>
+            <th><?= $this->Paginator->sort('CHANGES') ?></th>
+            <th><?= $this->Paginator->sort('START_TIME') ?></th>
+            <th><?= $this->Paginator->sort('TOTAL_TIME') ?></th>
+            <th><?= $this->Paginator->sort('ACTION') ?></th>
+            <th><?= $this->Paginator->sort('MODE') ?></th>
+
+            <th><?= $this->Paginator->sort('RESULT') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($operations as $operation): ?>
+        <tr>
+            <td><i class="fa fa-database fa-green"></i> <?= $this->Html->link(h($operation->STEP), ['controller' => 'Operations', 'action' => 'view', $operation->ID]) ?>
+            </td>
+            <td><?= h($operation->LABELS) ?></td>
+            <td><?= h($operation->TOTAL_CHANGESETS) ?></td>
+            <td><?= h($operation->START_TIME) ?></td>
+            <td><?= h($operation->TOTAL_TIME) ?></td>
+            <td><?= $this->DeployResults->prettyUpAction(h($operation->ACTION_TYPE)) ?></td>
+            <td><?= $this->DeployResults->prettyUpCase(h($operation->DEPLOY_MODE)) ?></td>
+            <td><?= $this->DeployResults->prettyUpResult(h($operation->DEPLOY_RESULT)) ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+    </table>
+    <?php } else { ?>
+        <div class="well">There are no deployments.</div>
     <?php } ?>
-
-
-<div class="row">
-
-    <div class="col-lg-4 col-md-6">
-        <div class="panel panel-green">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-power-off fa-3x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge"><?= h($operationCount) ?></div>
-                        <div>Deployments</div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-footer">
-            <table class="table table-hover table-condensed">
-            <tr>
-                <td colspan="2" style="text-align:center;"><strong>LATEST</strong></td>
-            </tr>
-            <tr>
-                <td><strong>PROJECT</strong></td>
-
-                <td>
-                    <?= $latestOperation->PROJECT_NAME ?>
-                </td>
-            </tr>
-            <tr>
-                <td><strong>ENVIRONMENT</strong></td>
-                <td>
-                    <?= $latestOperation->STEP ?>
-                <td>
-            </tr>
-            <tr>
-                <td><strong>TIME</strong></td>
-                <td>
-                    <?= $latestOperation->START_TIME ?>
-                </td>
-            </tr>
-            <tr>
-                <td><strong>DURATION</strong></td>
-                <td>
-                    <?= $latestOperation->TOTAL_TIME ?>
-                </td>
-            </tr>
-            <tr>
-                <td><strong>RESULT</strong></td>
-                <td>
-                    <?= $this->DeployResults->prettyUpResult(h($latestOperation->DEPLOY_RESULT)) ?>
-                </td>
-            </tr>
-            </table>
-            <span class="pull-left">
-                <?= $this->Html->link(__('View Details'), ['controller' => 'Operations', 'action' => 'view', $latestOperation->ID]) ?>
-          </span>
-                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                <div class="clearfix"></div>
-            </div>
         </div>
-    </div>
 
-     <div class="col-lg-4 col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-play-circle fa-3x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge"><?= h($changeImpactsCount) ?></div>
-                        <div>Changes</div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-footer">
-            <table class="table table-hover table-condensed">
-            <tr>
-                <td colspan="2" style="text-align:center;"><strong>LATEST</strong></td>
-            </tr>
-            <tr>
-                <td><strong>DESC</strong></td>
-                <td><?= $latestChangeImpact->CHANGE_DESCRIPTION ?></td>
-            </tr>
-            </table>
-            <span class="pull-left">
-                <?php
-                    echo $this->Html->link(__('View Details'), ['controller' => 'Dashboards','action' => 'deploymentsAll'],
-                ['class' => '']);
-        ?></span>
-                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-th fa-3x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge"><?= h($tableModCount) ?></div>
-                        <div>Table Modifications</div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-footer">
-            <table class="table table-hover table-condensed">
-            <tr>
-                <td colspan="2" style="text-align:center;"><strong>LATEST</strong></td>
-            </tr>
-            <tr>
-                <td><strong>TABLE</strong></td>
-                <td><?= $latestTableMod->TABLE_NAME ?></td>
-            </tr>
-            </table>
-            <span class="pull-left">
-                <?php
-                    echo $this->Html->link(__('View Details'), ['controller' => 'Dashboards','action' => 'deploymentsAll'],
-                ['class' => '']);
-        ?></span>
-                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-  </div>
-
-<div class="row">
-
-  <div class="col-lg-4 col-md-6">
-      <div class="panel panel-red">
-          <div class="panel-heading">
-              <div class="row">
-                  <div class="col-xs-3">
-                      <i class="fa fa-check fa-3x"></i>
-                  </div>
-                  <div class="col-xs-9 text-right">
-                      <div class="huge"><?= h($operationCount) ?></div>
-                      <div>Rule Messages</div>
-                  </div>
-              </div>
-          </div>
-          <div class="panel-footer">
-          <table class="table table-hover table-condensed">
-          <tr>
-              <td colspan="2" style="text-align:center;"><strong>LATEST</strong></td>
-          </tr>
-          <tr>
-              <td><strong>Message</strong></td>
-              <td>Rule says bad.</td>
-          </tr>
-          </table>
-          <span class="pull-left">
-              <?= $this->Html->link(__('View Details'), ['controller' => 'Operations', 'action' => 'view', $latestOperation->ID]) ?>
-        </span>
-              <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-              <div class="clearfix"></div>
-          </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <ul class="pagination">
+            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->numbers() ?>
+            <?= $this->Paginator->next(__('next') . ' >') ?><br/>
+            <small><?= $this->Paginator->counter() ?></small>
+        </ul>
       </div>
-  </div>
+    </div>
 
+    </div>
 </div>
-
+</div>
 </div>

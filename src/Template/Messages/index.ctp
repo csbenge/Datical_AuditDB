@@ -1,49 +1,58 @@
-<div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Html->link(__('New Message'), ['action' => 'add']) ?></li>
-    </ul>
-</div>
-<div class="messages index large-10 medium-9 columns">
-    <table cellpadding="0" cellspacing="0">
-    <thead>
-        <tr>
-            <th><?= $this->Paginator->sort('ID') ?></th>
-            <th><?= $this->Paginator->sort('E_VERSION') ?></th>
-            <th><?= $this->Paginator->sort('MESSAGE_TIME') ?></th>
-            <th><?= $this->Paginator->sort('MESSAGE_LEVEL') ?></th>
-            <th><?= $this->Paginator->sort('TEXT') ?></th>
-            <th><?= $this->Paginator->sort('FK_CHANGE_IMPACTS_ID') ?></th>
-            <th><?= $this->Paginator->sort('MESSAGES_IDX') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($messages as $message): ?>
-        <tr>
-            <td><?= $this->Number->format($message->ID) ?></td>
-            <td><?= $this->Number->format($message->E_VERSION) ?></td>
-            <td><?= h($message->MESSAGE_TIME) ?></td>
-            <td><?= h($message->MESSAGE_LEVEL) ?></td>
-            <td><?= h($message->TEXT) ?></td>
-            <td><?= $this->Number->format($message->FK_CHANGE_IMPACTS_ID) ?></td>
-            <td><?= $this->Number->format($message->MESSAGES_IDX) ?></td>
-            <td class="actions">
-                <?= $this->Html->link(__('View'), ['action' => 'view', $message->ID]) ?>
-                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $message->ID]) ?>
-                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $message->ID], ['confirm' => __('Are you sure you want to delete # {0}?', $message->ID)]) ?>
-            </td>
-        </tr>
+<!-- File: src/Template/ruleResp/index.ctp -->
 
-    <?php endforeach; ?>
-    </tbody>
-    </table>
-    <div class="paginator">
+<div class="col-md-10 main">
+  <h2 class="page-header"><i class="fa fa-fw fa-exclamation-triangle"></i>Messages <small> All</small></h2>
+
+<div class="col-md-12 main">
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-exclamation-triangle fa-fw"></i> Messages</h3>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+
+          <?php if (!($messages->isEmpty())) { ?>
+          <table class="table table-striped table-bordered table-hover table-condensed">
+          <thead>
+            <tr>
+              <th><?= $this->Paginator->sort('STEP') ?></th>
+              <th><?= $this->Paginator->sort('RULE_NAME') ?></th>
+              <th nowrap><?= $this->Paginator->sort('TIME') ?></th>
+              <th  style="text-align:center"><?= $this->Paginator->sort('LEVEL') ?></th>
+              <th><?= $this->Paginator->sort('TEXT') ?></th>
+            </tr>
+          </thead>
+          <tbody>
+        <?php foreach ($messages as $message): ?>
+            <tr>
+              <td>
+                <?= $this->Html->link(h($this->DeployResults->getRuleRespsProject(h($message->FK_OPERATIONS_ID))), ['controller' => 'Operations', 'action' => 'view', $ruleResp->FK_OPERATIONS_ID]) ?>
+              </td>
+              <td><?= $this->DeployResults->getRuleRespsStep(h($message->FK_OPERATIONS_ID)) ?></td>
+              <td nowrap><?= h($message->MESSAGE_TIME) ?></td>
+              <td  style="text-align:center"><?= $this->DeployResults->prettyUpResult(h($message->MESSAGE_LEVEL)) ?></td>
+              <td><?= h($message->TEXT) ?></td>
+            </tr>
+          <?php endforeach; ?>
+          </tbody>
+          </table>
+          <?php } else { ?>
+              <div class="well">There are no messages.</div>
+          <?php } ?>
+      </div>
+
+    <div class="row">
+      <div class="col-md-12 text-center">
         <ul class="pagination">
             <?= $this->Paginator->prev('< ' . __('previous')) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->next(__('next') . ' >') ?><br/>
+            <small><?= $this->Paginator->counter() ?></small>
         </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+      </div>
     </div>
+
+    </div>
+</div>
+</div>
 </div>

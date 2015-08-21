@@ -30,7 +30,7 @@ class ProjectsController extends AppController
      * @return void
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function view($id = null)
+    public function view($id = null, $project_name = null)
     {
         $project = $this->Projects->get($id, [
             'contain' => []
@@ -38,77 +38,10 @@ class ProjectsController extends AppController
         $this->set('project', $project);
         $this->set('_serialize', ['project']);
 
-        /// Get latest Message
-        $messages = TableRegistry::get('Messages');
-        $latestMessages = $messages
-            ->find()
-            ->order(['MESSAGE_TIME' => 'DESC'])
-            ->limit(3);
-        $this->set('latestMessages', $latestMessages);
-
-        $query = $messages->find();
-        $messageCount = $query->count();
-        $this->set('messageCount', $messageCount);
-
-        // Get Deployment/Operation Count
         $operations = TableRegistry::get('Operations');
-        $query = $operations->find();
-        $operationCount = $query->count();
-        $this->set('operationCount', $operationCount);
-
-        // Get latest Operation
-        $databases = TableRegistry::get('Operations');
-        $latestOperation = $databases
-            ->find()
-            ->order(['START_TIME' => 'DESC'])
-            ->first();
-        $this->set('latestOperation', $latestOperation);
-
-        // Get ChangeImpact Count
-        $changeimpacts = TableRegistry::get('Changeimpacts');
-        $query = $changeimpacts->find();
-        $changeImpactsCount = $query->count();
-        $this->set('changeImpactsCount', $changeImpactsCount);
-        $query = $changeimpacts->find()->where(['FK_OPERATIONS_ID' => $latestOperation->ID])->first();
-        $this->set('latestChangeImpact', $query);
-
-
-        // Get Table Mods
-        $tableMods = TableRegistry::get('Tablemods');
-        $query = $tableMods->find();
-        if (!($query->isEmpty())) {
-          $tableModCount = $query->count();
-          $this->set('tableModCount', $tableModCount);
-          $query = $tableMods->find()->where(['FK_OPERATIONS_ID' => $latestOperation->ID])->first();
-          $this->set('latestTableMod', $query);
-        }
-
-
-        // Get Project Count
-        $query = $databases->find();
-        $query->select(['PROJECT_NAME'])->distinct(['PROJECT_NAME']);
-        $projectCount = $query->count();
-        $this->set('projectCount', $projectCount);
-
-        // Get Database Count
-        $DB_NAMEs = TableRegistry::get('Opdatabases');
-        $query = $DB_NAMEs->find()->order(['LAST_DEPLOY' => 'DESC']);
-        $databaseCount = $query->count();
-        $this->set('databaseCount', $databaseCount);
-
-        // Get Database Servers & Count
-        $DB_NAMEs = TableRegistry::get('Opdatabases');
-        $query = $DB_NAMEs->find();
-        $query->select(['DB_NAME', 'HOST'])->distinct(['HOST']);
-        $serverCount = $query->count();
-        $this->set('serverCount', $serverCount);
-
-        // Get Unique Client Count
-        $clientDetails = TableRegistry::get('Operations');
-        $query = $clientDetails->find();
-        $query->select(['CLIENT_HOSTNAME'])->distinct(['CLIENT_HOSTNAME']);
-        $clientCount = $query->count();
-        $this->set('clientCount', $clientCount);
+        $query = $operations->find()->where(['PROJECT_NAME' => $project_name])->order(['START_TIME' => 'DESC']);
+        $this->set('operations', $this->paginate($query));
+        $this->set('_serialize', ['operations']);
     }
 
     /**
