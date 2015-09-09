@@ -51,7 +51,7 @@
         </div>
 
     <div class="row">
-      <div class="col-md-12 text-center">
+      <div class="col-md-10 text-center">
         <ul class="pagination">
             <?= $this->Paginator->prev('< ' . __('previous')) ?>
             <?= $this->Paginator->numbers() ?>
